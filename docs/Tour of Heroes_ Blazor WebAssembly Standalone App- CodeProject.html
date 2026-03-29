@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<!-- saved from url=(0136)https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App -->
+<html lang="en" style="--wm-toolbar-height: 67px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/analytics.js.download"></script><script src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/athena.js.download" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app204.us.archive.org';v.server_ms=839;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/bundle-playback.js.download" charset="utf-8"></script>
+<script type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/wombat.js.download" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden","showSwfDownload":true};</script>
+<script type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/ruffle.js.download"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App","20241113101520","https://web.archive.org/","web","https://web-static.archive.org/_static/",
+	      "1731492920");
+</script>
+<link rel="stylesheet" type="text/css" href="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+
+
+	
+	<link rel="preconnect" href="https://web.archive.org/web/20241113101520/https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/">
+
+
+	<link rel="preload" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/App_Themes/CodeProject/Img/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="https://web.archive.org/web/20241113101520/https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js" as="script" type="text/javascript">
+
+
+	<title>Tour of Heroes: Blazor WebAssembly Standalone App- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Blazor WebAssembly Standalone App talking to ASP.NET Core Web API with generated client API codes in C#">
+<meta name="Keywords" content="C#, ASP.NET-Core, Blazor">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://web.archive.org/web/20241113101520/https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="6/13/2024 2:25:00 AM">
+<meta property="article:modified_time" content="6/13/2024 2:25:00 AM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="4 min read">
+<meta property="og:url" content="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App">
+<meta property="og:title" content="Tour of Heroes: Blazor WebAssembly Standalone App">
+<meta property="og:description" content="Blazor WebAssembly Standalone App talking to ASP.NET Core Web API with generated client API codes in C#">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://web.archive.org/web/20241113101520im_/https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://web.archive.org/web/20241113101520im_/https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://web.archive.org/web/20241113101520im_/https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://web.archive.org/web/20241113101520im_/https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "https://web.archive.org/web/20241113101520/http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App"
+   },
+  "name": "Tour of Heroes: Blazor WebAssembly Standalone App",
+  "headline": "Tour of Heroes: Blazor WebAssembly Standalone App",
+  "url": "https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App",
+  "discussionUrl": "https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://web.archive.org/web/20241113101520/https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,ASP.NET-Core,Blazor",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://web.archive.org/web/20241113101520/https://www.codeproject.com/script/Membership/View.aspx?mid=3873871"
+  },
+  "license": "https://web.archive.org/web/20241113101520/http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "Blazor WebAssembly Standalone App talking to ASP.NET Core Web API with generated client API codes in C#",
+  "articleSection": "Blazor",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://web.archive.org/web/20241113101520/https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2024-06-13",
+  "dateCreated": "2024-06-13",
+  "dateModified": "2024-06-13"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "https://web.archive.org/web/20241113101520/http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=web",
+      "name" : "web"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Blazor",
+      "name" : "Blazor"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' );
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="archiveteam archivebot archiveteam archivebot20240924"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 67px;" toolbar-mode="auto"><template shadowrootmode="closed"><div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;">
+<div id="donato" style="position:relative;width:100%;height:0;">
+  <div id="donato-base">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20241113101520/https%3A//www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;" nav="async">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="https://web.archive.org/web/" title="Wayback Machine home page"><img src="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-100.png, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, https://web-static.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0"></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="https://web.archive.org/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" onfocus="this.focus();this.select();" style="flex:1;" autocomplete="off"><input type="hidden" name="type" value="replay"><input type="hidden" name="date" value="20241113101520"><input type="submit" value="Go">
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;"><a class="t" href="https://web.archive.org/web/*/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" title="See a list of every capture for this URL">8 captures</a><div class="r" title="Timespan for captures of this URL">13 Jun 2024 - 13 Nov 2024</div></div>
+        <div class="k">
+          <a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="775" height="27" border="0"></canvas>
+            <div class="yt" style="display: none; width: 25px; height: 27px;"></div><div class="mt" style="display: none; width: 2px; height: 27px;"></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20240714193815/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" title="19:38:15 Jul 14, 2024">Jul</a></td>
+            <td class="c" id="displayMonthEl" title="You are here: 10:15:20 Nov 13, 2024">NOV</td>
+            <td class="f" nowrap="nowrap">Dec</td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20240714193815/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" title="19:38:15 Jul 14, 2024"><span class="ta"></span></a></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 10:15:20 Nov 13, 2024">13</td>
+            <td class="f" nowrap="nowrap"><span class="ta"></span></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap">2023</td>
+            <td class="c" id="displayYearEl" title="You are here: 10:15:20 Nov 13, 2024">2024</td>
+            <td class="f" nowrap="nowrap">2025</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#" title="Share via My Web Archive" style="display: none;">
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in" style="display: inline-block;">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web" style="display: none;"></span>
+        </span>
+                <a class="xxs" href="https://help.archive.org/help/category/the-wayback-machine/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="https://web.archive.org/web/20241113101520/http://web.archive.org/screenshot/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" id="wm-screenshot" title="screenshot" style="visibility: hidden;">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#" data-url="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#" data-url="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archiveteam);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/archiveteam" target="_new"><span class="wm-title">Archive Team</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  <img align="right" src="https://wiki.archiveteam.org/images/e/e6/Archiveteam.jpg" width="200"> Formed in 2009, the Archive Team (not to be confused with the archive.org Archive-It Team) is a rogue archivist collective dedicated to saving copies of rapidly dying or deleted websites for the sake of history and digital heritage. The group is 100% composed of volunteers and interested parties, and has expanded into a large amount of related projects for saving online and digital history.
+<p>
+History is littered with hundreds of conflicts over the future of a community, group, location or business that were "resolved" when one of the parties stepped ahead and destroyed what was there. With the original point of contention destroyed, the debates would fall to the wayside. Archive Team believes that by duplicated condemned data, the conversation and debate can continue, as well as the richness and insight gained by keeping the materials. Our projects have ranged in size from a single volunteer downloading the data to a small-but-critical site, to over 100 volunteers stepping forward to acquire terabytes of user-created data to save for future generations.
+</p><p>
+The main site for Archive Team is at <a href="https://wiki.archiveteam.org/">archiveteam.org</a> and contains up to the date information on various projects, manifestos, plans and walkthroughs.
+</p><p>
+This collection contains the output of many Archive Team projects, both ongoing and completed. Thanks to the generous providing of disk space by the Internet Archive, multi-terabyte datasets can be made available, as well as in use by the <a href="https://web.archive.org/">Wayback Machine</a>, providing a path back to lost websites and work. 
+</p><p>
+Our collection has grown to the point of having sub-collections for the type of data we acquire. If you are seeking to browse the contents of these collections, the Wayback Machine is the best first stop. Otherwise, you are free to dig into the stacks to see what you may find.
+</p><p>
+<b>The Archive Team Panic Downloads</b> are full pulldowns of currently extant websites, meant to serve as emergency backups for needed sites that are in danger of closing, or which will be missed dearly if suddenly lost due to hard drive crashes or server failures. 
+</p><p></p>
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/archivebot)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/archivebot" target="_new"><span class="wm-title">ArchiveBot: The Archive Team Crowdsourced Crawler</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  ArchiveBot is an IRC bot designed to automate the archival of smaller websites (e.g. up to a few hundred thousand URLs). You give it a URL to start at, and it grabs all content under that URL, records it in a WARC, and then uploads that WARC to ArchiveTeam servers for eventual injection into the Internet Archive (or other archive sites).
+<p>
+To use ArchiveBot, drop by #archivebot on EFNet. To interact with ArchiveBot, you issue commands by typing it into the channel. Note you will need channel operator permissions in order to issue archiving jobs. The dashboard shows the sites being downloaded currently.
+</p><p>
+There is a dashboard running for the archivebot process at <a href="http://www.archivebot.com/">http://www.archivebot.com</a>.
+</p><p>
+ArchiveBot's source code can be found at <a href="https://github.com/ArchiveTeam/ArchiveBot">https://github.com/ArchiveTeam/ArchiveBot</a>.
+	</p></div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center;padding:2px 0;" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web-static.archive.org/_static/images/loading.gif" alt="loading"></div>
+    </div>
+    </div>
+  </div></div></div><link rel="stylesheet" type="text/css" href="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/banner-styles.css"><link rel="stylesheet" type="text/css" href="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/iconochive.css"><div class="wb-autocomplete-suggestions "></div></template>
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(775,27,25,2,"web","https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App","20241113101520",1996,"https://web-static.archive.org/_static/",["https://web-static.archive.org/_static/css/banner-styles.css?v=1utQkbB3","https://web-static.archive.org/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+
+
+
+<a class="access-link" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App#Main"><img alt="Click here to Skip to main content" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div>Articles / web / Blazor</div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App?display=Print" class="tooltip" title="">
+   <img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Y4ME6z/zN1YUYMZwRwEf9O34WBwqaTLPEcBZDONTYp980fSmHVErngkTZd3RESG2J1bIAs0QJlpAr4oYMAB7WyqluPOH5+XIelH1yGmaLEmTpsacULPQvY+OyxoMla9L8mNHgyiensnCjTKmFfWGlmtCGnaPRL1Sn1tpA2iD4Q2X8AT7RX8n8KEiJ13cHzjLVBtvySjcsZebm84dyVFqfGxjJilcVwUtaFdqaGTF3Y82ivFbGZea+myFx2+YdCOYUhiRx8XKtXj1L03p1n+5sW+I/rqeeNiI0hBOlGNpcW6Y5y3dV/iMq2emRUHWV6oUvLWgNZC+NAHAovVKcPczYsjBNDH2cXp8BSv5G9PjufRKcngStUHguMVPjL3gJfSeu5SS/i/lXgeUo4uVBZ0XR0B5Wadwuv6YzS+zp99dURN/RzQL/dPnEhFqyHjiQl8q8De8R9s6lwbtxW9QmCvAVABVhGnCVgdIZnHR+QhUBTH9OXNmh2MK7Ag0mVhyOj5zcfnFvbDn1hBM5yVCl8RtCoR3qlLJJ7Qk+I8azwxxumZLAJSqN5T3bze3QyKfvsvbEQcsnCrTjxi9zHFLe+xUOtOKfCXdXAL7ADBac4x8p9Sbgmtx6XClZYP8THgYCazwMUaW8IvMOyNS9s7OjBs0g2y2Qw3BlVgAORoW1So+s3xhd4nHs4h9GNSU5Sifq+O9v/tZ8FfFLiGHmx/QWMehzXZbczDIS+eR4goNREHPa00saDP8B8p/J7rctbBnyNSqa3yLihyb0jmIllFjGIw9Jq8E83z4uxBinj7hixL/VV4RAN5/9XgS46Eyh1e6bLX6WIbCS5poY8ul3/etXTf1zugGVaopr/7o94sDkemNzkDJKQ5ChGKeQ+KBDF7OBQ408iAWmg8K/3RLhENMULvdc8p26HPn9iuYoTE3URAw4LFmZjP2JNK6H+gTZu+pSMtMk1IiT28wuFKac/MAcUI09L5XJakl2kfjRtecmCGvQg3NEYDkj5UjIRlpnhdvJhXbfSLdgqgzRLtO+jJj5YEk4baKnIChs3IJG6Dvraz8aaDl1bPKc6DN9KOgid5ryeKEYMbZOenJ3ypJXYB2hg3dHLughMc499qvihrGNuQHsUtnDMZLl5zSUX0ciFtJrUCtr/bqP/B9xvHj10KhToH9LcHJmKCVJkhU5jqf+gEmrj6oglXbdJbULv8XFfb1laO5pkQFF0oL1OJXT9LfthWwGzb7NKCEbv/4QLEVVtIP4MzaqX/78PG/kFKcUtmlKShgy0AankYnG7Tk4QmyqmeKSUkoOSy6ZN2tuTPM/5Ji5Asv9MQFa9MwRCGqTcGx1eVvXVZsecna7/EU0jCakwA3ClB8Hdbfh31eiWGjmcBgEXCVq1lUay2yzWM4M2EAatyOWxBySoTlNwWIum+fm70PJHXo6qc/3hXZIqij2eRULlx5skQ4Wv8vFRKfaHXLfaizaV4lrc6PFN77t9BNzG4Zpv1FMnllcAyJEiVDP93i/Hbud8Jy5RhxyoZzkuZ/wBfGg5eUL+4Zo8egqsXsnGdJNYhJqKYdVHqDpXfTfcANNJIzeDH7SdQ3LC5cuWXcypHVyM0B+vQ16EIauTMfXlTiS/4PCyY4lZqeb4NF4M7aF1k9xdQZyzJQXCN2leTQ4s5Jf4bVA6Z+NnRo7Q/NHLvc4LCa1T54Nk9V3/kF9s9FxNL7/LnQToL4xbhIYCVEiLW4cKwZf1qDvhcHTc2JN1M3+XTvgQRk1pp8FCFtFbKWBn1QhJWrbxtT1oqkb2Y1bcL5D9C0l9awTaJYhp95sbLzdnfIbbMXbfXJOTvNj2/AAlrRmYVc6DQYejtDGgf/O0iCJpjJ4AACPLn0WI3eqR9jMvLEckNDmkN+WGFYOnQ2VgVOX36i7hV7NwRAD8tGBFq6mB1btQ==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Tags/ASP.NET-Core" data-id="4216">ASP.NET-Core</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Tags/Blazor" data-id="4641">Blazor</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Tour of Heroes: Blazor WebAssembly Standalone App</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_5383736">
+
+	<meta itemprop="upvoteCount" content="5">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (5 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">12 Jun 2024</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="https://web.archive.org/web/20241113101520/http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">4 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/views32.png" style="width:16px"> 6.7K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">Blazor WebAssembly Standalone App talking to ASP.NET Core Web API with generated client API codes in C#</div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<ul class="download">
+	<li><a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb">DemoCoreWeb with "Tour of Heroes" built on different platforms</a></li></ul>
+
+<h2>Background</h2>
+
+<p>"Tour of Heroes" is the&nbsp;<a href="https://web.archive.org/web/20241113101520/https://angular.io/tutorial/tour-of-heroes">official tutorial app of Angular 2+</a>. The app contains some functional features and technical features which are common when building a real-world business application talking to Web API:</p>
+
+<ol>
+	<li>A few screens presenting tables and nested data</li>	<li>Data binding</li>	<li>Navigation</li>	<li><a href="https://web.archive.org/web/20241113101520/https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD</a>&nbsp;operations over a backend, and optionally through a generated client API</li>	<li>Unit testing and integration testing</li></ol>
+
+<p>In this series of articles, I will demonstrate the programmer experiences of various frontend development platforms when building the same functional features: "Tour of Heroes", a fat client talking to a backend.</p>
+
+<p>The frontend apps on Angular, Aurelia, React, Vue, Xamarin and MAUI are talking to the same ASP.NET (Core) backend through generated client APIs. To find the other articles in the same series, please search "<strong>Tour of Heroes</strong>" in&nbsp;<a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/script/Articles/MemberArticles.aspx?amid=3627575">my articles</a>. And at the end of the series, some technical factors of programmer experiences will be discussed:</p>
+
+<ol>
+	<li>Computing science</li>	<li>Software engineering</li>	<li>Learning curve</li>	<li>Build size</li>	<li>Runtime performance</li>	<li>Debugging</li></ol>
+
+<p>Choosing a development platform involves a lot of non-technical factors which won't be discussed in this series.</p>
+
+<h3>References</h3>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5372596/Tour-of-Heroes-Angular-with-ASP-NET-Core-backend" id="ctl00_MC_AR_ctl42_CAR_Title">Tour of Heroes: Angular, with ASP.NET Core Backend</a></li>	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5372876/Tour-of-Heroes-React-with-ASP-NET-Core-Backend" id="ctl00_MC_AR_ctl43_CAR_Title">Tour of Heroes: React, with ASP.NET Core Backend</a></li>	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5373078/Tour-of-Heroes-Aurelia-with-ASP-NET-Core-Backend" id="ctl00_MC_AR_ctl38_CAR_Title">Tour of Heroes: Aurelia, with ASP.NET Core Backend</a></li>	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5372639/Tour-of-Heroes-Xamarin-with-ASP-NET-Backend" id="ctl00_MC_AR_ctl17_CAR_Title">Tour of Heroes: Xamarin, with ASP.NET Backend</a></li>	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5373931/Tour-of-Heroes-MAUI-with-ASP-NET-Core-8-Backend" id="ctl00_MC_AR_ctl56_CAR_Title">Tour of Heroes: MAUI, with ASP.NET Core 8 Backend</a></li></ul>
+
+<h2>Introduction</h2>
+
+<p>It is assumed that you have already walked through the first few chapters of <a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor">ASP.NET Core Blazor documentation</a>, and have played the WeatherForecast app through the scaffolding codes as well as <a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor/tutorials/build-a-blazor-app">the todolist demo</a>.</p>
+
+<p>This article is focused on <a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models#blazor-webassembly">Blazor WebAssembly</a> standalone app running in a Web browser, with functionality of "Tour of Heroes", talking to an ASP.NET Core Web API backend.</p>
+
+<h3>Demo Repository</h3>
+
+<p>Checkout&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb">DemoCoreWeb&nbsp;</a>in GitHub, and focus on the following areas:</p>
+
+<h4><a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/tree/master/Core3WebApi">Core3WebApi</a></h4>
+
+<p>ASP.NET Core Web API csproj provides only Web APIs, including Heroes API.</p>
+
+<h4><a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/tree/master/BlazorHeroesWAStandalone">Blazor Heroes</a></h4>
+
+<p>Blazor Web Assembly standalone app.</p>
+
+<p><img src="./Tour of Heroes_ Blazor WebAssembly Standalone App- CodeProject_files/Screenshot_2024-06-13_111938.png" alt="Image 1" style="max-width: 700px; height: auto"></p>
+
+<h4>Remarks</h4>
+
+<p><a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb">DemoCoreWeb</a>&nbsp;was established for testing NuGet packages of&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/webapiclientgen">WebApiClientGen,&nbsp;</a>and demonstrating how to use the library&nbsp;in real world projects. And the generated client API codes in C# can be utilized in a Web browser via WebAssembly.</p>
+
+<h2>Using the code</h2>
+
+<h3>Prerequisites</h3>
+
+<ol>
+	<li><em>Core3WebApi.csproj</em>&nbsp;has NuGet package&nbsp;<code>Fonlow.WebApiClientGenCore</code>&nbsp;imported.</li>	<li>Add&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/blob/master/DemoWebApi.ControllersShared/CodeGenController.cs">CodeGenController.cs</a>&nbsp;to&nbsp;<em>Core3WebApi.csproj</em>.</li>	<li><em>Core3WebApi.csproj</em>&nbsp;includes&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/blob/master/Core3WebApi/CodeGen.json">CodeGen.json</a>. This is optional, just for the convenience of running some PowerShell script to generate client APIs.</li>	<li><a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/blob/master/CreateWebApiClientApi3.ps1">CreateWebApiClientApi3.ps1</a>. This is optional. This script will launch the Web API on Kestrel and post the data in&nbsp;<em>CodeGen.json</em>.</li></ol>
+
+<ul>
+</ul>
+
+<h3>Generate Client API</h3>
+
+<p>Run&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/blob/master/CreateWebApiClientApi3.ps1">CreateWebApiClientApi3.ps1</a>, the generated codes will be written to&nbsp;<a href="https://web.archive.org/web/20241113101520/https://github.com/zijianhuang/DemoCoreWeb/tree/master/CoreWebApi.ClientApi">CoreWebApi.ClientApi</a>.</p>
+
+<h4>Remarks</h4>
+
+<ul>
+	<li>Depending on your CI/CD process, you may adjust item 3 and 4 above. For more details, please check:&nbsp;"<a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/1243908/Generate-Csharp-Client-API-for-ASP-NET-Core-Web-AP" id="ctl00_MC_AR_ctl42_CAR_Title">Generate C# Client API for ASP.NET Core Web API</a>"&nbsp;. The repository has the client API codes generated already.</li></ul>
+
+<h3>Data Models and API Functions</h3>
+
+<div class="pre-lang" id="premain351786"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="351786" id="preShrink351786">Shrink ▲</span> &nbsp; <span id="copycode351786" class="copy-code" data-index="351786" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre351786" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">namespace</span> DemoWebApi.Controllers.Client;
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> Hero : <span class="code-keyword">object</span>
+{
+    
+    <span class="code-keyword">public</span> DemoWebApi.DemoData.Client.Address Address { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-keyword">public</span> System.Nullable&lt;System.DateOnly&gt; Death { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-keyword">public</span> System.DateOnly DOB { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> EmailAddress { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-keyword">public</span> <span class="code-keyword">long</span> Id { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    [System.ComponentModel.DataAnnotations.RequiredAttribute()]
+    [System.ComponentModel.DataAnnotations.StringLength(<span class="code-digit">120</span>, MinimumLength=<span class="code-digit">2</span>)]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Name { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-keyword">public</span> System.Collections.Generic.IList&lt;DemoWebApi.DemoData.Client.PhoneNumber&gt; PhoneNumbers { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    [System.ComponentModel.DataAnnotations.MinLength(<span class="code-digit">6</span>)]
+    [System.ComponentModel.DataAnnotations.RegularExpressionAttribute(<span class="code-string">@"</span><span class="code-string">https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()@:%_\\+.~#?&amp;//=]*)"</span>)]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> WebAddress { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}</pre>
+
+<p><strong>Remarks:</strong></p>
+
+<ul>
+	<li>In the demo app, just only Id and Name are used, while the other properties were for testing some code gen features:
+	<ul>
+		<li>Copy some server side attributes to the client side. And for TypeScript codes, the attributes may be transformed to <a href="https://web.archive.org/web/20241113101520/https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html">JsDoc for TypeScript</a>.</li>		<li>Some validation attributes may be transformed to Angular Reactive Forms.</li>	</ul>
+	</li></ul>
+
+<p><strong>Heroes Client API:</strong></p>
+
+<div class="pre-lang" id="premain966753"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="966753" id="preShrink966753">Shrink ▲</span> &nbsp; <span id="copycode966753" class="copy-code" data-index="966753" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre966753" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">partial</span> <span class="code-keyword">class</span> Heroes
+{
+    
+    <span class="code-keyword">private</span> System.Net.Http.HttpClient client;
+    
+    <span class="code-keyword">private</span> JsonSerializerOptions jsonSerializerSettings;
+    
+    <span class="code-keyword">public</span> Heroes(System.Net.Http.HttpClient client, JsonSerializerOptions jsonSerializerSettings=<span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">if</span> (client == <span class="code-keyword">null</span>)
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentNullException(<span class="code-keyword">nameof</span>(client), <span class="code-string">"</span><span class="code-string">Null HttpClient."</span>);
+
+        <span class="code-keyword">if</span> (client.BaseAddress == <span class="code-keyword">null</span>)
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentNullException(<span class="code-keyword">nameof</span>(client), <span class="code-string">"</span><span class="code-string">HttpClient has no BaseAddress"</span>);
+
+        <span class="code-keyword">this</span>.client = client;
+        <span class="code-keyword">this</span>.jsonSerializerSettings = jsonSerializerSettings;
+    }
+    
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> DELETE api/Heroes/{id}
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task DeleteAsync(<span class="code-keyword">long</span> id, Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">api/Heroes/"</span>+id;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Delete, requestUri);
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">var</span> responseMessage = <span class="code-keyword">await</span> client.SendAsync(httpRequestMessage);
+        <span class="code-keyword">try</span>
+        {
+            responseMessage.EnsureSuccessStatusCodeEx();
+        }
+        <span class="code-keyword">finally</span>
+        {
+            responseMessage.Dispose();
+        }
+    }
+    
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> GET api/Heroes/{id}
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    [return: System.Diagnostics.CodeAnalysis.MaybeNullAttribute()]
+    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task&lt;DemoWebApi.Controllers.Client.Hero&gt; GetHeroAsync(<span class="code-keyword">long</span> id, Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">api/Heroes/"</span>+id;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Get, requestUri);
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">var</span> responseMessage = <span class="code-keyword">await</span> client.SendAsync(httpRequestMessage);
+        <span class="code-keyword">try</span>
+        {
+            responseMessage.EnsureSuccessStatusCodeEx();
+            <span class="code-keyword">if</span> (responseMessage.StatusCode == System.Net.HttpStatusCode.NoContent) { <span class="code-keyword">return</span> <span class="code-keyword">null</span>; }
+            <span class="code-keyword">var</span> contentString = <span class="code-keyword">await</span> responseMessage.Content.ReadAsStringAsync();
+            <span class="code-keyword">return</span> JsonSerializer.Deserialize&lt;DemoWebApi.Controllers.Client.Hero&gt;(contentString, jsonSerializerSettings);
+        }
+        <span class="code-keyword">finally</span>
+        {
+            responseMessage.Dispose();
+        }
+    }
+        
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> GET api/Heroes
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task&lt;DemoWebApi.Controllers.Client.Hero[]&gt; GetHeroesAsync(Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">api/Heroes"</span>;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Get, requestUri);
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">var</span> responseMessage = <span class="code-keyword">await</span> client.SendAsync(httpRequestMessage);
+        <span class="code-keyword">try</span>
+        {
+            responseMessage.EnsureSuccessStatusCodeEx();
+            <span class="code-keyword">if</span> (responseMessage.StatusCode == System.Net.HttpStatusCode.NoContent) { <span class="code-keyword">return</span> <span class="code-keyword">null</span>; }
+            <span class="code-keyword">var</span> contentString = <span class="code-keyword">await</span> responseMessage.Content.ReadAsStringAsync();
+            <span class="code-keyword">return</span> JsonSerializer.Deserialize&lt;DemoWebApi.Controllers.Client.Hero[]&gt;(contentString, jsonSerializerSettings);
+        }
+        <span class="code-keyword">finally</span>
+        {
+            responseMessage.Dispose();
+        }
+    }
+    
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> GET api/Heroes
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-keyword">public</span> DemoWebApi.Controllers.Client.Hero[] GetHeroes(Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">api/Heroes"</span>;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Get, requestUri);
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">var</span> responseMessage = client.SendAsync(httpRequestMessage).Result;
+        <span class="code-keyword">try</span>
+        {
+            responseMessage.EnsureSuccessStatusCodeEx();
+            <span class="code-keyword">if</span> (responseMessage.StatusCode == System.Net.HttpStatusCode.NoContent) { <span class="code-keyword">return</span> <span class="code-keyword">null</span>; }
+            <span class="code-keyword">var</span> contentString = responseMessage.Content.ReadAsStringAsync().Result;
+            <span class="code-keyword">return</span> JsonSerializer.Deserialize&lt;DemoWebApi.Controllers.Client.Hero[]&gt;(contentString, jsonSerializerSettings);
+        }
+        <span class="code-keyword">finally</span>
+        {
+            responseMessage.Dispose();
+        }
+    }
+    
+...
+}</pre>
+
+<p>&nbsp;</p>
+
+<h3>Razor Components</h3>
+
+<p><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Image 2" data-src="https://web.archive.org/web/20241113101520/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_111938.png?r=36499ac3-9e57-40c6-9819-8ed3bab382a2" class="lazyload" style="max-width: 700px; height: auto"></p>
+
+<p><strong>Dashboard.razor:</strong></p>
+
+<div class="pre-lang" id="premain112404"><div>ASP</div><div class="pre-action-link"><span class="code-collapse" data-index="112404" id="preShrink112404">Shrink ▲</span> &nbsp; <span id="copycode112404" class="copy-code" data-index="112404" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre112404" style="margin-top:0;" class="lang-asp notranslate" data-language="asp" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">@page "/dashboard"
+
+@inject DemoWebApi.Controllers.Client.Heroes heroesApi
+
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">PageTitle</span><span class="code-keyword">&gt;</span>Dashboard<span class="code-keyword">&lt;</span><span class="code-leadattribute">/PageTitle</span><span class="code-keyword">&gt;</span>
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">h2</span><span class="code-keyword">&gt;</span>Top Heroes<span class="code-keyword">&lt;</span><span class="code-leadattribute">/h2</span><span class="code-keyword">&gt;</span>
+
+@if (heroes == null)
+{
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">p</span><span class="code-keyword">&gt;</span><span class="code-keyword">&lt;</span><span class="code-leadattribute">em</span><span class="code-keyword">&gt;</span>Loading Heroes...<span class="code-keyword">&lt;</span><span class="code-leadattribute">/em</span><span class="code-keyword">&gt;</span><span class="code-keyword">&lt;</span><span class="code-leadattribute">/p</span><span class="code-keyword">&gt;</span>
+}
+else
+{
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">div</span><span class="code-attribute"> </span><span class="code-attribute">class</span><span class="code-keyword">="</span><span class="code-keyword">heroes-menu"</span><span class="code-keyword">&gt;</span>
+        @foreach (var hero in heroes.Take(4))
+        {
+            string href = $"/detail/{hero.Id}";
+            <span class="code-keyword">&lt;</span><span class="code-leadattribute">a</span><span class="code-attribute"> </span><span class="code-attribute">href</span><span class="code-keyword">="</span><span class="code-keyword">@href"</span><span class="code-keyword">&gt;</span>@hero.Name<span class="code-keyword">&lt;</span><span class="code-leadattribute">/a</span><span class="code-keyword">&gt;</span>
+        }
+
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/div</span><span class="code-keyword">&gt;</span>
+}
+
+@code {
+    private DemoWebApi.Controllers.Client.Hero[]? heroes;
+    DemoWebApi.Controllers.Client.Heroes? heroesClient;
+
+    protected override async Task OnInitializedAsync()
+    {
+        heroes = await heroesApi.GetAsyncHeroesAsync();
+    }
+}</pre>
+
+<p>&nbsp;</p>
+
+<h2><img height="271" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="640" alt="Image 3" data-src="/KB/Articles/5383736/Screenshot_2024-06-13_112724-small.png" class="lazyload" data-sizes="auto" data-srcset="/web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_112724-small-r-400.png 400w, /web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_112724-small.png 640w"></h2>
+
+<p><strong>Heroes List:</strong></p>
+
+<div class="pre-lang" id="premain900452"><div>ASP.NET</div><div class="pre-action-link"><span class="code-collapse" data-index="900452" id="preShrink900452">Shrink ▲</span> &nbsp; <span id="copycode900452" class="copy-code" data-index="900452" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre900452" style="margin-top:0;" class="lang-asp.net notranslate" data-language="aspnet" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">@page "/heroes"
+@inject DemoWebApi.Controllers.Client.Heroes heroesApi
+
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">PageTitle</span><span class="code-keyword">&gt;</span>List<span class="code-keyword">&lt;</span><span class="code-leadattribute">/PageTitle</span><span class="code-keyword">&gt;</span>
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">h2</span><span class="code-keyword">&gt;</span>My Heroes<span class="code-keyword">&lt;</span><span class="code-leadattribute">/h2</span><span class="code-keyword">&gt;</span>
+
+@if (heroes == null)
+{
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">p</span><span class="code-keyword">&gt;</span><span class="code-keyword">&lt;</span><span class="code-leadattribute">em</span><span class="code-keyword">&gt;</span>Loading Heroes...<span class="code-keyword">&lt;</span><span class="code-leadattribute">/em</span><span class="code-keyword">&gt;</span><span class="code-keyword">&lt;</span><span class="code-leadattribute">/p</span><span class="code-keyword">&gt;</span>
+}
+else
+{
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">div</span><span class="code-keyword">&gt;</span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">label</span><span class="code-attribute"> </span><span class="code-attribute">for</span><span class="code-keyword">="</span><span class="code-keyword">new-hero"</span><span class="code-keyword">&gt;</span>Hero name: <span class="code-keyword">&lt;</span><span class="code-leadattribute">/label</span><span class="code-keyword">&gt;</span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">input</span><span class="code-attribute"> </span><span class="code-attribute">id</span><span class="code-keyword">="</span><span class="code-keyword">new-hero"</span><span class="code-attribute"> </span><span class="code-attribute">@bind</span><span class="code-keyword">="</span><span class="code-keyword">@newHeroName"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">button</span><span class="code-attribute"> </span><span class="code-attribute">type</span><span class="code-keyword">="</span><span class="code-keyword">button"</span><span class="code-attribute"> </span><span class="code-attribute">class</span><span class="code-keyword">="</span><span class="code-keyword">add-button"</span><span class="code-attribute"> </span><span class="code-attribute">@onclick</span><span class="code-keyword">="</span><span class="code-keyword">AddAndClear"</span><span class="code-keyword">&gt;</span>
+            Add hero
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">/button</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/div</span><span class="code-keyword">&gt;</span>
+
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">ul</span><span class="code-attribute"> </span><span class="code-attribute">class</span><span class="code-keyword">="</span><span class="code-keyword">heroes"</span><span class="code-keyword">&gt;</span>
+        @foreach (var hero in heroes)
+        {
+            string href = $"/detail/{hero.Id}";
+            <span class="code-keyword">&lt;</span><span class="code-leadattribute">li</span><span class="code-keyword">&gt;</span>
+                <span class="code-keyword">&lt;</span><span class="code-leadattribute">a</span><span class="code-attribute"> </span><span class="code-attribute">href</span><span class="code-keyword">="</span><span class="code-keyword">@href"</span><span class="code-keyword">&gt;</span>
+                    <span class="code-keyword">&lt;</span><span class="code-leadattribute">span</span><span class="code-attribute"> </span><span class="code-attribute">class</span><span class="code-keyword">="</span><span class="code-keyword">badge"</span><span class="code-keyword">&gt;</span>@hero.Id<span class="code-keyword">&lt;</span><span class="code-leadattribute">/span</span><span class="code-keyword">&gt;</span> @hero.Name
+                <span class="code-keyword">&lt;</span><span class="code-leadattribute">/a</span><span class="code-keyword">&gt;</span>
+                <span class="code-keyword">&lt;</span><span class="code-leadattribute">button</span><span class="code-attribute"> </span><span class="code-attribute">type</span><span class="code-keyword">="</span><span class="code-keyword">button"</span><span class="code-attribute"> </span><span class="code-attribute">class</span><span class="code-keyword">="</span><span class="code-keyword">delete"</span><span class="code-attribute"> </span><span class="code-attribute">title</span><span class="code-keyword">="</span><span class="code-keyword">delete hero"</span><span class="code-attribute"> </span><span class="code-attribute">@onclick</span><span class="code-keyword">="</span><span class="code-keyword">()=&gt;Delete(hero)"</span><span class="code-keyword">&gt;</span>x<span class="code-keyword">&lt;</span><span class="code-leadattribute">/button</span><span class="code-keyword">&gt;</span>
+            <span class="code-keyword">&lt;</span><span class="code-leadattribute">/li</span><span class="code-keyword">&gt;</span>
+        }
+
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/ul</span><span class="code-keyword">&gt;</span>
+}
+
+@code {
+    private List<span class="code-keyword">&lt;</span><span class="code-leadattribute">DemoWebApi.Controllers.Client.Hero</span><span class="code-keyword">&gt;</span> heroes;
+    private DemoWebApi.Controllers.Client.Hero? selectedHero;
+    string? newHeroName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        heroes = new List<span class="code-keyword">&lt;</span><span class="code-leadattribute">DemoWebApi.Controllers.Client.Hero</span><span class="code-keyword">&gt;</span>(await heroesApi.GetHeroesAsync());
+    }
+
+    async Task Add(string name)
+    {
+        name = name.Trim();
+        if (string.IsNullOrEmpty(name))
+        {
+            return;
+        }
+
+        var newHero = await heroesApi.PostAsync(name);
+        this.selectedHero = null;
+        heroes.Add(newHero);
+
+    }
+
+    async Task AddAndClear()
+    {
+        await Add(newHeroName);
+        newHeroName = null;
+
+    }
+
+    async Task Delete(DemoWebApi.Controllers.Client.Hero hero)
+    {
+        await heroesApi.DeleteAsync(hero.Id);
+        heroes.Remove(hero);
+        if (selectedHero == hero)
+        {
+            selectedHero = null;
+        }
+    }
+}</pre>
+
+<p><img height="477" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="640" alt="Image 4" data-src="/KB/Articles/5383736/Screenshot_2024-06-13_112943-small.png" class="lazyload" data-sizes="auto" data-srcset="/web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_112943-small-r-400.png 400w, /web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_112943-small.png 640w"></p>
+
+<h3>Dependency Injection of HttpClient</h3>
+
+<p>While HttpClient has implemented IDisposable, however often Microsoft would advise not to instantiate it for a HTTP request then dispose, depending on the application host.&nbsp;Instead, use <a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection">dependency injection</a>&nbsp;of Blazor so the host will&nbsp;manage the lifecycle of a HttpClient instance.</p>
+
+<p>The sample codes with this article follow the advices from&nbsp;"<a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor/call-web-api">Call a Web API from ASP.NET Core Blazor</a>", utilizing both named HttpClient and typed HttpClient.</p>
+
+<h4>Named HttpClient</h4>
+
+<p><strong>Program.cs:</strong></p>
+
+<div class="pre-lang" id="premain587815"><div></div><div class="pre-action-link"><span id="copycode587815" class="copy-code" data-index="587815" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre587815" style="margin-top:0;" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true" class="notranslate">builder.Services.AddHttpClient(<span class="code-string">"</span><span class="code-string">Core3WebAPI"</span>, client =&gt;
+{
+    client.BaseAddress = <span class="code-keyword">new</span> Uri(<span class="code-string">"</span><span class="code-string">http://localhost:5000"</span>);
+});</pre>
+
+<p><strong>Weather.razor:</strong></p>
+
+<div class="pre-lang" id="premain346421"><div>ASP.NET</div><div class="pre-action-link"><span id="copycode346421" class="copy-code" data-index="346421" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre346421" style="margin-top:0;" class="lang-asp.net notranslate" data-language="aspnet" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">@page "/weather"
+@inject IHttpClientFactory ClientFactory
+@inject System.Text.Json.JsonSerializerOptions jsonSerializerOptions
+
+...
+
+@code {
+    private WebApplication1.Client.WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var client = ClientFactory.CreateClient("Core3WebAPI");
+        WebApplication1.Controllers.Client.WeatherForecast weatherForecastClient = new WebApplication1.Controllers.Client.WeatherForecast(client, jsonSerializerOptions);
+        forecasts = (await weatherForecastClient.GetAsync()).ToArray();
+    }
+}</pre>
+
+<p>&nbsp;</p>
+
+<h4>Typed HttpClient</h4>
+
+<p><strong>Program.cs:</strong></p>
+
+<div class="pre-lang" id="premain996663"><div>C#</div><div class="pre-action-link"><span id="copycode996663" class="copy-code" data-index="996663" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre996663" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">builder.Services.AddHttpClient&lt;DemoWebApi.Controllers.Client.Heroes&gt;(heroesApiClient =&gt;
+{
+    heroesApiClient.BaseAddress = <span class="code-keyword">new</span> Uri(<span class="code-string">"</span><span class="code-string">http://localhost:5000"</span>);
+});</pre>
+
+<p><strong>Heroes.razor:</strong></p>
+
+<div class="pre-lang" id="premain623008"><div>ASP.NET</div><div class="pre-action-link"><span class="code-collapse" data-index="623008" id="preShrink623008">Shrink ▲</span> &nbsp; <span id="copycode623008" class="copy-code" data-index="623008" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre623008" style="margin-top:0;" class="lang-asp.net notranslate" data-language="aspnet" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">@page "/heroes"
+@inject DemoWebApi.Controllers.Client.Heroes heroesApi
+...
+@code {
+    private List<span class="code-keyword">&lt;</span><span class="code-leadattribute">DemoWebApi.Controllers.Client.Hero</span><span class="code-keyword">&gt;</span> heroes;
+    private DemoWebApi.Controllers.Client.Hero? selectedHero;
+    string? newHeroName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        heroes = new List<span class="code-keyword">&lt;</span><span class="code-leadattribute">DemoWebApi.Controllers.Client.Hero</span><span class="code-keyword">&gt;</span>(await heroesApi.GetHeroesAsync());
+    }
+
+    async Task Add(string name)
+    {
+        name = name.Trim();
+        if (string.IsNullOrEmpty(name))
+        {
+            return;
+        }
+
+        var newHero = await heroesApi.PostAsync(name);
+        this.selectedHero = null;
+        heroes.Add(newHero);
+    }
+
+    async Task AddAndClear()
+    {
+        await Add(newHeroName);
+        newHeroName = null;
+
+    }
+
+    async Task Delete(DemoWebApi.Controllers.Client.Hero hero)
+    {
+        await heroesApi.DeleteAsync(hero.Id);
+        heroes.Remove(hero);
+        if (selectedHero == hero)
+        {
+            selectedHero = null;
+        }
+    }
+}</pre>
+
+<p>The generated client API codes support typed HttpClient through DI:</p>
+
+<div class="pre-lang" id="premain844197"><div>C#</div><div class="pre-action-link"><span id="copycode844197" class="copy-code" data-index="844197" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre844197" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">partial</span> <span class="code-keyword">class</span> Heroes
+{
+    
+    <span class="code-keyword">private</span> System.Net.Http.HttpClient client;
+    
+    <span class="code-keyword">private</span> JsonSerializerOptions jsonSerializerSettings;
+    
+    <span class="code-keyword">public</span> Heroes(System.Net.Http.HttpClient client, JsonSerializerOptions jsonSerializerSettings=<span class="code-keyword">null</span>)
+    {
+...</pre>
+
+<p>.NET runtime can inject a HttpClient instance and a scoped JsonSerializerOptions instance to the container class "Heroes".</p>
+
+<h2>Points of Interest</h2>
+
+<h3>HttpClient in Web Browsers</h3>
+
+<p>According to&nbsp;"<a href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/aspnet/core/blazor/call-web-api">Call a Web API from ASP.NET Core Blazor</a>":</p>
+
+<blockquote class="quote">
+<div class="op">Quote:</div>
+
+<p><a data-linktype="absolute-path" href="https://web.archive.org/web/20241113101520/https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient">HttpClient</a>&nbsp;is implemented using the browser's&nbsp;<a data-linktype="external" href="https://web.archive.org/web/20241113101520/https://developer.mozilla.org/docs/Web/API/Fetch_API">Fetch API</a>&nbsp;and is subject to its limitations, including enforcement of the same-origin policy, which is discussed later in this article in the&nbsp;<em>Cross-Origin Resource Sharing (CORS)</em>&nbsp;section.</p>
+</blockquote>
+
+<p>In addition to the limitations mentioned, the actual operations of "<code>System.Net.Http.HttpClient</code>" in a Web browser are subject to other limitations of JavaScript when handling integral numbers larger than 53-bit, as discussed in these articles:</p>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5377807/Dealing-with-Large-Integral-Numbers-in-JavaScript">Dealing with Large Integral Numbers in JavaScript for Integral Types of ASP.NET Core Web API</a></li>	<li><a href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5378038/Enjoy-Rich-Integral-Types-of-NET-and-Overcome-the">Enjoy Rich Integral Types of .NET and Overcome the 53-bit Limitation of JavaScript</a></li></ul>
+
+<p>To support Int64 (long), the Core3WebApi utilizes&nbsp;<code>Int64JsonConverter</code></p>
+
+<div class="pre-lang" id="premain424900"><div>C#</div><div class="pre-action-link"><span id="copycode424900" class="copy-code" data-index="424900" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre424900" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">builder.Services.AddJsonOptions(options =&gt;
+{
+    options.JsonSerializerOptions.Converters.Add(<span class="code-keyword">new</span> Int64JsonConverter());</pre>
+
+<p>The Web API will then respond with a JSON string object for Int64 rather than rather than a JSON number object.</p>
+
+<p>On the client side built on Blazor WebAssembly, the same converter class is needed:</p>
+
+<div class="pre-lang" id="premain971932"><div>C#</div><div class="pre-action-link"><span id="copycode971932" class="copy-code" data-index="971932" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre971932" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"> builder.Services.AddScoped&lt;JsonSerializerOptions&gt;(sp =&gt;
+{
+    <span class="code-keyword">var</span> options = <span class="code-keyword">new</span> JsonSerializerOptions
+    {
+        PropertyNameCaseInsensitive = <span class="code-keyword">true</span>,
+    };
+
+    options.Converters.Add(<span class="code-keyword">new</span> Int64JsonConverter()); <span class="code-comment">//</span><span class="code-comment">Hero.Id is long, 64-bit, exceeding 53-bit precision of JS number</span>
+    <span class="code-keyword">return</span> options;
+});</pre>
+
+<p>Otherwise, there will be runtime error in the browser:</p>
+
+<p><img height="138" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="640" alt="Image 5" data-src="/KB/Articles/5383736/Screenshot_2024-06-13_154056-small.png" class="lazyload" data-sizes="auto" data-srcset="/web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_154056-small-r-400.png 400w, /web/20241113101520im_/https://www.codeproject.com/KB/Articles/5383736/Screenshot_2024-06-13_154056-small.png 640w"></p>
+
+<p>After the scoped JsonSerializatioOptions is injected to both named HttpClient and typed HttpClient (Heroes client API) by the WebAssembly runtime, the standalone app can handle Int64 gracefully since you have enjoyed strongly typed coding with Int64.</p>
+
+<h2>&nbsp;</h2>
+
+
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="https://web.archive.org/web/20241113101520/http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://web.archive.org/web/20241113101520/https://www.codeproject.com/Articles/5383736/Tour-of-Heroes-Blazor-WebAssembly-Standalone-App?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2024 by Zijian<br>Everything else
+				Copyright © <a href="https://web.archive.org/web/20241113101520/mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>
