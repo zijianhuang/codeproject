@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-through-Unit-T-3 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<link rel="preconnect" href="https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://www.codeproject.com/">
+
+
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/jquery-3.4.1.min.js.download" as="script" type="text/javascript">
+
+
+	<title>Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" async="" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/analytics.js.download"></script><script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Workflow WCF service">
+<meta name="Keywords" content="C#, .NET, Dev, Intermediate, Advanced, .NET4, .NET4.5">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="4/18/2016 9:49:00 AM">
+<meta property="article:modified_time" content="4/18/2016 9:49:00 AM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="10 min read">
+<meta property="og:url" content="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta property="og:title" content="Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services">
+<meta property="og:description" content="Workflow WCF service">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit"
+   },
+  "name": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services",
+  "headline": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services",
+  "url": "https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit",
+  "discussionUrl": "https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,.NET,Dev,Intermediate,Advanced,.NET4,.NET4.5",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+  },
+  "license": "http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "Workflow WCF service",
+  "articleSection": "C#",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2016-04-18",
+  "dateCreated": "2016-04-18",
+  "dateModified": "2016-04-18"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Languages",
+      "name" : "Languages"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Csharp",
+      "name" : "C#"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' , {'user_id': '8f2e3ce4-85f7-4385-a40d-bf8b3be0485b'});
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="chrome chrome129">
+
+
+
+<a class="access-link" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-through-Unit-T-3#Main"><img alt="Click here to Skip to main content" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a rel="nofollow" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Languages">Languages</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Csharp">C#</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit?display=Print" class="tooltip" title="">
+   <img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://www.codeproject.com/Articles/1088229/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="XeDVCxhkDsxbyTCuSICIstFlIhuUL/ESRYaasX6z7GP1JPZmF2AD+f9FAYNMa6/eO8dFo/8g+z8yCwCZutoJBMUciI1VgIE6gu+D4MK4EO3Hh4gz/bM9k5oQB6sFsAeBU6V4EuCcenHny+ZWhDMdW1TPmMfh2DHWWhOExfPg+W1DMOBk3M+tel57Wk1iIsPMOKwyAd5GaB2q+TKfVmO6Q4rIHbf+37pugtUqnePNbsaonoOYD6sJ+E+k93nl6phGdqHF/e60cAgeYLAk0VCUP1n6rkO/b66BS22HBftE/QkM5sDYtEx6/5tbRFQYb47M0WwZgPF7w50g7qVcK4UE9+U0IU8D2nRN1WR8vJ7bRxI/m7p9hRfgsKts3//l+0IhpAIieL2sfcYwKdmC2I4HqZYh9g6GlVLOa312rCLYs5UsDJoZOuGxcKpw1jeh1T+CjtCkMbiI8e6L3s7zfmFroDk6ptnbgzbYrjmwyFUy1BzqbtZtpImmd32S+QFKppUm1T9Z39+3MXMnZ1BvuwVJWkikMtBidbJA8cUZfkOjmzx2BqalRWWUwsVB0qjNb4GQLm8n9uRarsJAwwQhUcjuU5Mkg4cLQ7UGf7+wlz0Ea/Avg+MyQfVYVdz1aehOpgfkcd0CRsApmHoLsSCml5WD14UwBOcnWzNfJ5PSBNeQixORXDITB/RFoz67OhvLr1onA/jKWkOhncMzINlS1b1bnYPV0q+wv8sxLj22Hm0ea7jjVVC3uq79e5aTicDf6NQB8S3OlrZptTFu8PddqznjpoFpMJZECR6n4sijNjFszvWpAUKXgM/LbrHCzxLW2WSsg0JdWTwDQat8uPP1zFo5hWAv6/gyjOgzj95EMWMq/0TT8SjqGlnQztvQyxDjNfbeet51+PyZa5PYlrWc4oN1Eg8/kmx3myNhKIIfbY+sJfLqezJfeYtJmoouDSsnktKLIOwhiOPwOK5qU36uAR42eHQCN3IjafeFkKjuxKeJ4YuqdYlJ+voRjPk57OnskWOdo3vkb8YbKuqhRBypnGZk03Btb3KG29kx6jjj4wGwDLAFYzfhjPelGs5TUlMlReqAO5QR+hqPxZ6Bse3xjFL9HKq8JIgLfzposNAFJKDmweOm71rcRS+8UbP/Xvwknoj34g0MWtelB6OnvrkR/D0txpK55113qP5CrtgIfCAzc0G8b7IeW+89PNc6fnfZ3IQsLAcYuaHEox03b0YSRglKMHhrgpQ6iyekOzV2jq7jjSBn8YnnJ+5UOxJjHhA6wksaWU4as+oHJFdpweJEr2+0a/g7Dl8RZrT3Qm9t85wwcXXeUimaUb9cUgour4WBlUxsp3isztcwxooUsLfDAgAZE+rYuQj7XT/TnDKF7Ci4Gje4MV9Y2Qo9dUIpCHIpU+wA7gsiKQzAiHTm8NzyZ4F6RmaCRE139iJlhntvQOSyd8T/cMnJeABeKCGgvfociFXZcOtyo24VbyU/BEI4vd2LZWUd6Ql0pBBwo2x6sM2MI4yC8NXXF932kPYz4gfz9PEPi+ErxaE9D4Z0sbCPg1LHXFv0OvBqDDgP98EUB/WEPRtaiCzSUrwLq1KXHuQFVkWNDpcFqbcfFBnnw4mFq0Ygiyg5gglTiBYCC9gOaR6/G+TLfWfHpjupNV6B70sB0OEMLrVuoZFgB08aYD2C4vTHGxyo9bcUkMgiTUpWnvCDDeFg0k++7RLGSiGtueIetkq2fANuJHiovxO33twWZnuMNhv1ECWbpRMdMy9fPdQkiWMo3+3IftjHF7Q7OrRrCSk7v/GImSj7ySZc6Scipcklyv8wIbWHxHqTcfZBJF/86JunKKnAyZrQSAddTr5KL5+rZ+VvOF3CG1FFCOrst1FF29sUkAS0xjQkDKGx9/ip1zF6+YnvDI1h3dyVcAXjf7mhT7acqjO0iyEqRFOQl73rHEaGI1S9OR5diNyF2ysqe1pDe5qn+9pYGBGLpyUeaULNVinAPZb9tKVgeXm+PLiwXjjzoEFdQp6GOyNc6/o4mnH0yAVCb11XgSIfkqGNaTKyHIUb4jM+DFR+T9Pbed6Yy6VKvt1e3zFA+D9M7NQtUPE9RE72jbUs+gSKZYAmqvslfAH/hLIaLiADYCLQhdsyf1P4MvZGyu5btaUfCorTj2w+EH5Hr5VFZptb3KiqjCtQC++w/uDw4Uxpj9NWWw7XWDe0VqHBlpO43syqUz7EBEHINdMOVZPJFZntPZcVbzWGmNbf8w==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET" data-id="98">.NET</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4" data-id="1057">.NET4</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4.5" data-id="2119">.NET4.5</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_1088229">
+
+	<meta itemprop="upvoteCount" content="4">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (4 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">18 Apr 2016</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">10 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/views32.png" style="width:16px"> 12.5K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">Workflow WCF service</div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<h2>Overview</h2>
+
+<p>And this article is focused on hosting workflows as services, particularly for long running / persistable workflows.</p>
+
+<p>Other articles in this series are given below:</p>
+
+<ul>
+	<li><a href="http://www.codeproject.com/Articles/1083927/Learn-Windows-Workflow-Foundation-through-Unit-Tes" target="_blank">Learn Windows Workflow Foundation 4.5 through Unit Testing: CodeActivity</a></li>	<li><a href="http://www.codeproject.com/Articles/1086857/Learn-Windows-Workflow-Foundation-through-Unit" id="ctl00_MC_AR_ctl16_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: InvokeMethod and DynamicActivity</a></li>	<li><a href="http://www.codeproject.com/Articles/1088005/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl17_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: WorkflowApplication and WorkflowServiceHost</a></li>	<li><a href="http://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl18_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication</a></li></ul>
+
+<p>For really long running workflows, using WorflowServiceHost and Workflow Persistence is the only way to go. However, somehow Workflow 4 and 4.5 had provided "weaker" supports for persistence, also, because of <a href="https://blogs.msdn.microsoft.com/appfabric/2015/04/02/microsoft-appfabric-1-1-for-windows-server-ends-support-422016/">the deprecation of AppFabric</a>, <a href="https://msdn.microsoft.com/en-us/library/gg132883(v=azure.10).aspx">Workflow Management Service</a> is not longer a viable solution. And we application developers have to write our own custom solutions to manage the lifecycle of workflows.</p>
+
+<p>To some developers with experiences in earlier versions of Workflow Foundation prior to 4.0, such "weak" support for managing lifecycle of workflows is bad news resulting in great burdens for extra maintenance works and respective mindset shifting, unless the developers are working solely on Biztalk and Sharepoint with sophisticated workflow hosting.</p>
+
+<p><strong>Remarks</strong></p>
+
+<p>I consider that the move to not having built-in solution of persisting workflow definitions in WF 4 is a good move, since I think that many workflow applications do not need to persist the workflow definitions in a persistence layer, while the respective functions have knowledge of which workflow definitions to use when resuming a workflow instance, thus have no need for serialization and deserialization of workflows. For scenarios that need persisting workflow definitions, it is not hard to write custom solutions for example a dictionary. And the most tricky part I regard is scanning workflows hibernated in the persistence layer and loading them timely if not using Sharepoint or Biztalk.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>References:</strong></p>
+
+<ul>
+	<li><a href="https://msdn.microsoft.com/en-us/library/ff432975%28v=vs.110%29.aspx">Create a Long-runing Workflow Service</a></li>	<li><a href="https://blogs.msdn.microsoft.com/endpoint/2010/01/04/whats-a-correlation-and-why-do-i-want-to-initialize-it/">What's a Correlation and why do I want to Initialize it?</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/dd456784%28v=vs.110%29.aspx">Correlation</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/ee358724%28v=vs.110%29.aspx">Context Exchange Correlation</a></li>	<li><a href="http://offroadcoder.com/instance-correlation-in-wf4/">Instance Correlation in WF4</a></li>	<li><a href="http://referencesource.microsoft.com/#System.ServiceModel.Activities/System/ServiceModel/Activities/InternalReceiveMessage.cs">InternalReceiveMessage.cs</a> and <a href="http://referencesource.microsoft.com/#System.ServiceModel.Activities/System/ServiceModel/Activities/InternalSendMessage.cs">InternalSendMessage.cs</a> of .NET Framework</li>	<li><a href="https://msdn.microsoft.com/en-us/library/ff729670%28v=vs.110%29.aspx">Persistence Best Practices</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/ee358748%28v=VS.100%29.aspx">Workflow Service Host Extensibility</a></li>	<li><a href="https://msdn.microsoft.com/en-us/magazine/hh781025.aspx">What's New in WF 4.5</a></li>	<li><a href="http://social.technet.microsoft.com/wiki/contents/articles/12326.windows-workflow-wf-4-x-samples.aspx">WF 4.x Samples</a></li></ul>
+
+<h2>Using the Code</h2>
+
+<p>The source code is available at <a href="https://github.com/zijianhuang/WorkflowDemo">https://github.com/zijianhuang/WorkflowDemo</a>.</p>
+
+<p>Prerequisites:</p>
+
+<ol>
+	<li>Visual Studio 2015 Update 1 or Visual Studio 2013 Update 4</li>	<li><a href="http://xunit.github.io/" target="_blank">xUnit </a>(included)</li>	<li><a href="https://essentialdiagnostics.codeplex.com/">EssentialDiagnostics</a> (included)</li>	<li><a href="https://github.com/zijianhuang/FonlowTesting">FonlowTesting </a>(included)</li>	<li>Workflow Persistence SQL database, with default local database WF.</li></ol>
+
+<p>Examples in this article are from a test class:&nbsp; WorkflowServiceHostTests, WorkflowServiceHostPersistenceTests, WFServiceTests, WCFWithWorkflowTests, NonServiceWorkflowTests.</p>
+
+<p>&nbsp;</p>
+
+<ul>
+</ul>
+
+<h2>Non-Service Workflows on ServiceHost</h2>
+
+<h3>Conditions</h3>
+
+<p>You have some non-persistable workflows that need to be running as a service.</p>
+
+<h3>Basic Solutions</h3>
+
+<p>You may create either a WCF service or Web API or any remote API technologies to trigger the execution of such workflows. Then use WorkflowInvoker.Invoke() or WorkflowApplication to execute the workflows in service functions.</p>
+
+<h3>Case 1</h3>
+
+<p>If you want the workflow to finish before returning response, you may use WorkflowInvoker.Invoke() in the implementation of the service function. However, obviously the execution of the workflow should not take over 1 minute, since the default timeout of many Web request operations on both service side and client side is 59.999 seconds. In such case, the execution of the workflow at the service side is just like a common function call.</p>
+
+<h3>Case 2</h3>
+
+<p>If you want the service function call to return immediately after the workflow execution being started, you may use WorkflowApplication since the Run() method is non-blocking. If the client does care about the result, the service function should return the Instance ID of the workflow application instance, so the client later could query the result with the ID, persisted by the logic of the workflow. In my tests, the WorkflowApplication instance is still running well after the service function had returned the response, and the variable holding the instance is out of scope of the service function block. Apparently the workflow runtime is still holding the reference to the WorkflowApplication instance so it won't be collected by GC. However, please bear in mind that, the WCF service host has no knowledge of the long running WorkflowApplication instance. The default idle recycle time of IIS is 20 minutes, so if the execution takes over 20 minutes, the instance may risk of being terminated abnormally, since the IIS has no knowledge of the long running WorkflowApplication instance.</p>
+
+<p>&nbsp;</p>
+
+<h2>Non-Service Workflows with Bookmark on ServiceHost</h2>
+
+<h3>Conditions</h3>
+
+<p>You have some persistable workflows with bookmark that need to be running as a service.</p>
+
+<h3>Solutions</h3>
+
+<p>You may create either a WCF service or Web API or any remote API technologies to trigger the execution of such workflows. Then use WorkflowApplication to execute the workflows in service functions, however, you need to write a lot functions to manage the lifecycle of the workflow when idle.</p>
+
+<p>The code below is for demonstrating how clunky could be if you write your own code without using the instruments of WorkflowServiceHost.</p>
+
+<h4>Service codes</h4>
+
+<div class="pre-lang" id="premain31682"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="31682" id="preShrink31682">Shrink ▲</span> &nbsp; <span id="copycode31682" class="copy-code" data-index="31682" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre31682" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">ServiceContract</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">interface</span> IWakeup
+{
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> instantiate a workflow and return the ID right after WorkflowApplication.Run()
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    [OperationContract]
+    Guid Create(<span class="code-keyword">string</span> bookmarkName, TimeSpan duration);
+
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> Reload persisted instance and run and return immediately.
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>
+    [OperationContract]
+    <span class="code-keyword">bool</span> LoadAndRun(Guid id);
+
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> Send a bookmark call to a workflow running. If the workflow instance is not yet loaed upon other events, this call will reload the instance.
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    [OperationContract]
+    <span class="code-keyword">string</span> Wakeup(Guid id, <span class="code-keyword">string</span> bookmarkName);
+}
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> WakeupService : IWakeup
+{
+    <span class="code-keyword">public</span> Guid Create(<span class="code-keyword">string</span> bookmarkName, TimeSpan duration)
+    {
+        <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> WaitForSignalOrDelayWorkflow()
+        {
+            Duration = TimeSpan.FromSeconds(<span class="code-digit">10</span>),
+            BookmarkName = bookmarkName,
+        };
+
+        <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a)
+        {
+            InstanceStore = WFDefinitionStore.Instance.Store,
+            PersistableIdle = (eventArgs) =&gt;
+            {
+                <span class="code-keyword">return</span> PersistableIdleAction.Unload;
+            },
+
+            OnUnhandledException = (e) =&gt;
+            {
+
+                <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+            },
+
+            Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+            {
+            },
+
+            Aborted = (eventArgs) =&gt;
+            {
+
+            },
+
+            Unloaded = (eventArgs) =&gt;
+            {
+            }
+        };
+
+        <span class="code-keyword">var</span> id = app.Id;
+        app.Run();
+        <span class="code-keyword">return</span> id;
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">bool</span> LoadAndRun(Guid id)
+    {
+        <span class="code-keyword">var</span> app2 = <span class="code-keyword">new</span> WorkflowApplication(<span class="code-keyword">new</span> WaitForSignalOrDelayWorkflow())
+        {
+            Completed = e =&gt;
+            {
+                <span class="code-keyword">if</span> (e.CompletionState == ActivityInstanceState.Closed)
+                {
+                    System.Runtime.Caching.MemoryCache.Default.Add(id.ToString(), e.Outputs, DateTimeOffset.MaxValue);<span class="code-comment">//</span><span class="code-comment">Save outputs at the end of the workflow.</span>
+                }
+            },
+
+            Unloaded = e =&gt;
+            {
+                System.Diagnostics.Debug.WriteLine(<span class="code-string">"</span><span class="code-string">Unloaded in LoadAndRun."</span>);
+            },
+
+            InstanceStore = WFDefinitionStore.Instance.Store,
+        };
+
+        <span class="code-keyword">try</span>
+        {
+            app2.Load(id);
+            app2.Run();
+        }
+        <span class="code-keyword">catch</span> (System.Runtime.DurableInstancing.InstanceNotReadyException ex)
+        {
+            System.Diagnostics.Trace.TraceWarning(ex.Message);
+            <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+        }
+
+        System.Runtime.Caching.MemoryCache.Default.Add(id.ToString()+<span class="code-string">"</span><span class="code-string">Instance"</span>, app2, DateTimeOffset.MaxValue);<span class="code-comment">//</span><span class="code-comment">Keep the reference to a running instance</span>
+        <span class="code-keyword">return</span> <span class="code-keyword">true</span>;
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Wakeup(Guid id, <span class="code-keyword">string</span> bookmarkName)
+    {
+        <span class="code-keyword">var</span> savedDic = (System.Runtime.Caching.MemoryCache.Default.Get(id.ToString())) <span class="code-keyword">as</span> IDictionary&lt;string, object&gt;;
+        <span class="code-keyword">if</span> (savedDic!=<span class="code-keyword">null</span>)<span class="code-comment">//</span><span class="code-comment">So the long running process is completed because other events, before the bookmark call comes.</span>
+        {
+            <span class="code-keyword">return</span> (<span class="code-keyword">string</span>)savedDic[<span class="code-string">"</span><span class="code-string">Result"</span>];
+        }
+
+        WorkflowApplication app2;
+        <span class="code-keyword">var</span> runningInstance = (System.Runtime.Caching.MemoryCache.Default.Get(id.ToString() + <span class="code-string">"</span><span class="code-string">Instance"</span>)) <span class="code-keyword">as</span> WorkflowApplication;
+        <span class="code-keyword">if</span> (runningInstance!=<span class="code-keyword">null</span>)<span class="code-comment">//</span><span class="code-comment">the workflow instance is already reloaded</span>
+        {
+            app2 = runningInstance;
+        }
+        <span class="code-keyword">else</span>
+        {
+            app2 = <span class="code-keyword">new</span> WorkflowApplication(<span class="code-keyword">new</span> WaitForSignalOrDelayWorkflow());
+        }
+
+        IDictionary&lt;string, object&gt; outputs=<span class="code-keyword">null</span>;
+        AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+        app2.Completed = e =&gt;
+        {
+            <span class="code-keyword">if</span> (e.CompletionState == ActivityInstanceState.Closed)
+            {
+                outputs = e.Outputs;
+            }
+            syncEvent.Set();
+        };
+
+        app2.Unloaded = e =&gt;
+        {
+            syncEvent.Set();
+        };
+
+        <span class="code-keyword">if</span> (runningInstance == <span class="code-keyword">null</span>)
+        {
+            <span class="code-keyword">try</span>
+            {
+                app2.InstanceStore = WFDefinitionStore.Instance.Store;
+                app2.Load(id);
+            }
+            <span class="code-keyword">catch</span> (System.Runtime.DurableInstancing.InstanceNotReadyException ex)
+            {
+                System.Diagnostics.Trace.TraceWarning(ex.Message);
+                <span class="code-keyword">throw</span>;
+            }
+        }
+
+        <span class="code-keyword">var</span> br = app2.ResumeBookmark(bookmarkName, <span class="code-keyword">null</span>);
+
+        <span class="code-keyword">switch</span> (br)
+        {
+            <span class="code-keyword">case</span> BookmarkResumptionResult.Success:
+                <span class="code-keyword">break</span>;
+            <span class="code-keyword">case</span> BookmarkResumptionResult.NotFound:
+                <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException($<span class="code-string">"</span><span class="code-string">Can not find the bookmark: {bookmarkName}"</span>);
+            <span class="code-keyword">case</span> BookmarkResumptionResult.NotReady:
+                <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException($<span class="code-string">"</span><span class="code-string">Bookmark not ready: {bookmarkName}"</span>);
+            <span class="code-keyword">default</span>:
+                <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException(<span class="code-string">"</span><span class="code-string">hey what's up"</span>);
+        }
+
+        syncEvent.WaitOne();
+        <span class="code-keyword">if</span> (outputs == <span class="code-keyword">null</span>)
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException(<span class="code-string">"</span><span class="code-string">How can outputs be null?"</span>);
+
+        <span class="code-keyword">return</span> (<span class="code-keyword">string</span>)outputs[<span class="code-string">"</span><span class="code-string">Result"</span>];
+    }
+}
+</pre>
+
+<h4>Client codes</h4>
+
+<div class="pre-lang" id="premain345225"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="345225" id="preShrink345225">Shrink ▲</span> &nbsp; <span id="copycode345225" class="copy-code" data-index="345225" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre345225" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">readonly</span> Uri baseUri = <span class="code-keyword">new</span> Uri(<span class="code-string">"</span><span class="code-string">net.tcp://localhost/"</span>);
+
+ServiceHost CreateHost()
+{
+    <span class="code-keyword">var</span> host = <span class="code-keyword">new</span> ServiceHost(<span class="code-keyword">typeof</span>(Fonlow.WorkflowDemo.Contracts.WakeupService), baseUri);
+    host.AddServiceEndpoint(<span class="code-string">"</span><span class="code-string">Fonlow.WorkflowDemo.Contracts.IWakeup"</span>, <span class="code-keyword">new</span> NetTcpBinding(), <span class="code-string">"</span><span class="code-string">wakeup"</span>);
+
+    ServiceDebugBehavior debug = host.Description.Behaviors.Find&lt;ServiceDebugBehavior&gt;();
+
+    <span class="code-keyword">if</span> (debug == <span class="code-keyword">null</span>)
+    {
+        host.Description.Behaviors.Add(
+             <span class="code-keyword">new</span> ServiceDebugBehavior() { IncludeExceptionDetailInFaults = <span class="code-keyword">true</span> });
+    }
+    <span class="code-keyword">else</span>
+    {
+        <span class="code-comment">//</span><span class="code-comment"> make sure setting is turned ON</span>
+        <span class="code-keyword">if</span> (!debug.IncludeExceptionDetailInFaults)
+        {
+            debug.IncludeExceptionDetailInFaults = <span class="code-keyword">true</span>;
+        }
+    }
+
+    <span class="code-keyword">return</span> host;
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelay()
+{
+    Guid id;
+    <span class="code-comment">//</span><span class="code-comment"> Create service host.</span>
+    <span class="code-keyword">using</span> (<span class="code-keyword">var</span> host = CreateHost())
+    {
+        host.Open();
+        Assert.Equal(CommunicationState.Opened, host.State);
+
+        <span class="code-comment">//</span><span class="code-comment"> Create a client that sends a message to create an instance of the workflow.</span>
+        <span class="code-keyword">var</span> client = ChannelFactory&lt;Fonlow.WorkflowDemo.Contracts.IWakeup&gt;.CreateChannel(<span class="code-keyword">new</span> NetTcpBinding(), <span class="code-keyword">new</span> EndpointAddress(<span class="code-keyword">new</span> Uri(baseUri, <span class="code-string">"</span><span class="code-string">wakeup"</span>)));
+        id = client.Create(<span class="code-string">"</span><span class="code-string">Service wakeup"</span>, TimeSpan.FromSeconds(<span class="code-digit">100</span>));
+        Assert.NotEqual(Guid.Empty, id);
+
+        Thread.Sleep(<span class="code-digit">2000</span>);<span class="code-comment">//</span><span class="code-comment">so the service may have time to persist.</span>
+
+        <span class="code-keyword">var</span> ok = client.LoadAndRun(id);<span class="code-comment">//</span><span class="code-comment">Optional. Just simulate that the workflow instance may be running againt because of other events.</span>
+        Assert.True(ok);
+
+        <span class="code-keyword">var</span> r = client.Wakeup(id, <span class="code-string">"</span><span class="code-string">Service wakeup"</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Someone waked me up"</span>, r);
+
+    }
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelayAfterDelay()
+{
+    Guid id;
+    <span class="code-comment">//</span><span class="code-comment"> Create service host.</span>
+    <span class="code-keyword">using</span> (<span class="code-keyword">var</span> host = CreateHost())
+    {
+        host.Open();
+        Assert.Equal(CommunicationState.Opened, host.State);
+
+        <span class="code-comment">//</span><span class="code-comment"> Create a client that sends a message to create an instance of the workflow.</span>
+        <span class="code-keyword">var</span> client = ChannelFactory&lt;Fonlow.WorkflowDemo.Contracts.IWakeup&gt;.CreateChannel(<span class="code-keyword">new</span> NetTcpBinding(), <span class="code-keyword">new</span> EndpointAddress(<span class="code-keyword">new</span> Uri(baseUri, <span class="code-string">"</span><span class="code-string">wakeup"</span>)));
+        id = client.Create(<span class="code-string">"</span><span class="code-string">Service wakeup"</span>, TimeSpan.FromSeconds(<span class="code-digit">1</span>));
+        Assert.NotEqual(Guid.Empty, id);
+
+        Thread.Sleep(<span class="code-digit">2000</span>);<span class="code-comment">//</span><span class="code-comment">so the service may have time to persist. Upon being reloaded, no bookmark calls needed.</span>
+
+        <span class="code-keyword">var</span> ok = client.LoadAndRun(id);
+        Assert.True(ok);
+        Thread.Sleep(<span class="code-digit">8000</span>);<span class="code-comment">//</span><span class="code-comment">So the service may have saved the result.</span>
+
+        <span class="code-keyword">var</span> r = client.Wakeup(id, <span class="code-string">"</span><span class="code-string">Service wakeup"</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">I sleep for good duration"</span>, r);
+
+    }
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<h4>Remarks</h4>
+
+<p>The house keeping for the lifecycle of the workflow is not pretty and not thread safe here, and far from being comprehensive for typical scenarios of long running workflows. It will take a load of efforts to write your own house keeping functions good enough for production uses.</p>
+
+<h2>Non-Service Workflows with Bookmark on WorkflowServiceHost</h2>
+
+<h3>Conditions</h3>
+
+<p>You have a non-service workflow with bookmark, however, you would run it as a service, but without all the troubles of writing house keeping functions like the solution above.</p>
+
+<h3>Solutions</h3>
+
+<p>Use <a href="https://msdn.microsoft.com/en-us/library/ee358748%28v=VS.100%29.aspx">workflow service host extensibility</a>.</p>
+
+<h4>ResumeBookmarkEndpoint</h4>
+
+<p>The design here is inspired by <a href="https://msdn.microsoft.com/en-us/library/ee834523.aspx">WCF Workflow Sample in MSDN</a>. However, that sample is not really working, and the bugs get away because of OneWay calls and the immediate termination of the console program in that sample, so errors could not come up before the console program is terminated.</p>
+
+<div class="pre-lang" id="premain191710"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="191710" id="preShrink191710">Shrink ▲</span> &nbsp; <span id="copycode191710" class="copy-code" data-index="191710" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre191710" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">ServiceContract</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">interface</span> IWorkflowWithBookmark
+{
+    [OperationContract(Name = <span class="code-string">"</span><span class="code-string">Create"</span>)]
+    Guid Create(IDictionary&lt;string, object&gt; inputs);
+
+    [OperationContract(Name = <span class="code-string">"</span><span class="code-string">ResumeBookmark"</span>)]
+    <span class="code-keyword">void</span> ResumeBookmark(Guid instanceId, <span class="code-keyword">string</span> bookmarkName, <span class="code-keyword">string</span> message);
+
+}
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> ResumeBookmarkEndpoint : WorkflowHostingEndpoint
+{
+
+    <span class="code-keyword">public</span> ResumeBookmarkEndpoint(Binding binding, EndpointAddress address)
+        : <span class="code-keyword">base</span>(<span class="code-keyword">typeof</span>(IWorkflowWithBookmark), binding, address)
+    {
+    }
+
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> Guid OnGetInstanceId(object[] inputs, OperationContext operationContext)
+    {
+        <span class="code-comment">//</span><span class="code-comment">Create called</span>
+        <span class="code-keyword">if</span> (operationContext.IncomingMessageHeaders.Action.EndsWith(<span class="code-string">"</span><span class="code-string">Create"</span>))
+        {
+            <span class="code-keyword">return</span> Guid.Empty;
+        }
+        <span class="code-comment">//</span><span class="code-comment">CreateWithInstanceId or ResumeBookmark called. InstanceId is specified by client</span>
+        <span class="code-keyword">else</span> <span class="code-keyword">if</span> (operationContext.IncomingMessageHeaders.Action.EndsWith(<span class="code-string">"</span><span class="code-string">ResumeBookmark"</span>))
+        {
+            <span class="code-keyword">return</span> (Guid)inputs[0];
+        }
+        <span class="code-keyword">else</span>
+        {
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException(<span class="code-string">"</span><span class="code-string">Invalid Action: "</span> + operationContext.IncomingMessageHeaders.Action);
+        }
+    }
+
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> WorkflowCreationContext OnGetCreationContext(object[] inputs, OperationContext operationContext, Guid instanceId, WorkflowHostingResponseContext responseContext)
+    {
+        WorkflowCreationContext creationContext = <span class="code-keyword">new</span> WorkflowCreationContext();
+        <span class="code-keyword">if</span> (operationContext.IncomingMessageHeaders.Action.EndsWith(<span class="code-string">"</span><span class="code-string">Create"</span>))
+        {
+            Dictionary&lt;string, object&gt; arguments = (Dictionary&lt;string, object&gt;)inputs[0];
+            <span class="code-keyword">if</span> (arguments != <span class="code-keyword">null</span> &amp;&amp; arguments.Count &gt; <span class="code-digit">0</span>)
+            {
+                <span class="code-keyword">foreach</span> (KeyValuePair&lt;string, object&gt; pair <span class="code-keyword">in</span> arguments)
+                {
+                    <span class="code-comment">//</span><span class="code-comment">arguments for the workflow</span>
+                    creationContext.WorkflowArguments.Add(pair.Key, pair.Value);
+                }
+            }
+            <span class="code-comment">//</span><span class="code-comment">reply to client with the InstanceId</span>
+            responseContext.SendResponse(instanceId, <span class="code-keyword">null</span>);
+        }
+        <span class="code-keyword">else</span>
+        {
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException(<span class="code-string">"</span><span class="code-string">Invalid Action: "</span> + operationContext.IncomingMessageHeaders.Action);
+        }
+        <span class="code-keyword">return</span> creationContext;
+    }
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> System.Activities.Bookmark OnResolveBookmark(object[] inputs, OperationContext operationContext, WorkflowHostingResponseContext responseContext, <span class="code-keyword">out</span> <span class="code-keyword">object</span> <span class="code-sdkkeyword">value</span>)
+    {
+        Bookmark bookmark = <span class="code-keyword">null</span>;
+        <span class="code-sdkkeyword">value</span> = <span class="code-keyword">null</span>;
+        <span class="code-keyword">if</span> (operationContext.IncomingMessageHeaders.Action.EndsWith(<span class="code-string">"</span><span class="code-string">ResumeBookmark"</span>))
+        {
+            <span class="code-comment">//</span><span class="code-comment">bookmark name supplied by client as input to IWorkflowCreation.ResumeBookmark</span>
+            bookmark = <span class="code-keyword">new</span> Bookmark((<span class="code-keyword">string</span>)inputs[1]);
+            <span class="code-comment">//</span><span class="code-comment">value supplied by client as argument to IWorkflowCreation.ResumeBookmark</span>
+            <span class="code-sdkkeyword">value</span> = (<span class="code-keyword">string</span>)inputs[2];
+
+            responseContext.SendResponse(<span class="code-keyword">null</span>, <span class="code-keyword">null</span>);<span class="code-comment">//</span><span class="code-comment">Not OneWay anymore.</span>
+        }
+        <span class="code-keyword">else</span>
+        {
+            <span class="code-comment">//</span><span class="code-comment">  throw new NotImplementedException(operationContext.IncomingMessageHeaders.Action);</span>
+            responseContext.SendResponse(<span class="code-keyword">typeof</span>(<span class="code-keyword">void</span>), <span class="code-keyword">null</span>);
+        }
+        <span class="code-keyword">return</span> bookmark;
+    }
+}
+</pre>
+
+<p>Differences from what in the MSDN sample:</p>
+
+<ol>
+	<li>Remove service function CreateWithInstanceId. I don't really understand what it is, and so far find no article explaining it. If you have some idea, please leave a comment.</li>	<li>Change service function ResumeBookmark to a normal call rather than one-way call. So error during handing the bookmark could be returned to the client.</li></ol>
+
+<h4>Helper Function to Create WorkflowServiceHost</h4>
+
+<div class="pre-lang" id="premain265231"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="265231" id="preShrink265231">Shrink ▲</span> &nbsp; <span id="copycode265231" class="copy-code" data-index="265231" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre265231" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">static</span> WorkflowServiceHost CreateHost(Activity activity, System.ServiceModel.Channels.Binding binding, EndpointAddress endpointAddress)
+{
+    <span class="code-keyword">var</span> host = <span class="code-keyword">new</span> WorkflowServiceHost(activity);
+    {
+        SqlWorkflowInstanceStoreBehavior instanceStoreBehavior = <span class="code-keyword">new</span> SqlWorkflowInstanceStoreBehavior(<span class="code-string">"</span><span class="code-string">Server =localhost; Initial Catalog = WF; Integrated Security = SSPI"</span>)
+        {
+            HostLockRenewalPeriod = <span class="code-keyword">new</span> TimeSpan(<span class="code-digit">0</span>, <span class="code-digit">0</span>, <span class="code-digit">5</span>),
+            RunnableInstancesDetectionPeriod = <span class="code-keyword">new</span> TimeSpan(<span class="code-digit">0</span>, <span class="code-digit">0</span>, <span class="code-digit">2</span>),
+            InstanceCompletionAction = InstanceCompletionAction.DeleteAll,
+            InstanceLockedExceptionAction = InstanceLockedExceptionAction.AggressiveRetry,
+            InstanceEncodingOption = InstanceEncodingOption.GZip,
+            MaxConnectionRetries = <span class="code-digit">3</span>,
+        };
+        host.Description.Behaviors.Add(instanceStoreBehavior);
+
+        <span class="code-comment">//</span><span class="code-comment">Make sure this is cleared defined, otherwise the bookmark is not really saved in DB though a new record is created. https://msdn.microsoft.com/en-us/library/ff729670%28v=vs.110%29.aspx</span>
+        WorkflowIdleBehavior idleBehavior = <span class="code-keyword">new</span> WorkflowIdleBehavior()
+        {
+            TimeToPersist = TimeSpan.Zero,
+            TimeToUnload = TimeSpan.Zero,
+        };
+        host.Description.Behaviors.Add(idleBehavior);
+
+        WorkflowUnhandledExceptionBehavior unhandledExceptionBehavior = <span class="code-keyword">new</span> WorkflowUnhandledExceptionBehavior()
+        {
+            Action = WorkflowUnhandledExceptionAction.Terminate,
+        };
+        host.Description.Behaviors.Add(unhandledExceptionBehavior);
+
+        ResumeBookmarkEndpoint endpoint = <span class="code-keyword">new</span> ResumeBookmarkEndpoint(binding, endpointAddress);
+        host.AddServiceEndpoint(endpoint);
+
+        host.Description.Behaviors.Add(<span class="code-keyword">new</span> ServiceDebugBehavior() { IncludeExceptionDetailInFaults = <span class="code-keyword">true</span> });
+    }
+
+    <span class="code-keyword">return</span> host;
+}
+</pre>
+
+<p><strong>Hints:</strong></p>
+
+<ul>
+	<li>The behaviors could be wired through config. Please check MSDN for details.</li></ul>
+
+<h4>Test Cases</h4>
+
+<div class="pre-lang" id="premain57520"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="57520" id="preShrink57520">Shrink ▲</span> &nbsp; <span id="copycode57520" class="copy-code" data-index="57520" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre57520" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelayWithBookmark()
+{
+    <span class="code-keyword">var</span> endpointAddress = <span class="code-keyword">new</span> EndpointAddress(<span class="code-string">"</span><span class="code-string">net.tcp://localhost/nonservice/wakeup"</span>);
+    <span class="code-keyword">var</span> endpointBinding = <span class="code-keyword">new</span> NetTcpBinding(SecurityMode.None);
+    <span class="code-keyword">using</span> (<span class="code-keyword">var</span> host = CreateHost(<span class="code-keyword">new</span> WaitForSignalOrDelayWorkflow(), endpointBinding, endpointAddress))
+    {
+        host.Open();
+        Assert.Equal(CommunicationState.Opened, host.State);
+
+        IWorkflowWithBookmark client = <span class="code-keyword">new</span> ChannelFactory&lt;IWorkflowWithBookmark&gt;(endpointBinding, endpointAddress).CreateChannel();
+        Guid id = client.Create(<span class="code-keyword">new</span> Dictionary&lt;string, object&gt; { { <span class="code-string">"</span><span class="code-string">BookmarkName"</span>, <span class="code-string">"</span><span class="code-string">NonService Wakeup"</span> }, { <span class="code-string">"</span><span class="code-string">Duration"</span>, TimeSpan.FromSeconds(<span class="code-digit">100</span>) } });
+        Assert.NotEqual(Guid.Empty, id);
+
+        Thread.Sleep(<span class="code-digit">2000</span>);<span class="code-comment">//</span><span class="code-comment">so the service may have time to persist.</span>
+
+        client.ResumeBookmark(id, <span class="code-string">"</span><span class="code-string">NonService Wakeup"</span>, <span class="code-string">"</span><span class="code-string">something"</span>);
+    }
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelayWithWrongBookmark()
+{
+    <span class="code-keyword">var</span> endpointAddress = <span class="code-keyword">new</span> EndpointAddress(<span class="code-string">"</span><span class="code-string">net.tcp://localhost/nonservice/wakeup"</span>);
+    <span class="code-keyword">var</span> endpointBinding = <span class="code-keyword">new</span> NetTcpBinding(SecurityMode.None);
+    <span class="code-keyword">using</span> (<span class="code-keyword">var</span> host = CreateHost(<span class="code-keyword">new</span> WaitForSignalOrDelayWorkflow(), endpointBinding, endpointAddress))
+    {
+
+        host.Open();
+        Assert.Equal(CommunicationState.Opened, host.State);
+
+        IWorkflowWithBookmark client = <span class="code-keyword">new</span> ChannelFactory&lt;IWorkflowWithBookmark&gt;(endpointBinding, endpointAddress).CreateChannel();
+        Guid id = client.Create(<span class="code-keyword">new</span> Dictionary&lt;string, object&gt; { { <span class="code-string">"</span><span class="code-string">BookmarkName"</span>, <span class="code-string">"</span><span class="code-string">NonService Wakeup"</span> }, { <span class="code-string">"</span><span class="code-string">Duration"</span>, TimeSpan.FromSeconds(<span class="code-digit">100</span>) } });
+        Assert.NotEqual(Guid.Empty, id);
+
+        Thread.Sleep(<span class="code-digit">2000</span>);<span class="code-comment">//</span><span class="code-comment">so the service may have time to persist.</span>
+
+        <span class="code-keyword">var</span> ex = Assert.Throws&lt;FaultException&gt;(() =&gt;
+            client.ResumeBookmark(id, <span class="code-string">"</span><span class="code-string">NonService Wakeupkkk"</span>, <span class="code-string">"</span><span class="code-string">something"</span>));
+
+        Debug.WriteLine(ex.ToString());
+    }
+}
+</pre>
+
+<div>&nbsp;</div>
+
+<div><strong>Hints</strong></div>
+
+<div>IWorkflowWithBookmark and CreateHost could be easily reused for workflows with bookmark. Just make sure they use different endpoint addresses.</div>
+
+<div>&nbsp;</div>
+
+<p><strong>Remarks</strong></p>
+
+<p>There are some limitations when using WorkflowHosting endpoint. Though many people said that WorkflowServiceHost is a wrapper around WorkflowApplication, I see little access points to access the WorkflowApplication instance, while what enabled by behaviors is rather limited.</p>
+
+<p>WaitForSignalOrDelayWorkflow has outputs as dictionary of OutArgument. However, there seem to be no "official" way to access it. You might have to add logic to the workflow to return the result through SignalR or store in a buffer/DB then the client could pull it later. If you have other idea, please leave a comment.</p>
+
+<p>So with all these troubles, it is better to use workflow service. Through correlation, you create an implicit mapping between session and workflow instance, so the client codes and the custom service codes have no need of knowing the workflow instance ID explicitly.</p>
+
+<p>&nbsp;</p>
+
+<h2>Workflow Service</h2>
+
+<p>In the samples above, I had demonstrated a few ways of hosting some types of workflows. However, Instance ID and bookmark are the implementation concepts of workflow, but for the sack of information hiding, generally the workflow service has better not to expose the fact that it uses Workflow Foundation for implementation, and client programs need not to have knowledge of such implementation details. In workflow service, the need for instance ID is handled by correlation, and the need for bookmark functionality is replaced by the Receive activity which is mapped to a service client call.</p>
+
+<h3>Conditions</h3>
+
+<p>You have some workflows that contain at least one Receive activity, so WCF will pass an incoming client call to the workflow hosted in WorkflowServiceHost.</p>
+
+<h3>Solutions</h3>
+
+<p>In previous article <a href="http://www.codeproject.com/Articles/1088005/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl17_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: WorkflowApplication and WorkflowServiceHost,</a> you may have read that a workflow with Receive could become a WCF service through hosting the workflow (activity / XAML) in WorkflowServiceHost, and such construction could be good enough for self hosting solution like Windows services or desktop programs.</p>
+
+<p>Workflow 4 provides WorkflowService to support such development model:</p>
+
+<ol>
+	<li>Design workflow on top of WorkflowService/XAMLX.</li>	<li>Run the workflow service to generate WSDL and XSD</li>	<li>Craft client codes according to the WSDL</li></ol>
+
+<p>&nbsp;</p>
+
+<p>There are many tutorials around for building Workflow Services through crafting XAMLX:</p>
+
+<ul>
+	<li><a href="https://msdn.microsoft.com/en-us/magazine/ff646977.aspx">Workflow Services - Visual Design of Workflows with WCF and WF 4</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/dd456788%28v=vs.110%29.aspx">Workflow Services</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/dd456797%28v=vs.110%29.aspx">Workflow Services Overview</a></li>	<li><a href="https://blogs.msdn.microsoft.com/webapps/2012/09/06/working-with-workflow-services/">Working with Workflow Services</a></li></ul>
+
+<p>I would presume you have read some of these articles or the similar, so I would introduce some tips that you might not have read.</p>
+
+<p>In FonlowWorkflowDemo.sln, there's a project BasicWCFService which is created through the template "WCF Workflow Service Application".</p>
+
+<p><img alt="Image 1" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Services- CodeProject_files/extracted-png-image1.png" width="213" height="251"></p>
+
+<p>And Service1.xamlx has the following properties:</p>
+
+<p><img alt="Image 2" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="495" height="359" data-src="/KB/WF/1088229/extracted-png-image2.png" class="lazyload" data-sizes="auto" data-srcset="/KB/WF/1088229/extracted-png-image2-r-400.png 400w, /KB/WF/1088229/extracted-png-image2.png 495w"></p>
+
+<p>You may notice that there is "CreateClientApi.bat".</p>
+
+<div class="pre-lang" id="premain965114"><div>BAT</div><div class="pre-action-link"><span id="copycode965114" class="copy-code" data-index="965114" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre965114" style="margin-top:0;" class="lang-bat notranslate" data-language="bat" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">start</span> <span class="code-string">"</span><span class="code-string">Launch IIS Express"</span> <span class="code-string">"</span><span class="code-string">C:\Program Files (x86)\IIS Express\iisexpress.exe"</span> /site:<span class="code-string">"</span><span class="code-string">BasicWFService"</span> /apppool:<span class="code-string">"</span><span class="code-string">Clr4IntegratedAppPool"</span> /config:<span class="code-string">"</span><span class="code-string">C:\VsProjects\FonlowWorkflowDemo\.vs\config\applicationhost.config"</span>
+
+<span class="code-string">"</span><span class="code-string">C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1A\Bin\NETFX 4.5.1 Tools\svcutil.exe"</span> http://localhost:3065/Service1.xamlx?singleWsdl /noConfig /language:C# /n:http://fonlow.com/WorkflowDemo,Fonlow.WorkflowDemo.Clients /directory:..\BasicWFServiceClientApi /out:WFServiceClientApiAuto.cs
+<span class="code-keyword">pause</span></pre>
+
+<p>Running this batch file will generate client API codes in WFServiceClientApiAuto.cs in the client API library "BasicWFServiceClientAPI".</p>
+
+<h3>Test the service</h3>
+
+<div class="pre-lang" id="premain948574"><div>C#</div><div class="pre-action-link"><span id="copycode948574" class="copy-code" data-index="948574" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre948574" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">const</span> <span class="code-keyword">string</span> realWorldEndpoint = <span class="code-string">"</span><span class="code-string">DefaultBinding_Workflow"</span>;
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestGetData()
+{
+    <span class="code-keyword">using</span> (<span class="code-keyword">var</span> client = <span class="code-keyword">new</span> WorkflowProxy(realWorldEndpoint))
+    {
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">abcaaa"</span>,  client.Instance.GetData(<span class="code-string">"</span><span class="code-string">abc"</span>));
+    }
+
+}
+</pre>
+
+<p><strong>Remarks</strong></p>
+
+<p>If you have read my article "<a href="http://www.codeproject.com/Articles/627240/WCF-for-the-Real-World-Not-Hello-World">WCF for the Real World, Not Hello World</a>" in which the client API codes is generated from a contract library without implementation, you may be wondering why not run svcutil.exe against BasicWFService.dll. This is because the dll does not contain contract info, and the contract info is generated through <code>contract inference</code> when the Workflow WCF service is running. So I have to launch the service in order to acquire the contract info for generating client API codes. If you have many workflows and respective contracts, it is quite cumbersome to generate/updates client API codes and add/update service references every time you have new or updated contracts. So the contract first approach may be a good alternative.</p>
+
+<p>&nbsp;</p>
+
+<h2>Contract First Workflow Service</h2>
+
+<p>This chapter is inspired by "<a href="https://msdn.microsoft.com/en-us/library/hh305676%28v=vs.110%29.aspx">How to: Create a workflow service that consumes an existing service contract</a>". And please also refer to "<a href="https://msdn.microsoft.com/en-us/library/dn148257%28v=vs.110%29.aspx">Contract First Workflow Service Development</a>" as the basic tutorial which I am not going to repeat here.</p>
+
+<p>And this example also demonstrate content based correlation, with customerId.</p>
+
+<h4>Step 1: Define the service contract of the workflow for buying a book</h4>
+
+<div class="pre-lang" id="premain33596"><div>C#</div><div class="pre-action-link"><span id="copycode33596" class="copy-code" data-index="33596" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre33596" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">ServiceContract</span>(Namespace = Constants.ContractNamespace)]
+<span class="code-keyword">public</span> <span class="code-keyword">interface</span> IBookService
+{
+    [OperationContract]
+    <span class="code-keyword">void</span> Buy(Guid customerId, <span class="code-keyword">string</span> bookName);
+
+    [OperationContract]
+    [return: System.ServiceModel.MessageParameterAttribute(Name = <span class="code-string">"</span><span class="code-string">CheckoutResult"</span>)]
+    <span class="code-keyword">string</span> Checkout(Guid customerId);
+
+    [OperationContract]
+    <span class="code-keyword">void</span> Pay(Guid customerId, <span class="code-keyword">string</span> paymentDetail);
+}
+</pre>
+
+<h4>Step 2: Import the IBookService contract</h4>
+
+<p><img alt="Image 3" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="369" height="222" data-src="/KB/WF/1088229/extracted-png-image3.png" class="lazyload"></p>
+
+<h4>Step 3: Create a new workflow service</h4>
+
+<p>After step 2, you may see the IBookServie component appear in the toolbox when editing an XAMLX file.</p>
+
+<p><img alt="Image 4" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="230" height="80" data-src="/KB/WF/1088229/extracted-png-image4.png" class="lazyload"></p>
+
+<p>Drag the operation contracts to the XAMLX file you will have a workflow of buying a book then checking out and pay.</p>
+
+<p><img alt="Image 5" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="301" height="698" data-src="/KB/WF/1088229/extracted-png-image5.png" class="lazyload"><img alt="Image 6" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="301" height="698" data-src="/KB/WF/1088229/extracted-png-image6.png" class="lazyload"></p>
+
+<p>&nbsp;</p>
+
+<h4>Step 4: Create correlation</h4>
+
+<p>When creating a new XAMLX file, Visual Studio will create a CorrelationHandle for you.</p>
+
+<p><img alt="Image 7" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="/KB/WF/1088229/extracted-png-image7-r-700.png" class="lazyload" style="cursor: pointer; border: 0; width: 700px; height: auto" onclick="imageCleanup.showFullImage(&#39;/KB/WF/1088229/extracted-png-image7.png&#39;)" data-sizes="auto" data-srcset="/KB/WF/1088229/extracted-png-image7-r-400.png 400w, /KB/WF/1088229/extracted-png-image7-r-700.png 700w, /KB/WF/1088229/extracted-png-image7.png 963w"></p>
+
+<p>Generally you just need one such handle for a sequential workflow.</p>
+
+<p>For the Buy_Receive activity, make sure the CanCreateInstance property be true, and for the CheckOut_Receive, be false.</p>
+
+<p>And in all Receive activities, make sure the CorrelationsWith property point to <code>handle </code>and use customerId&nbsp; for content base correlation.</p>
+
+<p><img alt="Image 8" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="327" height="145" data-src="/KB/WF/1088229/extracted-png-image8.png" class="lazyload"></p>
+
+<p>&nbsp;</p>
+
+<h4>Step 5: Establish persistence layer with SQL DB</h4>
+
+<p>In Web.config, setup the following settings for respective services, or all services if the host is hosting only workflow services.</p>
+
+<div class="pre-lang" id="premain177502"><div>XML</div><div class="pre-action-link"><span id="copycode177502" class="copy-code" data-index="177502" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre177502" style="margin-top:0;" class="lang-xml notranslate" data-language="xml" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">&lt;</span><span class="code-leadattribute">system.serviceModel</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">behaviors</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">serviceBehaviors</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">behavior</span><span class="code-keyword">&gt;</span>
+        <span class="code-comment">&lt;!--</span><span class="code-keyword"><span class="code-comment"> To avoid disclosing metadata information, set the values below to false before deployment </span><span class="code-comment">--&gt;</span></span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">serviceMetadata</span><span class="code-attribute"> </span><span class="code-attribute">httpGetEnabled</span><span class="code-keyword">="</span><span class="code-keyword">true"</span><span class="code-attribute"> </span><span class="code-attribute">httpsGetEnabled</span><span class="code-keyword">="</span><span class="code-keyword">true"</span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+        <span class="code-comment">&lt;!--</span><span class="code-keyword"><span class="code-comment"> To receive exception details in faults for debugging purposes, set the value below to true.  Set to false before deployment to avoid disclosing exception information </span><span class="code-comment">--&gt;</span></span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">serviceDebug</span><span class="code-attribute"> </span><span class="code-attribute">includeExceptionDetailInFaults</span><span class="code-keyword">="</span><span class="code-keyword">true"</span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">sqlWorkflowInstanceStore</span><span class="code-attribute">
+                  </span><span class="code-attribute">connectionString</span><span class="code-keyword">="</span><span class="code-keyword">Server =localhost; Initial Catalog = WF; Integrated Security = SSPI"</span><span class="code-attribute">
+                  </span><span class="code-attribute">instanceEncodingOption</span><span class="code-keyword">="</span><span class="code-keyword">GZip"</span><span class="code-attribute">
+                  </span><span class="code-attribute">instanceCompletionAction</span><span class="code-keyword">="</span><span class="code-keyword">DeleteAll"</span><span class="code-attribute">
+                  </span><span class="code-attribute">instanceLockedExceptionAction</span><span class="code-keyword">="</span><span class="code-keyword">AggressiveRetry"</span><span class="code-attribute">
+                  </span><span class="code-attribute">hostLockRenewalPeriod</span><span class="code-keyword">="</span><span class="code-keyword">00:00:02"</span><span class="code-attribute">
+                  </span><span class="code-attribute">runnableInstancesDetectionPeriod</span><span class="code-keyword">="</span><span class="code-keyword">00:00:02"</span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">/behavior</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/serviceBehaviors</span><span class="code-keyword">&gt;</span>
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>You may not need the instance store if all requests will go to the same host instance and the host instance will never be shutdown. Even if the workflow contains a few Persist activities, without an instance store, Persist will do nothing.</p>
+
+<h3>Test Case: All requests to the same host instance</h3>
+
+<div class="pre-lang" id="premain716037"><div>C#</div><div class="pre-action-link"><span id="copycode716037" class="copy-code" data-index="716037" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre716037" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Collection</span>(TestConstants.IisExpressAndInit)]
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> WFServiceContractFirstIntegrationTests
+{
+    <span class="code-keyword">const</span> <span class="code-keyword">string</span> hostBaseAddress = <span class="code-string">"</span><span class="code-string">http://localhost:2327/BookService.xamlx"</span>;
+    [Fact]
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> TestBuyBook()
+    {
+        <span class="code-keyword">var</span> client = ChannelFactory&lt;IBookService&gt;.CreateChannel(<span class="code-keyword">new</span> BasicHttpBinding(), <span class="code-keyword">new</span> EndpointAddress(hostBaseAddress));
+        <span class="code-keyword">const</span> <span class="code-keyword">string</span> bookName = <span class="code-string">"</span><span class="code-string">Alice in Wonderland"</span>;
+        <span class="code-keyword">var</span> customerId = Guid.NewGuid();
+        client.Buy(customerId, bookName);
+        <span class="code-keyword">var</span> checkOutBookName = client.Checkout(customerId);
+        Assert.Equal(bookName, checkOutBookName);
+        client.Pay(customerId, <span class="code-string">"</span><span class="code-string">Visa card"</span>);
+    }
+
+}
+</pre>
+
+<h3>Test Case: Wrong order of running steps of workflow</h3>
+
+<div class="pre-lang" id="premain122208"><div>C#</div><div class="pre-action-link"><span id="copycode122208" class="copy-code" data-index="122208" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre122208" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestBuyBookInWrongOrderThrows()
+{
+    <span class="code-keyword">var</span> client = ChannelFactory&lt;IBookService&gt;.CreateChannel(<span class="code-keyword">new</span> BasicHttpBinding(), <span class="code-keyword">new</span> EndpointAddress(hostBaseAddress));
+    <span class="code-keyword">const</span> <span class="code-keyword">string</span> bookName = <span class="code-string">"</span><span class="code-string">Alice in Wonderland"</span>;
+    <span class="code-keyword">var</span> customerId = Guid.NewGuid();
+    client.Buy(customerId, bookName);
+    <span class="code-keyword">var</span> ex = Assert.Throws&lt;FaultException&gt;(
+        () =&gt; client.Pay(customerId, <span class="code-string">"</span><span class="code-string">Visa card"</span>));
+    Assert.Contains(<span class="code-string">"</span><span class="code-string">correct order"</span>, ex.ToString());
+}
+</pre>
+
+<h3>Test Case: Non-existing correlation</h3>
+
+<div class="pre-lang" id="premain535757"><div>C#</div><div class="pre-action-link"><span id="copycode535757" class="copy-code" data-index="535757" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre535757" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestNonExistingSessionThrows()
+{
+    <span class="code-keyword">var</span> client = ChannelFactory&lt;IBookService&gt;.CreateChannel(<span class="code-keyword">new</span> BasicHttpBinding(), <span class="code-keyword">new</span> EndpointAddress(hostBaseAddress));
+    <span class="code-keyword">var</span> customerId = Guid.NewGuid();
+    <span class="code-keyword">var</span> ex = Assert.Throws&lt;FaultException&gt;(
+        () =&gt; { client.Checkout(customerId); });
+    Assert.Contains(<span class="code-string">"</span><span class="code-string">InstancePersistenceCommand"</span>, ex.ToString());
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<h3>Test Cases: Requests of the same workflow instance are handled by 2 host instances</h3>
+
+<p>This test case simulate that the requests of the same workflow instance are handled by 2 host instances at different stages.</p>
+
+<div class="pre-lang" id="premain176769"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="176769" id="preShrink176769">Shrink ▲</span> &nbsp; <span id="copycode176769" class="copy-code" data-index="176769" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre176769" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> WFServicePersistenceTests
+{
+    <span class="code-keyword">const</span> <span class="code-keyword">string</span> hostBaseAddress = <span class="code-string">"</span><span class="code-string">http://localhost:2327/BookService.xamlx"</span>;
+    [Fact]
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> TestBuyBook()
+    {
+        IisExpressAgent agent = <span class="code-keyword">new</span> IisExpressAgent();
+        <span class="code-keyword">const</span> <span class="code-keyword">string</span> bookName = <span class="code-string">"</span><span class="code-string">Alice in Wonderland"</span>;
+        <span class="code-keyword">var</span> customerId = Guid.NewGuid();
+        agent.Start();
+        <span class="code-keyword">var</span> client = ChannelFactory&lt;IBookService&gt;.CreateChannel(<span class="code-keyword">new</span> BasicHttpBinding(), <span class="code-keyword">new</span> EndpointAddress(hostBaseAddress));
+        client.Buy(customerId, bookName);
+        agent.Stop();
+        System.Threading.Thread.Sleep(<span class="code-digit">5000</span>);<span class="code-comment">//</span><span class="code-comment">WF runtime seems to be taking long time to persist data. And there may be delayed write, so closing the service may force writing data to DB.</span>
+        <span class="code-comment">//</span><span class="code-comment"> The wait time has better to be hostLockRenewalPeriod + runnableInstancesDetectionPeriod + 1 second.</span>
+        agent.Start();
+        client = ChannelFactory&lt;IBookService&gt;.CreateChannel(<span class="code-keyword">new</span> BasicHttpBinding(), <span class="code-keyword">new</span> EndpointAddress(hostBaseAddress));
+        <span class="code-keyword">var</span> checkOutBookName = client.Checkout(customerId);
+        Assert.Equal(bookName, checkOutBookName);
+        client.Pay(customerId, <span class="code-string">"</span><span class="code-string">Visa card"</span>);
+        agent.Stop();
+    }
+
+}
+</pre>
+
+<p>And please refer to "<a href="https://msdn.microsoft.com/en-us/library/ff729670%28v=vs.110%29.aspx">Persistence Best Practices"</a> for fine tuning your workflow services.</p>
+
+<p>&nbsp;</p>
+
+<h2>Points of Interest</h2>
+
+<p>Among different approached illustrated above, the Contract First approach is the most suitable for large enterprise projects with a lot complicated workflow to be hosted.</p>
+
+<p>The persistence of the workflow in a workflow service demonstrated above does not persist the workflow definition, because the workflow and the service are in one piece. While a workflow may have multiple Receive activities, WCF runtime and WF runtime know inherently which workflow definition to use. I guess this is probably one of the reasons why WF 4 had removed built-in persistence of workflow definitions.</p>
+
+<p>&nbsp;</p>
+
+
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-4-5-through-Unit">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-through-Unit-T-3?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-through-Unit-T-3?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2016 by Zijian<br>Everything else
+				Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>

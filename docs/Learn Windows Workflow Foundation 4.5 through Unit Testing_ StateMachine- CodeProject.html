@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-through-Unit-T-5 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<link rel="preconnect" href="https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://www.codeproject.com/">
+
+
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/jquery-3.4.1.min.js.download" as="script" type="text/javascript">
+
+
+	<title>Learn Windows Workflow Foundation 4.5 through Unit Testing: StateMachine- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" async="" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/analytics.js.download"></script><script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="StateMachine for State Machine">
+<meta name="Keywords" content="C#, .NET, Dev, Intermediate, Advanced, .NET4, .NET4.5">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="4/30/2016 8:19:00 AM">
+<meta property="article:modified_time" content="4/30/2016 8:19:00 AM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="3 min read">
+<meta property="og:url" content="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta property="og:title" content="Learn Windows Workflow Foundation 4.5 through Unit Testing: StateMachine">
+<meta property="og:description" content="StateMachine for State Machine">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit"
+   },
+  "name": "Learn Windows Workflow Foundation 4.5 through Unit Testing: StateMachine",
+  "headline": "Learn Windows Workflow Foundation 4.5 through Unit Testing: StateMachine",
+  "url": "https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit",
+  "discussionUrl": "https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,.NET,Dev,Intermediate,Advanced,.NET4,.NET4.5",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+  },
+  "license": "http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "StateMachine for State Machine",
+  "articleSection": "C#",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2016-04-30",
+  "dateCreated": "2016-04-30",
+  "dateModified": "2016-04-30"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Languages",
+      "name" : "Languages"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Csharp",
+      "name" : "C#"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' , {'user_id': '8f2e3ce4-85f7-4385-a40d-bf8b3be0485b'});
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="chrome chrome129">
+
+
+
+<a class="access-link" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-through-Unit-T-5#Main"><img alt="Click here to Skip to main content" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a rel="nofollow" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Languages">Languages</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Csharp">C#</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit?display=Print" class="tooltip" title="">
+   <img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://www.codeproject.com/Articles/1096961/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET" data-id="98">.NET</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4" data-id="1057">.NET4</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4.5" data-id="2119">.NET4.5</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Learn Windows Workflow Foundation 4.5 through Unit Testing: StateMachine</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_1096961">
+
+	<meta itemprop="upvoteCount" content="4">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (4 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">30 Apr 2016</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">3 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/views32.png" style="width:16px"> 14.3K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">StateMachine for State Machine</div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<h2>Background</h2>
+
+<p>State machine is one of the important data structure concepts in computing science. I believe all people with a computing science degree or software engineering degree must have studied state machine in one of the entry courses, since I had taught these data structures for fresh grade students in a university many years ago.</p>
+
+<p>However, in my career as a full stack developer in the commercial world, so far I haven't done one commercial project that utilizes state machine, partly because there are many alternatives for common business applications that need to manage (finite) states: logical trees with IF and SWITCH statements, recursion, as well as logic table. In some projects, I was tempted to design with state machine because of good candidates for state machine, however, I did not want to write my own state machine framework, and also considered such codes with state machine may not be so maintainable in the eyes of developers who had not CS or SE degrees.</p>
+
+<p>Nevertheless, state machine is out of the box from Windows Workflow Foundation since v3.5, and got mature/abstract enough in v4.5. I would be looking forward to using it in next project in which state machine could shine. When googling around, I found very little examples of using state machine, most of which are outdated with classes in WF 3.5 and 4.0, marked obsolete. So I wrote these example to explore the conveniences of StateMachine in WF 4.5.</p>
+
+<h2>Introduction</h2>
+
+<p>If you had never studied state machine and would be interested in it, the Wikipedia entry <a href="https://en.wikipedia.org/wiki/Finite-state_machine">Finite-state machine</a> could be good starting point. And StateMachine in WF 4.5 is matured and abstract enough for writing state machine codes easy to maintain. And I would use coin-operated turnstile as an example.</p>
+
+<p><img alt="File:Torniqueterevolution.jpg" data-file-height="263" data-file-width="173" height="263" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/Torniqueterevolution.jpg" width="173"> <img alt="File:Turnstile state machine colored.svg" data-file-height="343" data-file-width="790" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/Turnstile_state_machine_colored.svg.png" srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg-r-400.png 400w, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg-r-700.png 700w, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg.png 790w" data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg-r-700.png" class="lazyautosizes lazyloaded" style="cursor: pointer; border: 0; width: 700px; height: auto" onclick="imageCleanup.showFullImage(&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg.png&#39;)" data-sizes="auto" data-srcset="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg-r-400.png 400w, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg-r-700.png 700w, https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Turnstile_state_machine_colored.svg/790px-Turnstile_state_machine_colored.svg.png 790w" sizes="700px"></p>
+
+<p>&nbsp;</p>
+
+<h2>TurnstileStateMachine Workflow</h2>
+
+<p>In project "BasicWorkflows.csproj", you will findTurnstileStateMachine.xaml:</p>
+
+<p><img alt="Image 3" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/extracted-png-image1.png" width="209" height="448" data-src="/KB/WF/1096961/extracted-png-image1.png" class=" lazyloaded"></p>
+
+<p>As you can see, the abstraction and the implementation are all in one through a visual model driven approach.</p>
+
+<p>And the trigger is done through a bookmark call with class Wakeup.</p>
+
+<p><img alt="Image 4" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ StateMachine- CodeProject_files/extracted-png-image2.png" width="530" height="603" data-src="/KB/WF/1096961/extracted-png-image2.png" class="lazyautosizes lazyloaded" data-sizes="auto" data-srcset="/KB/WF/1096961/extracted-png-image2-r-400.png 400w, /KB/WF/1096961/extracted-png-image2.png 530w" sizes="530px" srcset="/KB/WF/1096961/extracted-png-image2-r-400.png 400w, /KB/WF/1096961/extracted-png-image2.png 530w"></p>
+
+<h3>Testing</h3>
+
+<div class="pre-lang" id="premain86125"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="86125" id="preShrink86125">Shrink ▲</span> &nbsp; <span id="copycode86125" class="copy-code" data-index="86125" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre86125" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestStateMachineWorkflow()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> TurnstileStateMachine();
+
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a);
+    app.InstanceStore = WFDefinitionStore.Instance.Store;
+    app.PersistableIdle = (eventArgs) =&gt;
+    {
+        <span class="code-keyword">return</span> PersistableIdleAction.None; <span class="code-comment">//</span><span class="code-comment">Must be None so 1 application instance will do all states</span>
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+
+    app.Run();
+
+    Thread.Sleep(<span class="code-digit">200</span>); <span class="code-comment">//</span><span class="code-comment">Run and ResumeBookmark are all non blocking asynchronous calls, better to wait prior operation to finish.</span>
+
+    <span class="code-keyword">var</span> br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.Success, br);
+    Thread.Sleep(<span class="code-digit">200</span>);
+
+    br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.Success, br);
+    Thread.Sleep(<span class="code-digit">200</span>);
+
+    br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">push"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.Success, br);
+    Thread.Sleep(<span class="code-digit">200</span>);
+
+    br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">push"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.Success, br);
+    Thread.Sleep(<span class="code-digit">200</span>);
+
+    br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">funky"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.NotFound, br);
+    Thread.Sleep(<span class="code-digit">200</span>);
+
+    br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+    Assert.Equal(BookmarkResumptionResult.Success, br);
+    Thread.Sleep(<span class="code-digit">200</span>);<span class="code-comment">//</span><span class="code-comment">ResumeBookmark is asynchrounous in a new thread, so better to wait, otherwise they got killed when app.Cancel is executed.</span>
+
+    app.Cancel();
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<h2>StateMachine Activity</h2>
+
+<p>In addition to drawing a workflow of state machine, you could define the definition of a state machine through codes during the instantiation of the StateMachine class.</p>
+
+<h3>Example</h3>
+
+<div class="pre-lang" id="premain188174"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="188174" id="preShrink188174">Shrink ▲</span> &nbsp; <span id="copycode188174" class="copy-code" data-index="188174" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre188174" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">    [Fact]
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> TestTurnstile()
+    {
+        <span class="code-keyword">var</span> lockedState = <span class="code-keyword">new</span> State() { DisplayName = <span class="code-string">"</span><span class="code-string">Locked"</span> };
+        <span class="code-keyword">var</span> unlockedState = <span class="code-keyword">new</span> State() { DisplayName = <span class="code-string">"</span><span class="code-string">Unlocked"</span> };
+
+        <span class="code-keyword">var</span> insertCoinWhenLocked = <span class="code-keyword">new</span> Transition()
+        {
+            To = unlockedState,
+            Trigger = <span class="code-keyword">new</span> Wakeup() { BookmarkName = <span class="code-string">"</span><span class="code-string">coin"</span> },
+        };
+
+        <span class="code-keyword">var</span> insertCoinWhenUnlocked = <span class="code-keyword">new</span> Transition()
+        {
+            To = unlockedState,
+            Trigger = <span class="code-keyword">new</span> Wakeup() { BookmarkName = <span class="code-string">"</span><span class="code-string">coin"</span> },
+        };
+
+        <span class="code-keyword">var</span> pushWhenLocked = <span class="code-keyword">new</span> Transition()
+        {
+            To = lockedState,
+            Trigger = <span class="code-keyword">new</span> Wakeup() { BookmarkName = <span class="code-string">"</span><span class="code-string">push"</span> },
+        };
+
+        <span class="code-keyword">var</span> pushWhenUnlocked = <span class="code-keyword">new</span> Transition()
+        {
+            To = lockedState,
+            Trigger = <span class="code-keyword">new</span> Wakeup() { BookmarkName = <span class="code-string">"</span><span class="code-string">push"</span> },
+        };
+
+        lockedState.Transitions.Add(pushWhenLocked);
+        lockedState.Transitions.Add(insertCoinWhenLocked);
+
+        unlockedState.Transitions.Add(pushWhenUnlocked);
+        unlockedState.Transitions.Add(insertCoinWhenUnlocked);
+
+        <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> StateMachine()
+        {
+            InitialState = lockedState,
+        };
+
+        a.States.Add(lockedState);
+        a.States.Add(unlockedState);
+
+        <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a);
+        app.InstanceStore = WFDefinitionStore.Instance.Store;
+        app.PersistableIdle = (eventArgs) =&gt;
+        {
+            <span class="code-keyword">return</span> PersistableIdleAction.None; <span class="code-comment">//</span><span class="code-comment">Must be None so 1 application instance will do all states</span>
+        };
+
+        <span class="code-keyword">var</span> id = app.Id;
+
+        app.Extensions.Add(<span class="code-keyword">new</span> Fonlow.Utilities.TraceWriter());
+
+        <span class="code-keyword">var</span> stp = <span class="code-keyword">new</span> StatusTrackingParticipant();
+        app.Extensions.Add(stp);
+
+        app.Run();
+
+        Thread.Sleep(<span class="code-digit">200</span>); <span class="code-comment">//</span><span class="code-comment">Run and ResumeBookmark are all non blocking asynchronous calls, better to wait prior operation to finish.</span>
+
+        <span class="code-keyword">var</span> br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+        Thread.Sleep(<span class="code-digit">200</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Unlocked"</span>, stp.StateName);
+
+        br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+        Thread.Sleep(<span class="code-digit">200</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Unlocked"</span>, stp.StateName);
+
+        br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">push"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+        Thread.Sleep(<span class="code-digit">200</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Locked"</span>, stp.StateName);
+
+        br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">push"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+        Thread.Sleep(<span class="code-digit">200</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Locked"</span>, stp.StateName);
+
+        br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">funky"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.NotFound, br);
+        Thread.Sleep(<span class="code-digit">200</span>);
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Locked"</span>, stp.StateName);
+
+        br = app.ResumeBookmark(<span class="code-string">"</span><span class="code-string">coin"</span>, <span class="code-keyword">null</span>);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+        Thread.Sleep(<span class="code-digit">200</span>);<span class="code-comment">//</span><span class="code-comment">ResumeBookmark is asynchrounous in a new thread, so better to wait, otherwise they got killed when app.Cancel is executed.</span>
+        Assert.Equal(<span class="code-string">"</span><span class="code-string">Unlocked"</span>, stp.StateName);
+
+        app.Cancel();
+    }
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> StatusTrackingParticipant : System.Activities.Tracking.TrackingParticipant
+{
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> StateName { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> <span class="code-keyword">void</span> Track(TrackingRecord record, TimeSpan timeout)
+    {
+        <span class="code-keyword">var</span> stateMachineStateRecord = record <span class="code-keyword">as</span> System.Activities.Statements.Tracking.StateMachineStateRecord;
+        <span class="code-keyword">if</span> (stateMachineStateRecord == <span class="code-keyword">null</span>)
+            <span class="code-keyword">return</span>;
+
+        StateName = stateMachineStateRecord.StateName;
+        Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">StateName: "</span> + stateMachineStateRecord.StateName);
+    }
+}
+</pre>
+
+<p><strong>Hints:</strong></p>
+
+<p>Class StatusTrackingParticipant is based on article:&nbsp;<a href="https://msdn.microsoft.com/en-us/library/jj205426%28v=vs.110%29.aspx">Create a Custom Tracking Participant</a>.</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>The tracking of the states is probably not needed in real world projects, since the actions in each state could be well enough for representing the state. However, during development or debugging, adding a bit tracking of states could assure better quality.</p>
+
+<h2>Using the Code</h2>
+
+<p>The source code is available at <a href="https://github.com/zijianhuang/WorkflowDemo">https://github.com/zijianhuang/WorkflowDemo</a>.</p>
+
+<p>Prerequisites:</p>
+
+<ol>
+	<li>Visual Studio 2015 Update 1 or Visual Studio 2013 Update 4</li>	<li><a href="http://xunit.github.io/" target="_blank">xUnit </a>(included)</li>	<li><a href="https://essentialdiagnostics.codeplex.com/">EssentialDiagnostics</a> (included)</li>	<li><a href="https://github.com/zijianhuang/FonlowTesting">FonlowTesting </a>(included)</li>	<li>Workflow Persistence SQL database, with default local database WF.</li></ol>
+
+<p>Examples in this article are from a test class:&nbsp; StateMachineTests.</p>
+
+<h2>Points of Interest</h2>
+
+<p>If you google "Workflow Foundation State Machine" etc., you may find a lot information, however most of which are outdated and even obsolete.</p>
+
+<ul>
+	<li><a href="http://wf.codeplex.com/">Windows Workflow Foundation on CodePlex</a> is basically for .NET 4.</li>	<li><a href="https://code.msdn.microsoft.com/Windows-Workflow-b4b808a8">WF4 State Machine Hands On Lab </a>and related materials are comprehensive, however, outdated. Microsoft apparently haven't updated the materials for WF4.5.</li></ul>
+
+<p>I had also found these articles interesting:</p>
+
+<ul>
+	<li><a href="http://www.skorks.com/2011/09/why-developers-never-use-state-machines/">Why Developers Never Use State Machines</a></li></ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-4-5-through-Unit">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-through-Unit-T-5?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/1096961/Learn-Windows-Workflow-Foundation-through-Unit-T-5?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2016 by Zijian<br>Everything else
+				Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>

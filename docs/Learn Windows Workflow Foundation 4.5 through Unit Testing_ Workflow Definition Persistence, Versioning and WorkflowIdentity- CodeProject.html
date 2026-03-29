@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-through-Unit-T-4 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<link rel="preconnect" href="https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://www.codeproject.com/">
+
+
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/jquery-3.4.1.min.js.download" as="script" type="text/javascript">
+
+
+	<title>Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" async="" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/analytics.js.download"></script><script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Persistence, versioning and WorkflowIdentity">
+<meta name="Keywords" content="C#, .NET, Dev, Intermediate, Advanced, .NET4, .NET4.5">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="4/26/2016 4:07:00 PM">
+<meta property="article:modified_time" content="4/26/2016 4:07:00 PM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="9 min read">
+<meta property="og:url" content="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta property="og:title" content="Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Definition Persistence, Versioning and WorkflowIdentity">
+<meta property="og:description" content="Persistence, versioning and WorkflowIdentity">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit"
+   },
+  "name": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Definition Persistence, Versioning and WorkflowIdentity",
+  "headline": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Definition Persistence, Versioning and WorkflowIdentity",
+  "url": "https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit",
+  "discussionUrl": "https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,.NET,Dev,Intermediate,Advanced,.NET4,.NET4.5",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+  },
+  "license": "http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "Persistence, versioning and WorkflowIdentity",
+  "articleSection": "C#",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2016-04-26",
+  "dateCreated": "2016-04-26",
+  "dateModified": "2016-04-26"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Languages",
+      "name" : "Languages"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Csharp",
+      "name" : "C#"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' , {'user_id': '8f2e3ce4-85f7-4385-a40d-bf8b3be0485b'});
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="chrome chrome129">
+
+
+
+<a class="access-link" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-through-Unit-T-4#Main"><img alt="Click here to Skip to main content" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a rel="nofollow" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Languages">Languages</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Csharp">C#</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit?display=Print" class="tooltip" title="">
+   <img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://www.codeproject.com/Articles/1095842/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="F3cjVutAZGReOXEImq1mAZErRCBATD4n2yO9411NIYYKm8vVN9ya4e4stQS89Mr+vJQ6gohaLfGaH4MszHLR3dWEiKu1WGnm+3ytOiTCbmV0EGe65d/hCuhU1ENBdsLFB8TnesyXd6YY1+Y12ibE6p1rPl0JEtNNASIOS4Knr3IfUHWw15X3lTvbdZCv2KYmy5OnWmYa0uHjikgdbXfuw0cXWC3uKbiioM7SQNIyYLceKMxUz/dDsrDwSwiLzsy/tBRPLcokXMGDfdZJ7Zu+3oQ4RJJD6w0W0sldbEjy74WnmmMR8g+ybs/NPQzD8qdyBWvcSd8WB94pO95UxZg32MkG57GDiAV7/6u7sATq0I4y1Krc3kh8ma+5kSccRkqlTjw5I2Upj+nUH0juk2M5uD49qZCUXNuG9Nk3WxGT5Qc8OOoNCk9GukyI/vF6K5UnYIgmvV/Spne1NqBud7Lf0BvyjzWSrkAt1j0wmFxryiWxJV1JcQKdA/Ciee+FnLuWO18MQZJQAwZQq9ernnZvSW1Xpkqi5du0rAiaqtJRgM4SgP3xh0zl7bFYltGUTcwg+UIUvKagXyQggxh0pzr6TLwJQpzpo514EcDg1TpXp7GIWY7zeoFyxBRZoKKXh0k6Y5OOzd7DNV3Z9ED3UVJyTgBgdZzZDGElxuPX3ly6qtdFP1c+7VRgNlDk0xu/LngCI1HgK5oksEVP46P2VN1iL4JtBM2m3WuBRsqft+nW4c6ciT/w7u7TCu/70Np6YoWwCC4KputWuUYmsiZco02yW62juPrM6ccnNOtrI1jjmC0aJ5d2tZu25ZYDPxxCrF9Ce4gRdZ1UWvnoUG+L3VAcckimzcqDwwag7h0vtPg4I6rNHRZmmcxT8jV9u+Pm0E+XA4n5ihnhThkpC43eWFv/mBmlbkollxkPLLjkCJrAwawWjRPyAP9QKrOWQXgmO/GszghXFf36CzAa8kpT/4SSwllxCEj3MNCRuXg9PZ3AIT2tvF1/FX8OYLZCUZSWrEjfYWDQMEtOZbEjlFpLornlw3GH+PEKL6RnDGUApZpjHvS8ZGW9ax76NWO1QPwxb/+M1y89VbGrA1cvH3M+kbEMg6GPJ04XvFHkmLRaSKOv5FOAM2pbe40oW/aZKn8QCoMyMqkSz3LJasrOA7B2M8SHL43v4JGlYRufpd1/1xd8vodFaZ4fhSBexWzf+JtQ6xkAvgC/yLyDHXVlTWTu6kDzkMAk/fwC1YXha+5CM8GbmKt9t13aqDjIMV60ZVWP4b5Md/PPf24MTtNnED340XODjhBEdPGi2Z6r6/c3FLJUOEU2YS5bb49bWUMGIB4etFhpedciyAyQvEWJZbRBgHr3AJEd8v4UFOg/V/etU/jEGwsU/SRHH7QXSZIa+qKo2zTRRnRKP6Hf94EtvQsZabstFPevJcrdZDOJeOFLW0Co+sTO7J6YY4u/y2kbf/2sb070a6oH1p41DfX6YBU26xk2mq+B+6ilUP0axcg/PLCyfGBIpb7YgxhzsSR8hRi9ZeYTajIjiooHEl0uIxQ2e1wntxY347pE8NGA5vDo8aZpWz5u4JVC0wGHZda+9NiaOMfTgerfcOgq4Fhe+ji1VyZMfFrq3OXzfaijIeKgQldDrmQEj0JbKrhYvozujGtI0kkvg5rkznoP+rdg2Kp+9+2VXALQN31Mmswe5h9hzsiTxm7ZvHZstuLoRgnOPlxbdzkP5UZX51MDNSw8GGIa3BDAbPUGqMD4ggD5rujaFlZEtwNmuEltWzMSms3SarXl+1vbVq5Ay57byScv0Y7z5ZH0/AxeqllqacXrfz6PfgaiVnG0h4jrnDKaq4hbqi3K4lbNxPaiVgC/hruMF0GcW869FyyrUqwJ7ET2DialDW4i7eyhoJ4JWVRmyihwnY1p4MvpHqqXxRyPPgyLzfeWnhmmeevwDtLc4bAhvGUOYag8RKRIXB7Q8hZ7rsxdQKvpQljDZjD6uUpRmOtxNsxtpdjuDU6GUxMm3QNDaF3OYC3V7SBCo60gsFIov7oaVn2Zgr/xERK/z0BjiJjZ0zUmpYOS8b1ODq9CjfQylS21Q8lLpnLEmYubel+1BAIhSHtZ0XBAzXoR0WUnU+yIvMIuRxmAClqHqdxEtm37Vs8YvVdG0CIyCgKlYeJMgnz9s0tshFDSm3n+jYFSRV/GI1vujPq6ofA2P2mVZDTS4IfNfYsyjPlGwdsdSbtNenhn9Zcz/BlCEhNQSb7mWeLv4uW262SMM1Jt6UwikO0uNxBtjU+MYCoKutggQgDAlOnOmx+X8AzvubfUtg==">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET" data-id="98">.NET</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4" data-id="1057">.NET4</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4.5" data-id="2119">.NET4.5</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Definition Persistence, Versioning and WorkflowIdentity</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_1095842">
+
+	<meta itemprop="upvoteCount" content="5">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (5 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">26 Apr 2016</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">9 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Workflow Definition Persistence, Versioning and WorkflowIdentity- CodeProject_files/views32.png" style="width:16px"> 12.3K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">Persistence, versioning and WorkflowIdentity</div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<h2>Overview</h2>
+
+<p>And this article is focused on persisting workflow definitions and versioning for long running / persistable workflows.</p>
+
+<h2>Background</h2>
+
+<p>Other articles related to this one are given below:</p>
+
+<ul>
+	<li><a href="http://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl18_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication</a></li>	<li><a href="http://www.codeproject.com/Articles/1088229/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl20_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: Workflow Services</a></li></ul>
+
+<p>For really long running workflows, using WorflowServiceHost and Workflow Persistence is the only way to go. However, somehow Workflow 4 and 4.5 had provided "weaker" supports for persistence, also, because of <a href="https://blogs.msdn.microsoft.com/appfabric/2015/04/02/microsoft-appfabric-1-1-for-windows-server-ends-support-422016/">the deprecation of AppFabric</a>, <a href="https://msdn.microsoft.com/en-us/library/gg132883%28v=azure.10%29.aspx">Workflow Management Service</a> is not longer a viable solution. And we application developers have to write our own custom solutions to manage the lifecycle of workflows.</p>
+
+<p>To some developers with experiences in earlier versions of Workflow Foundation prior to 4.0, such "weak" support for managing lifecycle of workflows is bad news resulting in great burdens for extra maintenance works and respective mindset shifting, unless the developers are working solely on Biztalk and Sharepoint with sophisticated workflow hosting.</p>
+
+<p><strong>Remarks</strong></p>
+
+<p>I consider that the move to not having built-in solution of persisting workflow definitions in WF 4 is a good move, since I think that many workflow applications do not need to persist the workflow definitions in a persistence layer, while the respective functions have knowledge of which workflow definitions to use when resuming a workflow instance, thus have no need for serialization and deserialization of workflow definitions. For scenarios that need persisting workflow definitions, it is not hard to write custom solutions for example a dictionary. And the most tricky part I regard is scanning workflows hibernated in the persistence layer and loading them timely if not using Sharepoint or Biztalk.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>References:</strong></p>
+
+<ul>
+	<li><a href="https://msdn.microsoft.com/en-us/library/ff432975%28v=vs.110%29.aspx">Create a Long-runing Workflow Service</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/ff729670%28v=vs.110%29.aspx">Persistence Best Practices</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/ee358748%28v=VS.100%29.aspx">Workflow Service Host Extensibility</a></li>	<li><a href="https://msdn.microsoft.com/en-us/magazine/hh781025.aspx">What's New in WF 4.5</a></li>	<li><a href="http://social.technet.microsoft.com/wiki/contents/articles/12326.windows-workflow-wf-4-x-samples.aspx">WF 4.x Samples</a></li>	<li><a href="https://msdn.microsoft.com/en-us/library/hh314054%28v=vs.110%29.aspx#SxS">Using WorkflowIdentity and Versioning</a></li></ul>
+
+<h2>Using the Code</h2>
+
+<p>The source code is available at <a href="https://github.com/zijianhuang/WorkflowDemo">https://github.com/zijianhuang/WorkflowDemo</a>.</p>
+
+<p>Prerequisites:</p>
+
+<ol>
+	<li>Visual Studio 2015 Update 1 or Visual Studio 2013 Update 4</li>	<li><a href="http://xunit.github.io/" target="_blank">xUnit </a>(included)</li>	<li><a href="https://essentialdiagnostics.codeplex.com/">EssentialDiagnostics</a> (included)</li>	<li><a href="https://github.com/zijianhuang/FonlowTesting">FonlowTesting </a>(included)</li>	<li>Workflow Persistence SQL database, with default local database WF.</li></ol>
+
+<p>Examples in this article are from a test class:&nbsp; WorkflowServiceHostTests, WorkflowServiceHostPersistenceTests, WFServiceTests, WCFWithWorkflowTests, NonServiceWorkflowTests.</p>
+
+<p>&nbsp;</p>
+
+<h2>WFDefinitionIdentityStore</h2>
+
+<p>In article <a href="http://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T" id="ctl00_MC_AR_ctl18_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication </a>, I had introduce a dictionary class that provide for looking up a workflow definition through an instance ID. In a service app, there might be multiple instances of the same workflow definition, thus it is inefficient to store multiple copies of the same definition, so you may be designing a storage either in program logic or persistence that will store a definition once and support versioning. While there could be many ways to design a workflow definition store that does not store duplicate copies of the same definition, however, using WorkflowIdentity could be a good option if you want versioning for long running workflows, and the definition identity is by default persisted in SQL table DefinitionIdentityTable.</p>
+
+<div class="pre-lang" id="premain563778"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="563778" id="preShrink563778">Shrink ▲</span> &nbsp; <span id="copycode563778" class="copy-code" data-index="563778" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre563778" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> WFDefinitionIdentityStore
+{
+    <span class="code-keyword">private</span> <span class="code-keyword">static</span> <span class="code-keyword">readonly</span> Lazy&lt;WFDefinitionIdentityStore&gt; lazy = <span class="code-keyword">new</span> Lazy&lt;WFDefinitionIdentityStore&gt;(() =&gt; <span class="code-keyword">new</span> WFDefinitionIdentityStore());
+
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> WFDefinitionIdentityStore Instance { <span class="code-keyword">get</span> { <span class="code-keyword">return</span> lazy.Value; } }
+
+    <span class="code-keyword">public</span> WFDefinitionIdentityStore()
+    {
+        InstanceDefinitions = <span class="code-keyword">new</span> System.Collections.Concurrent.ConcurrentDictionary&lt;WorkflowIdentity, byte[]&gt;();
+
+        Store = <span class="code-keyword">new</span> SqlWorkflowInstanceStore(<span class="code-string">"</span><span class="code-string">Server =localhost; Initial Catalog = WF; Integrated Security = SSPI"</span>)
+        {
+            InstanceCompletionAction = InstanceCompletionAction.DeleteAll,
+            InstanceEncodingOption = InstanceEncodingOption.GZip,
+
+        };
+
+        <span class="code-keyword">var</span> handle = Store.CreateInstanceHandle();
+        <span class="code-keyword">var</span> view = Store.Execute(handle, <span class="code-keyword">new</span> CreateWorkflowOwnerCommand(), TimeSpan.FromSeconds(<span class="code-digit">50</span>));
+        handle.Free();
+        Store.DefaultInstanceOwner = view.InstanceOwner;
+
+    }
+
+    <span class="code-keyword">public</span> System.Collections.Concurrent.ConcurrentDictionary&lt;WorkflowIdentity, byte[]&gt; InstanceDefinitions { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">public</span> System.Runtime.DurableInstancing.InstanceStore Store { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">bool</span> TryAdd(WorkflowIdentity definitionIdentity, Activity a)
+    {
+        <span class="code-keyword">using</span> (MemoryStream stream = <span class="code-keyword">new</span> MemoryStream())
+        {
+            ActivityPersistenceHelper.SaveActivity(a, stream);
+            stream.Position = <span class="code-digit">0</span>;
+            <span class="code-keyword">return</span> InstanceDefinitions.TryAdd(definitionIdentity, stream.ToArray());
+        }
+
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">bool</span> TryAdd&lt;T&gt;(WorkflowIdentity definitionIdentity, ActivityBuilder&lt;T&gt; ab)
+    {
+        <span class="code-keyword">using</span> (MemoryStream stream = <span class="code-keyword">new</span> MemoryStream())
+        {
+            ActivityPersistenceHelper.SaveActivity(ab, stream);
+            stream.Position = <span class="code-digit">0</span>;
+            <span class="code-keyword">return</span> InstanceDefinitions.TryAdd(definitionIdentity, stream.ToArray());
+        }
+
+    }
+
+    <span class="code-keyword">public</span> Activity this[WorkflowIdentity definitionIdentity]
+    {
+        <span class="code-keyword">get</span>
+        {
+            <span class="code-keyword">return</span> ActivityPersistenceHelper.LoadActivity(InstanceDefinitions[definitionIdentity]);
+        }
+    }
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>Many tutorials you could find in the Internet probably present a dictionary of mapping between WorkflowIdneity and Activity, however, binary Activity of CLR could hardly really persisted in persistence layers rather than memory, and only XAML representing the activity is a good one to persist. It shouldn't be hard for you to modify the code above and store the definition in SQL or NoSql.</p>
+
+<p>&nbsp;</p>
+
+<h3>Examples for WFDefinitionIdentityStore</h3>
+
+<p>&nbsp;</p>
+
+<div class="pre-lang" id="premain170771"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="170771" id="preShrink170771">Shrink ▲</span> &nbsp; <span id="copycode170771" class="copy-code" data-index="170771" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre170771" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">IDictionary&lt;string, object&gt; LoadAndCompleteLongRunning(Guid instanceId, WorkflowIdentity definitionIdentity)
+{
+    <span class="code-keyword">bool</span> completed2 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded2 = <span class="code-keyword">false</span>;
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> instance = WorkflowApplication.GetInstance(instanceId, WFDefinitionIdentityStore.Instance.Store);
+    <span class="code-keyword">var</span> definition = WFDefinitionIdentityStore.Instance[definitionIdentity];
+    IDictionary&lt;string, object&gt; dic = <span class="code-keyword">null</span>;
+    <span class="code-keyword">var</span> app2 = <span class="code-keyword">new</span> WorkflowApplication(definition, instance.DefinitionIdentity)
+    {
+        Completed = e =&gt;
+        {
+            completed2 = <span class="code-keyword">true</span>;
+            <span class="code-keyword">if</span> (e.CompletionState== ActivityInstanceState.Closed)
+            {
+                dic = e.Outputs;
+            }
+        },
+
+        Unloaded = e =&gt;
+        {
+            unloaded2 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        InstanceStore = WFDefinitionIdentityStore.Instance.Store,
+    };
+
+    stopwatch.Restart();
+    app2.Load(instance);
+    Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">It took {0} seconds to load workflow"</span>, stopwatch.Elapsed.TotalSeconds);
+
+    app2.Run();
+    syncEvent.WaitOne();
+    stopwatch2.Stop();
+    <span class="code-keyword">var</span> seconds = stopwatch2.Elapsed.TotalSeconds;
+
+    Assert.True(completed2);
+    Assert.True(unloaded2);
+
+    <span class="code-keyword">return</span> dic;
+
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelayVersion1()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> WaitForSignalOrDelay()
+    {
+        Duration=TimeSpan.FromSeconds(<span class="code-digit">10</span>),
+        BookmarkName=<span class="code-string">"</span><span class="code-string">Wakeup"</span>,
+    };
+
+    <span class="code-keyword">var</span> definitionIdentity = <span class="code-keyword">new</span> WorkflowIdentity(<span class="code-string">"</span><span class="code-string">WaitForSignalOrDelay"</span>, <span class="code-keyword">new</span> Version(<span class="code-digit">1</span>, <span class="code-digit">0</span>), <span class="code-keyword">null</span>);
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a, definitionIdentity)
+    {
+        InstanceStore = WFDefinitionStore.Instance.Store,
+        PersistableIdle = (eventArgs) =&gt;
+        {
+            <span class="code-keyword">return</span> PersistableIdleAction.Unload;
+        },
+
+        OnUnhandledException = (e) =&gt;
+        {
+            <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+        },
+
+        Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+        {
+            completed1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        Unloaded = (eventArgs) =&gt;
+        {
+            unloaded1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+    app.Run();
+
+    syncEvent.WaitOne();
+    Assert.False(completed1);
+    Assert.True(unloaded1);
+
+    WFDefinitionIdentityStore.Instance.TryAdd(definitionIdentity, a);
+
+    Thread.Sleep(<span class="code-digit">5000</span>); <span class="code-comment">//</span><span class="code-comment"> from 1 seconds to 9 seconds, the total time of the test case is the same.</span>
+
+    <span class="code-keyword">var</span> outputs = LoadAndCompleteLongRunning(id, definitionIdentity);
+
+    Assert.False((<span class="code-keyword">bool</span>)outputs[<span class="code-string">"</span><span class="code-string">Result"</span>]);
+
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelayVersion2()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> WaitForSignalOrAlarm()
+    {
+        AlarmTime = DateTime.Now.AddSeconds(<span class="code-digit">10</span>),
+        BookmarkName = <span class="code-string">"</span><span class="code-string">Wakeup"</span>,
+    };
+
+    <span class="code-keyword">var</span> definitionIdentity = <span class="code-keyword">new</span> WorkflowIdentity(<span class="code-string">"</span><span class="code-string">WaitForSignalOrDelay"</span>, <span class="code-keyword">new</span> Version(<span class="code-digit">2</span>, <span class="code-digit">0</span>), <span class="code-keyword">null</span>);
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a, definitionIdentity)
+    {
+        InstanceStore = WFDefinitionStore.Instance.Store,
+        PersistableIdle = (eventArgs) =&gt;
+        {
+            <span class="code-keyword">return</span> PersistableIdleAction.Unload;
+        },
+
+        OnUnhandledException = (e) =&gt;
+        {
+            <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+        },
+
+        Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+        {
+            completed1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        Unloaded = (eventArgs) =&gt;
+        {
+            unloaded1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+    app.Run();
+
+    syncEvent.WaitOne();
+    Assert.False(completed1);
+    Assert.True(unloaded1);
+
+    WFDefinitionIdentityStore.Instance.TryAdd(definitionIdentity, a);
+
+    Thread.Sleep(<span class="code-digit">5000</span>); <span class="code-comment">//</span><span class="code-comment"> from 1 seconds to 9 seconds, the total time of the test case is the same.</span>
+
+    <span class="code-keyword">var</span> outputs = LoadAndCompleteLongRunning(id, definitionIdentity);
+
+    Assert.False((<span class="code-keyword">bool</span>)outputs[<span class="code-string">"</span><span class="code-string">Result"</span>]);
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Remarks</strong>:</p>
+
+<p>Workflow versioning is a logical concept. As you can see in the examples above, 2 versions of "WaitForSignalOrDelay" are implemented by 2 different classes, and the implementation of version 2 is not necessarily the derived class of version 1. And the version information is injected during the instantiation of a workflow definition.&nbsp;</p>
+
+<p>It is the responsibility of the host application (more exactly you as the application developer) to provide the correct workflow definition when resuming instances, and ensure the uniqueness of mappings.</p>
+
+<p>&nbsp;</p>
+
+<h2>WorkflowDefinitionIdentityFactory</h2>
+
+<p>WorkflowIdentity supports great separation of concerns for workflow definition persistence and versioning. Sometimes in some applications you may not want to manually defining each WorkflowIdentity object, and may want to use workflow class names as the definition identity, particularly when you have fairly clean practices of .NET component designs and release controls.</p>
+
+<p>This class has almost identical interface of WorkflowDefinitionIdentityStore, however, use CLR types and assemblies as the persistence media, rather than XAML. The DefinitionIdentity of a workflow could be generated through static function GetWorkflowIdentity().</p>
+
+<div class="pre-lang" id="premain893316"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="893316" id="preShrink893316">Shrink ▲</span> &nbsp; <span id="copycode893316" class="copy-code" data-index="893316" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre893316" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> WFDefinitionIdentityFactory
+{
+    <span class="code-keyword">private</span> <span class="code-keyword">static</span> <span class="code-keyword">readonly</span> Lazy&lt;WFDefinitionIdentityFactory&gt; lazy = <span class="code-keyword">new</span> Lazy&lt;WFDefinitionIdentityFactory&gt;(() =&gt; <span class="code-keyword">new</span> WFDefinitionIdentityFactory());
+
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> WFDefinitionIdentityFactory Instance { <span class="code-keyword">get</span> { <span class="code-keyword">return</span> lazy.Value; } }
+
+    <span class="code-keyword">public</span> WFDefinitionIdentityFactory()
+    {
+        InstanceDefinitions = <span class="code-keyword">new</span> System.Collections.Concurrent.ConcurrentDictionary&lt;WorkflowIdentity, Activity&gt;();
+
+        Store = <span class="code-keyword">new</span> SqlWorkflowInstanceStore(<span class="code-string">"</span><span class="code-string">Server =localhost; Initial Catalog = WF; Integrated Security = SSPI"</span>)
+        {
+            InstanceCompletionAction = InstanceCompletionAction.DeleteAll,
+            InstanceEncodingOption = InstanceEncodingOption.GZip,
+
+        };
+
+        <span class="code-keyword">var</span> handle = Store.CreateInstanceHandle();
+        <span class="code-keyword">var</span> view = Store.Execute(handle, <span class="code-keyword">new</span> CreateWorkflowOwnerCommand(), TimeSpan.FromSeconds(<span class="code-digit">50</span>));
+        handle.Free();
+        Store.DefaultInstanceOwner = view.InstanceOwner;
+
+    }
+
+    <span class="code-keyword">public</span> System.Collections.Concurrent.ConcurrentDictionary&lt;WorkflowIdentity, Activity&gt; InstanceDefinitions { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">public</span> System.Runtime.DurableInstancing.InstanceStore Store { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">bool</span> TryAdd(WorkflowIdentity definitionIdentity, Activity a)
+    {
+        <span class="code-keyword">return</span> InstanceDefinitions.TryAdd(definitionIdentity, a);
+    }
+
+    <span class="code-keyword">public</span> Activity this[WorkflowIdentity definitionIdentity]
+    {
+        <span class="code-keyword">get</span>
+        {
+            Activity activity = <span class="code-keyword">null</span>;
+            <span class="code-keyword">var</span> found = InstanceDefinitions.TryGetValue(definitionIdentity, <span class="code-keyword">out</span> activity);
+            <span class="code-keyword">if</span> (found)
+                <span class="code-keyword">return</span> activity;
+
+            <span class="code-keyword">var</span> assemblyFullName = definitionIdentity.Package;
+            <span class="code-keyword">var</span> activityTypeName = definitionIdentity.Name;
+            System.Diagnostics.Trace.Assert(assemblyFullName.Contains(definitionIdentity.Version.ToString()));
+            <span class="code-keyword">var</span> objectHandle=  Activator.CreateInstance(assemblyFullName, activityTypeName);<span class="code-comment">//</span><span class="code-comment">tons of exceptions needed to be handled in production</span>
+            activity = objectHandle.Unwrap() <span class="code-keyword">as</span> Activity;
+            <span class="code-keyword">if</span> (activity==<span class="code-keyword">null</span>)
+            {
+                <span class="code-keyword">throw</span> <span class="code-keyword">new</span> InvalidOperationException(<span class="code-string">"</span><span class="code-string">You must have been crazy."</span>);
+            }
+
+            InstanceDefinitions.TryAdd(definitionIdentity, activity);
+            <span class="code-keyword">return</span> activity;
+
+        }
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> WorkflowIdentity GetWorkflowIdentity(Activity activity)
+    {
+        <span class="code-keyword">var</span> type = activity.GetType();
+        <span class="code-keyword">var</span> name = type.FullName;
+        <span class="code-keyword">var</span> <span class="code-keyword">assembly</span> = type.Assembly;
+        <span class="code-keyword">var</span> package = <span class="code-keyword">assembly</span>.FullName;
+        <span class="code-keyword">var</span> version = <span class="code-keyword">assembly</span>.GetName().Version;
+        <span class="code-keyword">return</span> <span class="code-keyword">new</span> WorkflowIdentity(name, version, package);
+    }
+}
+</pre>
+
+<p>It is presumed that in WorkflowIdentity, Name must be the full class name, Version must be the assembly version, and Package must be the assembly's FullName. Therefore, you must follow .NET component design strictly. For workflow versioning, you may consider the following designs:</p>
+
+<ol>
+	<li>Use numeric suffix for next version of workflow, for example, you have a workflow class BuyWorkflow, then next version could be BuyWorkflow2.</li>	<li>Modify WFDefinitionIdentityFactory and use Activity.DisplayName rather than Type.FullName for WorkflowIdentity.Name, and WorkflowIdentity.Package will store Type.AssemblyQualifiedName.</li></ol>
+
+<p>&nbsp;</p>
+
+<h3>Examples</h3>
+
+<div class="pre-lang" id="premain740225"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="740225" id="preShrink740225">Shrink ▲</span> &nbsp; <span id="copycode740225" class="copy-code" data-index="740225" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre740225" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestPersistenceWithDelayAndResult()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> Fonlow.Activities.Calculation();
+    a.XX = <span class="code-digit">3</span>;
+    a.YY = <span class="code-digit">7</span>;
+
+    <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> definitionIdentity = WFDefinitionIdentityFactory.GetWorkflowIdentity(a);
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a, definitionIdentity);
+    app.InstanceStore = WFDefinitionStore.Instance.Store;
+    app.PersistableIdle = (eventArgs) =&gt;
+    {
+        <span class="code-keyword">return</span> PersistableIdleAction.Unload;<span class="code-comment">//</span><span class="code-comment">so persist and unload</span>
+    };
+
+    app.OnUnhandledException = (e) =&gt;
+    {
+
+        <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+    };
+
+    app.Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+    {
+        completed1 = <span class="code-keyword">true</span>;
+
+    };
+
+    app.Aborted = (eventArgs) =&gt;
+    {
+
+    };
+
+    app.Unloaded = (eventArgs) =&gt;
+    {
+        unloaded1 = <span class="code-keyword">true</span>;
+        syncEvent.Set();
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+    stopwatch.Restart();
+    stopwatch2.Restart();
+    app.Run();
+    syncEvent.WaitOne();
+
+    stopwatch.Stop();
+    Assert.True(stopwatch.ElapsedMilliseconds &lt; <span class="code-digit">2500</span>, <span class="code-sdkkeyword">String</span>.Format(<span class="code-string">"</span><span class="code-string">The first one is executed for {0} milliseconds"</span>, stopwatch.ElapsedMilliseconds));
+    <span class="code-comment">//</span><span class="code-comment">the ellipsed time depends on the performance of the WF runtime when handling persistence. The first case of persistence is slow.</span>
+
+    Assert.False(completed1);
+    Assert.True(unloaded1);
+
+    stopwatch.Restart();
+    <span class="code-keyword">var</span> t = WFDefinitionIdentityFactory.Instance.TryAdd(definitionIdentity, a);
+    stopwatch.Stop();
+    Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">It took {0} seconds to persist definition"</span>, stopwatch.Elapsed.TotalSeconds);
+
+    <span class="code-comment">//</span><span class="code-comment">Now to use a new WorkflowApplication to load the persisted instance.</span>
+    <span class="code-keyword">var</span> dic =  LoadAndCompleteLongRunning(id, definitionIdentity);
+    <span class="code-keyword">var</span> finalResult = (<span class="code-keyword">long</span>)dic[<span class="code-string">"</span><span class="code-string">Result"</span>];
+    Assert.Equal(<span class="code-digit">21</span>, finalResult);
+
+}
+
+IDictionary&lt;string, object&gt; LoadAndCompleteLongRunning(Guid instanceId, WorkflowIdentity definitionIdentity)
+{
+    <span class="code-keyword">bool</span> completed2 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded2 = <span class="code-keyword">false</span>;
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> instance = WorkflowApplication.GetInstance(instanceId, WFDefinitionIdentityStore.Instance.Store);
+    <span class="code-keyword">var</span> definition = WFDefinitionIdentityFactory.Instance[definitionIdentity];
+    IDictionary&lt;string, object&gt; dic = <span class="code-keyword">null</span>;
+    <span class="code-keyword">var</span> app2 = <span class="code-keyword">new</span> WorkflowApplication(definition, instance.DefinitionIdentity)
+    {
+        Completed = e =&gt;
+        {
+            completed2 = <span class="code-keyword">true</span>;
+            <span class="code-keyword">if</span> (e.CompletionState== ActivityInstanceState.Closed)
+            {
+                dic = e.Outputs;
+            }
+        },
+
+        Unloaded = e =&gt;
+        {
+            unloaded2 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        InstanceStore = WFDefinitionIdentityStore.Instance.Store,
+    };
+
+    stopwatch.Restart();
+    app2.Load(instance);
+    Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">It took {0} seconds to load workflow"</span>, stopwatch.Elapsed.TotalSeconds);
+
+    app2.Run();
+    syncEvent.WaitOne();
+    stopwatch2.Stop();
+    <span class="code-keyword">var</span> seconds = stopwatch2.Elapsed.TotalSeconds;
+
+    Assert.True(completed2);
+    Assert.True(unloaded2);
+
+    <span class="code-keyword">return</span> dic;
+
+}
+
+[Fact]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestWaitForSignalOrDelay()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> WaitForSignalOrDelay()
+    {
+        Duration=TimeSpan.FromSeconds(<span class="code-digit">10</span>),
+        BookmarkName=<span class="code-string">"</span><span class="code-string">Wakeup"</span>,
+    };
+
+    <span class="code-keyword">var</span> definitionIdentity = WFDefinitionIdentityFactory.GetWorkflowIdentity(a);
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a, definitionIdentity)
+    {
+        InstanceStore = WFDefinitionStore.Instance.Store,
+        PersistableIdle = (eventArgs) =&gt;
+        {
+            <span class="code-keyword">return</span> PersistableIdleAction.Unload;
+        },
+
+        OnUnhandledException = (e) =&gt;
+        {
+            <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+        },
+
+        Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+        {
+            completed1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        Unloaded = (eventArgs) =&gt;
+        {
+            unloaded1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+    app.Run();
+
+    syncEvent.WaitOne();
+    Assert.False(completed1);
+    Assert.True(unloaded1);
+
+    Thread.Sleep(<span class="code-digit">5000</span>); <span class="code-comment">//</span><span class="code-comment"> from 1 seconds to 9 seconds, the total time of the test case is the same.</span>
+
+    <span class="code-keyword">var</span> outputs = LoadAndCompleteLongRunning(id, definitionIdentity); <span class="code-comment">//</span><span class="code-comment">at this point, the workflow definition is not yet added into the dictionary of WFDefinitionIdentityFactory.</span>
+
+    Assert.False((<span class="code-keyword">bool</span>)outputs[<span class="code-string">"</span><span class="code-string">Result"</span>]);
+
+}
+</pre>
+
+<p>In the 2nd test case, the initial run of the workflow does not persist the workflow definition in the dictionary of WFDefinitionIdentityFactory. However, when reloading, WorkflowIdentity is sufficient enough for creating an instance of the definition through reflection. And when the workflow instance is persisted, the WorkflowIdentity object is saved in the DefinitionIdentityTable of the WF SQL database by Workflow runtime.</p>
+
+<p>&nbsp;</p>
+
+<h2>Side by Side Versioning in Web-hosted Workflow Service</h2>
+
+<p>There exist quite a few good articles about side by side versioning:</p>
+
+<ul>
+	<li><a href="https://msdn.microsoft.com/en-us/library/hh314045.aspx">Side by Side Versioning in WorkflowServiceHost</a></li>	<li><a href="http://blogs.msmvps.com/theproblemsolver/2012/10/11/side-by-side-versioning-of-workflow-services/">Side by side Versioning of workflow services</a></li></ul>
+
+<p>If you want multiple versions of a workflow service side by side and each will receive new requests and create new instances, you may:</p>
+
+<ol>
+	<li>Ccreate a new folder under the project folder, so the folder name will become a path segment of the new endpoint address for newer version of the workflow service,</li>	<li>Copy the xamlx file to there</li>	<li>Update the features with same contract, same binding, but different endpoint address.</li></ol>
+
+<p>However, you must not name the new folder as "app_code", since WF runtime uses this folder for special purpose, as described by MSDN below.</p>
+
+<p><strong>MSDN:</strong></p>
+
+<p><em>The <a href="https://msdn.microsoft.com/en-us/library/system.servicemodel.activities.workflowservicehost.aspx">WorkflowServiceHost</a> side-by-side versioning introduced in .NET Framework 4.5 provides the capability to host multiple versions of a workflow service<strong> on a single endpoint</strong>. The side-by-side functionality provided allows a workflow service to be configured so that new instances of the workflow service are created using the new workflow definition,<strong> while running instances complete using the existing definition</strong>.</em></p>
+
+<p>So no new workflow instance can be created for the old workflow definition.</p>
+
+<p>If you use a self-hosted workflow service, you will need to do the house keeping works as you do in Examples for WFDeiniitionIdentityStore above, and each versions implemented in different activity classes, and use WorkflowIdentity to announce that they are the same service but at different versions.</p>
+
+<p>If you use a Web-hosted Workflow Service, WF runtime will handle much of the house keeping works for you. The SupportedVersions property of the primary service will be populated during runtime when the service is instantiated. Upon receiving a client request with an existing session Id for an existing workflow instance persisted in the SQL database, WF runtime will load the old version of workflow definition stored in ~/app_code/MyVersionedService/MyVersionedServiceVx.xamlx for further execution of the same workflow instance.</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>By the nature of continuing remaining instances of old version and creating new instances of new version, it is impossible to create automatic testing to demonstrate the behaviors, because the behaviors are not repetitive within a single build of the service. However, you may observe the behaviors through following the development cycles of 2 versions of the workflow service as described in <a href="https://msdn.microsoft.com/en-us/library/hh314045.aspx">Side by Side Versioning in WorkflowServiceHost</a>.</p>
+
+<h2>Points of Interest</h2>
+
+<h3>Persistence of Workflow Definitions</h3>
+
+<p>Class <code>WFDefinitionStore </code>basically compensates what available in WF 3.5 but being missed in WF 4.0 and 4.5, that is, persisting workflow definition along with each instance of the workflow. If you have legacy WF 3.5 applications and would move to WF 4.5, this class may be a good starting point for you to migrate with least effort.</p>
+
+<p>Class <code>WFDefinitionIdentityStore </code>enables storing one workflow definition for all instances of the workflow.</p>
+
+<p>Both <code>WFDefinitionStore </code>and <code>WFDefinitionIdentityStore</code> serialize a workflow into XAML. When the application loads and runs a persisted workflow, the application does not even need to know and load the workflow type and its assembly, since the XAML is sufficient enough to provide the workflow logic, and the deserialization does not return the original workflow type but type Activity.</p>
+
+<p>Class <code>WFDefinitionIdentityFactory </code>has almost identical interface of <code>WFDefintionIdentityStore</code>, however with very different mechanism of persisting workflow definitions. <code>WFDefinitionIdentityFactory </code>uses .NET assemblies as the ultimate persistence media rather than XAML, so there's no need for SQL database or NoSql for persistence.</p>
+
+<h3>WorkflowIdentity and Versioning</h3>
+
+<p>The move to not having built-in solution of persisting workflow definitions in WF 4 is a good move/design, since many workflow applications do not need to persist the workflow definitions in a persistence layer, while the respective functions have knowledge of which workflow definitions to use when resuming a workflow instance, thus have no need for serialization and deserialization of workflow definitions. For scenarios that need persisting workflow definitions, <code>WFDefinitionStore </code>and <code>WFDefinitionIdentityStore</code> and&nbsp;<code>WFDefinitionIdentityFactory </code>may give you some hints. And the flexibility through versioning supported by WorkflowIdentity may lead to higher performance of workflow definition reload for variety of scenarios. &nbsp;</p>
+
+<h3>Workflow Service and WCF</h3>
+
+<p>If you have read&nbsp;<a href="http://www.codeproject.com/Articles/627240/WCF-for-the-Real-World-Not-Hello-World" id="ctl00_MC_AR_ctl14_CAR_Title">WCF for the Real World, Not Hello World</a> or similar articles, you see that you could have separated projects of WCF service library and WCF service application. And you could carry out most of the development in WCF service library and use the WCF service application as a simple facade container containing multiple WCF service library assemblies for further configuration during deployment. So a WCF service library could be freely hosted in IIS or a self-hosted application. Therefore you could have very clean separation of concerns over development and deployment, that is, during development, you as a developer don't need to think about deployment.</p>
+
+<p>For WCF Workflow service, you may have to carryout most of the development inside a WCF Workflow service application project and design most of the workflow logic inside an XAMLX file. There seems no instrument or interface in WF for constructing something like WCF service library, which could be used in both IIS-hosted deployment and self-hosted deployment. So in SDLC, you may have to think about the deployment of workflows or workflow services at early stages. If you have other ideas, please leave a comment.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<!-- Article Ends -->
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-4-5-through-Unit">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-through-Unit-T-4?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/1095842/Learn-Windows-Workflow-Foundation-through-Unit-T-4?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2016 by Zijian<br>Everything else
+				Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>

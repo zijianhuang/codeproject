@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<!-- saved from url=(0138)https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu -->
+<html style="height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><!-- is_embed=False -->
+<script async="" type="text/javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/gpt.js.download"></script><script>
+  const observer = new PerformanceObserver((list) => {
+    list.getEntries().forEach((entry) => {
+      console.log('%o', entry);
+    })
+  });
+  observer.observe({type: "navigation", buffered: true});
+</script>
+<script src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/athena.js.download" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app216.us.archive.org';v.server_ms=344;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/bundle-playback.js.download" charset="utf-8"></script>
+<script type="text/javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/wombat.js.download" charset="utf-8"></script>
+<script>window.RufflePlayer=window.RufflePlayer||{};window.RufflePlayer.config={"autoplay":"on","unmuteOverlay":"hidden"};</script>
+<script type="text/javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/ruffle.js.download"></script>
+<script type="text/javascript">
+    __wm.init("https://web.archive.org/web");
+  __wm.wombat("https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu","20170716212047","https://web.archive.org/","web","/_static/",
+	      "1500240047");
+</script>
+<link rel="stylesheet" type="text/css" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/iconochive.css">
+<!-- End Wayback Rewrite JS Include -->
+
+	<title>TraceHub, a flexible solution for Web based structured logging - CodeProject</title> 
+	<link type="text/css" rel="stylesheet" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/Main.min.css">
+<link type="text/css" rel="stylesheet" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/no-media-query.min.css">
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Overview of TraceHub, and the design concepts/contexts behind this open source project; Author: Zijian; Updated: 11 Jun 2017; Section: Applications &amp; Tools; Chapter: Web Development; Updated: 11 Jun 2017">
+<meta name="Keywords" content="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,Applications &amp; Tools,Web Development,Free source code, tutorials">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+<link rel="dns-prefetch" href="https://web.archive.org/web/20170716212047/https://ajax.googleapis.com/"> 
+
+
+
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - All Topics" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=1">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Latest articles - Android" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/WebServices/ArticleRSS.aspx?cat=22">
+<link rel="alternate" type="application/rss+xml" title="CodeProject Lounge Postings" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/webservices/LoungeRSS.aspx">
+<meta name="robots" content="index, follow">
+<link rel="search" type="application/opensearchdescription+xml" title="CodeProject" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/OpenSearch.xml">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+<script type="application/ld+json">
+{
+  "@context": "https://web.archive.org/web/20170716212047/http://schema.org",
+  "@type": "TechArticle",
+  "headline": "TraceHub, a flexible solution for Web based structured logging",
+  "url": "https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu",
+  "discussionUrl": "https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu",
+  "isFamilyFriendly": "true",
+  "image": "https://web.archive.org/web/20170716212047/https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "description": "Overview of TraceHub, and the design concepts/contexts behind this open source project",
+  "keywords": "C#, Javascript, HTML, Architect, Dev, Design, SysAdmin, Manager, DevOps",
+  "articleSection": "Applications & Tools",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Zijian",
+    "url" : "https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+  },
+  "datePublished": "2016-08-23",
+  "dateCreated": "2016-08-23",
+  "dateModified": "2017-06-11",
+  "aggregateRating" : {
+    "@type" : "aggregateRating",
+    "ratingValue" : 4.95,
+    "ratingCount" : 9,
+    "bestRating" : 5,
+    "worstRating" : 1
+  },
+  "license": "https://web.archive.org/web/20170716212047/http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://web.archive.org/web/20170716212047/http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/Chapters/2/Web-Development.aspx",
+      "name" : "Web Development"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/KB/applications/",
+      "name" : "Applications & Tools"
+    }
+  }]
+}
+</script>
+	<!--<base target="_top">--><base href="." target="_top">
+	<link rel="icon" href="https://web.archive.org/web/20170716212047im_/https://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="shortcut icon" href="https://web.archive.org/web/20170716212047im_/https://www.codeproject.com/favicon.ico" type="image/ico">
+<link rel="apple-touch-icon" href="https://web.archive.org/web/20170716212047im_/https://www.codeproject.com/favicon.ico" type="image/png">
+<script type="text/javascript" language="Javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/jquery.min.js.download"></script><script type="text/javascript">//<![CDATA[
+if (typeof jQuery == 'undefined') {
+  var altScript  = document.createElement('script');
+  altScript.type = 'text/javascript';
+  altScript.src  = unescape('%2fscript%2fJS%2fjquery.2.2.4.js');
+  var target = document.getElementsByTagName('script')[0];
+  target.parentNode.insertBefore(altScript, target);
+}//]]></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+function defrm () { /* thanks twitter */ document.write = ''; window.top.location = window.self.location;  setTimeout(function() { document.body.innerHTML = ''; }, 0);  window.self.onload = function(evt) { document.body.innerHTML = ''; }; }if (window.top !== window.self) {  try {  if (window.top.location.host) { /* will throw */ } else { defrm(); /* chrome */ }  } catch (ex) { defrm(); /* everyone else */ } }if (typeof(DemoUrl)!='undefined')   document.write(unescape('%3Cme')+'ta http'+'-equiv="re'+'fresh"                  con'+'tent="1;url='+DemoUrl+unescape('"%3CE'));
+
+//]]>
+</script>
+
+	
+
+
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-1735123-1']);
+	_gaq.push(['_trackPageview']);
+	_gaq.push(['_setDomainName', 'www.codeproject.com']);
+	_gaq.push(['_setSessionTimeout', '1200']); 
+
+	(function () {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://web.archive.org/web/20170716212047/https://ssl' : 'https://web.archive.org/web/20170716212047/http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})(); 
+</script><script type="text/javascript" async="" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/ga.js.download"></script>
+
+
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/translateelement.css"><script type="text/javascript" charset="UTF-8" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/main.js.download"></script><script type="text/javascript" charset="UTF-8" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/element_main.js.download"></script></head>	
+
+<body class="internet archive internet archive0" style="position: relative; min-height: 100%; top: 0px;"><!-- BEGIN WAYBACK TOOLBAR INSERT -->
+<script>__wm.rw(0);</script>
+<div id="wm-ipp-base" lang="en" style="display: block; direction: ltr; height: 107px;"><template shadowrootmode="closed"><div id="wm-ipp" style="position:fixed;left:0;top:0;right:0;" class="">
+<div id="donato" style="position: relative; width: 100%; height: 40px;">
+  <div id="donato-base" style="height: 40px;">
+    <iframe id="donato-if" src="https://archive.org/includes/donate.php?as_page=1&amp;platform=wb&amp;referer=https%3A//web.archive.org/web/20170716212047/https%3A//www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" scrolling="no" frameborder="0" style="width:100%; height:100%">
+    </iframe>
+  </div>
+</div><div id="wm-ipp-inside">
+  <div id="wm-toolbar" style="position:relative;display:flex;flex-flow:row nowrap;justify-content:space-between;">
+    <div id="wm-logo" style="/*width:110px;*/padding-top:12px;">
+      <a href="https://web.archive.org/web/" title="Wayback Machine home page"><img src="https://web.archive.org/_static/images/toolbar/wayback-toolbar-logo-200.png" srcset="/_static/images/toolbar/wayback-toolbar-logo-100.png, /_static/images/toolbar/wayback-toolbar-logo-150.png 1.5x, /_static/images/toolbar/wayback-toolbar-logo-200.png 2x" alt="Wayback Machine" style="width:100px" border="0"></a>
+    </div>
+    <div class="c" style="display:flex;flex-flow:column nowrap;justify-content:space-between;flex:1;">
+      <form class="u" style="display:flex;flex-direction:row;flex-wrap:nowrap;" target="_top" method="get" action="https://web.archive.org/web/submit" name="wmtb" id="wmtb"><input type="text" name="url" id="wmtbURL" value="https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" onfocus="this.focus();this.select();" style="flex:1;" autocomplete="off"><input type="hidden" name="type" value="replay"><input type="hidden" name="date" value="20170716212047"><input type="submit" value="Go">
+      </form>
+      <div style="display:flex;flex-flow:row nowrap;align-items:flex-end;">
+                <div class="s" id="wm-nav-captures" style="flex:1;"><a class="t" href="https://web.archive.org/web/*/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" title="See a list of every capture for this URL">9 captures</a><div class="r" title="Timespan for captures of this URL">24 Aug 2016 - 16 Jul 2017</div></div>
+        <div class="k">
+          <a href="https://web.archive.org/web/20050801000000/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" id="wm-graph-anchor">
+            <div id="wm-ipp-sparkline" title="Explore captures for this URL" style="position: relative">
+              <canvas id="wm-sparkline-canvas" width="725" height="27" border="0"></canvas>
+            <div class="yt" style="display: none; width: 25px; height: 27px; left: 225px;"></div><div class="mt" style="display: none; width: 2px; height: 27px; left: 240px;"></div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="n">
+      <table>
+        <tbody>
+          <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+          <tr class="m">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20170613171651/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" title="13 Jun 2017"><strong>Jun</strong></a></td>
+            <td class="c" id="displayMonthEl" title="You are here: 21:20:47 Jul 16, 2017">Jul</td>
+            <td class="f" nowrap="nowrap">Aug</td>
+          </tr>
+          <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+          <tr class="d">
+            <td class="b" nowrap="nowrap"><a href="https://web.archive.org/web/20170613171651/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" title="17:16:51 Jun 13, 2017"><img src="https://web.archive.org/_static/images/toolbar/wm_tb_prv_on.png" alt="Previous capture" width="14" height="16" border="0"></a></td>
+            <td class="c" id="displayDayEl" style="width:34px;font-size:22px;white-space:nowrap;" title="You are here: 21:20:47 Jul 16, 2017">16</td>
+            <td class="f" nowrap="nowrap"><img src="https://web.archive.org/_static/images/toolbar/wm_tb_nxt_off.png" alt="Next capture" width="14" height="16" border="0"></td>
+          </tr>
+          <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+          <tr class="y">
+            <td class="b" nowrap="nowrap">2016</td>
+            <td class="c" id="displayYearEl" title="You are here: 21:20:47 Jul 16, 2017">2017</td>
+            <td class="f" nowrap="nowrap">2018</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="r" style="display:flex;flex-flow:column nowrap;align-items:flex-end;justify-content:space-between;">
+      <div id="wm-btns" style="text-align:right;height:23px;">
+                <span class="xxs">
+          <div id="wm-save-snapshot-success">success</div>
+          <div id="wm-save-snapshot-fail">fail</div>
+          <a id="wm-save-snapshot-open" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" title="Share via My Web Archive" style="display: none;">
+            <span class="iconochive-web"></span>
+          </a>
+          <a href="https://archive.org/account/login.php" title="Sign In" id="wm-sign-in" style="display: inline-block;">
+            <span class="iconochive-person"></span>
+          </a>
+          <span id="wm-save-snapshot-in-progress" class="iconochive-web" style="display: none;"></span>
+        </span>
+                <a class="xxs" href="http://faq.web.archive.org/" title="Get some help using the Wayback Machine" style="top:-6px;"><span class="iconochive-question" style="color:rgb(87,186,244);font-size:160%;"></span></a>
+        <a id="wm-tb-close" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#close" style="top:-2px;" title="Close the toolbar"><span class="iconochive-remove-circle" style="color:#888888;font-size:240%;"></span></a>
+      </div>
+      <div id="wm-share" class="xxs">
+        <a href="https://web.archive.org/web/20170716212047/http://web.archive.org/screenshot/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" id="wm-screenshot" title="screenshot" style="visibility: hidden;">
+          <span class="wm-icon-screen-shot"></span>
+        </a>
+        <a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" id="wm-video" title="video">
+          <span class="iconochive-movies"></span>
+        </a>
+        <a id="wm-share-facebook" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" data-url="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" title="Share on Facebook" style="margin-right:5px;" target="_blank"><span class="iconochive-facebook" style="color:#3b5998;font-size:160%;"></span></a>
+        <a id="wm-share-twitter" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" data-url="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" title="Share on Twitter" style="margin-right:5px;" target="_blank"><span class="iconochive-twitter" style="color:#1dcaff;font-size:160%;"></span></a>
+      </div>
+      <div style="padding-right:2px;text-align:right;white-space:nowrap;">
+        <a id="wm-expand" class="wm-btn wm-closed" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#expand"><span id="wm-expand-icon" class="iconochive-down-solid"></span> <span class="xxs" style="font-size:80%;">About this capture</span></a>
+      </div>
+    </div>
+  </div>
+    <div id="wm-capinfo" style="border-top:1px solid #777;display:none; overflow: hidden">
+        <div id="wm-capinfo-notice" source="api"></div>
+                <div id="wm-capinfo-collected-by">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center">COLLECTED BY</div>
+    <div style="padding:3px;position:relative" id="wm-collected-by-content">
+            <div style="display:inline-block;vertical-align:top;width:50%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/webwidecrawl);"></span>
+		Organization: <a style="color:#33f;" href="https://archive.org/details/webwidecrawl" target="_new"><span class="wm-title">Internet Archive</span></a>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  The Internet Archive discovers and captures web pages through many different web crawls.
+
+At any given time several distinct crawls are running, some for months, and some every day or longer.
+
+View the web archive through the <a href="http://archive.org/web/web.php">Wayback Machine</a>.
+	</div>
+	      </div>
+      <div style="display:inline-block;vertical-align:top;width:49%;">
+			<span class="c-logo" style="background-image:url(https://archive.org/services/img/wide00016)"></span>
+		<div>Collection: <a style="color:#33f;" href="https://archive.org/details/wide00016" target="_new"><span class="wm-title">Wide Crawl Number 16: Started June 3rd, 2017 - Still running</span></a></div>
+		<div style="max-height:75px;overflow:hidden;position:relative;">
+	  <div style="position:absolute;top:0;left:0;width:100%;height:75px;background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,rgba(255,255,255,0) 90%,rgba(255,255,255,255) 100%);"></div>
+	  Web wide crawl number 16<div><br></div><div>The seed list for Wide00016 was made from the join of the top 1 million domains from CISCO and the top 1 million domains from Alexa.</div><div><br><div><br></div><div><br></div></div>
+	</div>
+	      </div>
+    </div>
+    </div>
+    <div id="wm-capinfo-timestamps">
+    <div style="background-color:#666;color:#fff;font-weight:bold;text-align:center" title="Timestamps for the elements of this page">TIMESTAMPS</div>
+    <div>
+      <div id="wm-capresources" style="margin:0 5px 5px 5px;max-height:250px;overflow-y:scroll !important"></div>
+      <div id="wm-capresources-loading" style="text-align:left;margin:0 20px 5px 5px;display:none"><img src="https://web.archive.org/_static/images/loading.gif" alt="loading"></div>
+    </div>
+    </div>
+  </div></div></div><link rel="stylesheet" type="text/css" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/banner-styles.css"><link rel="stylesheet" type="text/css" href="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/iconochive.css"><div class="wb-autocomplete-suggestions "></div></template>
+</div><div id="wm-ipp-print">The Wayback Machine - https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu</div>
+<script type="text/javascript">//<![CDATA[
+__wm.bt(725,27,25,2,"web","https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu","20170716212047",1996,"/_static/",["/_static/css/banner-styles.css?v=S1zqJCYt","/_static/css/iconochive.css?v=3PDvdIFv"], false);
+  __wm.rw(1);
+//]]></script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+ 
+
+<a class="access-link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#Main"><img alt="Click here to Skip to main content" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/t.gif"></a>
+
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+<div class="alert-bar  overlay " style="">
+	<a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" class="close-notify">×</a>
+	<div>Sign up for our free weekly <a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/feature/web-newsletter">Web Developer Newsletter</a>.</div>
+</div>
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix">
+
+	<div id="ctl00_MemberMenu_GenInfo" class="float-left">13,034,476 members (80,691 online)</div>
+
+	<div class="float-left">
+		
+	</div>
+
+	<div class="float-right">
+
+		
+
+		
+
+		
+
+			<script type="text/javascript">//<!--
+			function doSubmit(secure)
+			{
+				if (secure)
+					document.subForm.action = "https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu"
+				else
+					document.subForm.action = "https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu"
+				document.subForm.submit();
+				return true;
+			}//-->
+			</script>
+
+			<a name="SignUp"></a>
+			<span class="member-signin tooltip openable">
+				<span><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu">Sign in</a></span>
+
+				<div class="tooltip-flyout">
+					<form name="subForm" id="subForm" action="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu" method="post" class="tight">
+
+						
+						<input id="FormName" name="FormName" value="MenuBarForm" type="hidden">
+
+						<div>Email</div>
+						<div><input class="small-text" type="email" name="Email" id="Email"></div>
+						<div>Password</div>
+						<div><input class="small-text" type="password" name="Password" id="Password"></div>
+						<div class="action">
+							
+                                  <input id="joinBtn" type="button" class="create hidden" onclick="return Join();" value="Join" style="visibility: visible;">
+                                  <input type="hidden" name="fld_quicksign" value="true">
+                                  <script type="text/javascript">
+                                  function simpleMask(str, key) {
+                                      var result = ''; 
+                                      for (var i = 0; i < str.length; ++i)
+                                          result += String.fromCharCode(key ^ str.charCodeAt(i));
+                                      return result;
+                                  }
+                                  function Join() {
+                                      var url = 'https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/Modify.aspx';
+document.location.href=url;
+                                      return false;
+                                  }
+                                  $('#joinBtn').css('visibility', 'visible');
+                                  </script>
+							<input type="submit" value="Sign in" class="signin" onclick="return doSubmit(false);">
+						</div>
+
+						<div class="container">
+							
+							&nbsp;
+							<a id="ctl00_MemberMenu_SendPassword" class="forgot float-right" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/SendPassword.aspx?rp=/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu">Forgot your password?</a>
+						</div>
+					</form>
+
+					<hr class="divider-dark">
+
+					Sign in with <a class="oauth" title="Sign in using Github" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=GitHub"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/octicons_github.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Linkedin" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=LinkedIn"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/linkedin.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Facebook" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Facebook"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/facebook.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Google" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Google"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/google-plus.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+<a class="oauth" title="Sign in using Microsoft" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/OAuthLogOn.aspx?auth=Microsoft"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/microsoft.png" style="vertical-align:middle;padding-right:3px;border:0;"></a>
+
+				</div>
+            </span>
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed">
+        <div class="main-content">
+            <div class="logo"><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"><div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=728x90&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=728x90&amp;c=483425" width="728px" height="90px" target="_blank"/></a></noscript></div></div>
+        </div>
+    </div>
+
+	<a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#Main"><img alt="Click here to Skip to main content" class="access-link" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/t.gif"></a>
+
+	
+	<div id="ctl00_TPR" class="sub-headerbar clearfix fixed">
+    <div class="float-right">
+		
+
+<div class="searchbar">
+
+<form method="get" action="https://web.archive.org/web/20170716212047/https://www.codeproject.com/search.aspx?sbo=kw" name="Search" class="tight">
+
+
+<table border="0" cellspacing="0" cellpadding="0" class="search"><tbody><tr><td><input tabindex="2" class="search  subdue" id="sb_tb" value="" name="q"></td><td><input type="image" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/search.gif"></td></tr></tbody></table>
+
+<div class="hover-container">
+	<div id="SearchFilter" class="search-advanced small-text align-left" style="display: none;">
+	<b>Search within:<br></b>
+		
+		<input type="radio" id="sb_kw" name="sbo" value="kw" checked="true"><label for="sb_kw">Articles</label><br>
+<input type="radio" id="sb_qa" name="sbo" value="qa"><label for="sb_qa">Quick Answers</label><br>
+<input type="radio" id="sb_fm" name="sbo" value="fm"><label for="sb_fm">Messages</label><br>
+
+
+		
+		
+
+		
+		
+	</div>
+</div>
+</form>
+
+</div>
+    </div>
+    <div class="float-left">
+		
+
+<div class="navbar clearfix">
+<ul class="navmenu openable">
+
+<li class="desktop-only"><a id="ctl00_TopNavBar_Home" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/">home</a>
+
+
+</li><li class="openable"><a id="ctl00_TopNavBar_Art" class="down selected" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/Latest.aspx">articles</a>
+
+	<ul>
+		<li class="openable"><a id="ctl00_TopNavBar_ArtTopicList" class="fly" onmouseover="navBarMenu.ShowMap(this, &#39;ctl00_TopNavBar_MapFlyout&#39;);" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Content/SiteMap.aspx">Chapters and Sections<span class="has-submenu">&gt;</span></a><ul id="ctl00_TopNavBar_MapFlyout">
+			<li>
+				<div id="siteMap">
+					<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/animated.gif" alt="loading" style="margin:150px;width:100px;height:100px;">
+				</div>
+			</li>
+			</ul>
+		</li>
+		<li><a id="ctl00_TopNavBar_ArtSearch" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/search.aspx?sbo=kw">Search</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestArts" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/Latest.aspx?at=1,3,7">Latest Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtLatestTips" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/Latest.aspx?at=6">Latest Tips/Tricks</a></li>
+		<li><a id="ctl00_TopNavBar_ArtTop" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/TopArticles.aspx?ta_so=5">Top Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBeginner" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/search.aspx?sbo=kw?aidlst=152&amp;sa_us=True">Beginner Articles</a></li>
+		<li><a id="ctl00_TopNavBar_ArtBlogArticles" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/BlogArticleList.aspx">Technical Blogs</a></li>
+		<li><a id="ctl00_TopNavBar_ArtGuide" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/Submit.aspx">Posting/Update Guidelines</a></li>
+		<li><a id="ctl00_TopNavBar_ArtHelpForum" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_ArtCompetition" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1">Article Competition</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostArticle" class="fly highlight1" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/Submit.aspx">
+			<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/write13.png" width="13px" height="13px"> Submit an article or tip
+			</a></li>
+		<li><a id="ctl00_TopNavBar_ArtPostBlog" class="fly highlight2" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/BlogFeed.aspx">
+			<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/write13.png" width="13px" height="13px"> Post your Blog
+			</a></li>		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="openable">
+<a id="ctl00_TopNavBar_Answers" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active">
+    <span class="desktop-only tablet-only">quick answers</span><span class="mobile-only">Q&amp;A</span>
+</a>
+	<ul>
+		<li id="ctl00_TopNavBar_AQL"><a id="ctl00_TopNavBar_ArticleQuestion" class="fly highlight1" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#_comments">
+			<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question about this 
+			article</a>
+		</li>
+
+		<li><a id="ctl00_TopNavBar_QAAsk" class="fly highlight2" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Questions/ask.aspx"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/write13.png" width="13px" height="13px"> Ask a Question</a></li>
+
+		
+		<li><a id="ctl00_TopNavBar_QAUnanswered" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=unanswered">View Unanswered Questions</a></li>
+		<li><a id="ctl00_TopNavBar_QALatest" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active">View All Questions...</a></li>
+		
+				<li><a id="ctl00_TopNavBar_QATR_ctl00_Tag" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=81" style="padding-left:30px">C# questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl01_Tag" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=85" style="padding-left:30px">ASP.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl02_Tag" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=93" style="padding-left:30px">SQL questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl03_Tag" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=842" style="padding-left:30px">VB.NET questions</a></li>
+			
+				<li><a id="ctl00_TopNavBar_QATR_ctl04_Tag" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Answers/List.aspx?tab=active&amp;alltags=true&amp;tags=87" style="padding-left:30px">Javascript questions</a></li>
+			
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+
+<li class="openable"><a id="ctl00_TopNavBar_Forums" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Forums/List.aspx">
+        <span class="desktop-only tablet-only">discussions</span><span class="mobile-only">forums</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_MessageBoardsAll" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Forums/List.aspx">All Message Boards...</a></li>
+		<li class="openable"><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1580997/Application-Lifecycle.aspx">Application Lifecycle<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1533717/Running-a-Business.aspx">Running a Business</a></li>
+<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1533716/Sales-Marketing.aspx">Sales / Marketing</a></li>
+<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1651/Collaboration-Beta-Testing.aspx">Collaboration / Beta Testing</a></li>
+<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/3304/Work-Issues.aspx">Work  Issues</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/369270/Design-and-Architecture.aspx">Design and Architecture</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/12076/ASP-NET.aspx">ASP.NET</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1580226/JavaScript.aspx">JavaScript</a>
+</li>
+<li class="openable"><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1647/C-Cplusplus-MFC.aspx">C / C++ / MFC<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/4486/ATL-WTL-STL.aspx">ATL /  WTL / STL</a></li>
+<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/3785/Managed-Cplusplus-CLI.aspx">Managed C++/CLI</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1649/Csharp.aspx">C#</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1627782/Free-Tools.aspx">Free Tools</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1827460/Objective-C-and-Swift.aspx">Objective-C and Swift</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1725/Database.aspx">Database</a>
+</li>
+<li class="openable"><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/186301/Hardware-Devices.aspx">Hardware &amp; Devices<span class="has-submenu">&gt;</span></a>
+<ul class="openable"><li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1644/System-Admin.aspx">System Admin</a></li>
+</ul></li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1606152/Hosting-and-Servers.aspx">Hosting and Servers</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1643/Java.aspx">Java</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1650/NET-Framework.aspx">.NET Framework</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1848626/Android.aspx">Android</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1876716/iOS.aspx">iOS</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/13695/Mobile.aspx">Mobile</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1540733/SharePoint.aspx">SharePoint</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1004257/Silverlight-WPF.aspx">Silverlight / WPF</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1646/Visual-Basic.aspx">Visual Basic</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1640/Web-Development.aspx">Web Development</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/suggestions.aspx">Site Bugs / Suggestions</a>
+</li>
+<li><a class="fly" style="padding-left:30px" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1652005/Spam-and-Abuse-Watch.aspx">Spam and Abuse Watch</a>
+</li>
+
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+<li class="openable desktop-only"><a id="ctl00_TopNavBar_Features" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Feature/">features</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_Comps" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Awards/CurrentCompetitions.aspx?cmpTpId=1&amp;awsac=true">Competitions</a></li>
+		<li><a id="ctl00_TopNavBar_News" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/News/List.aspx">News</a></li>
+		<li><a id="ctl00_TopNavBar_Insider" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Feature/Insider/">The Insider Newsletter</a></li>
+    	<li><a id="ctl00_TopNavBar_DailyBuild" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Feature/DailyBuild">The Daily Build Newsletter</a></li>
+		<li><a id="ctl00_TopNavBar_Newsletters" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Mailouts/Archive.aspx?mtpid=1">Newsletter archive</a></li>
+		<li><a id="ctl00_TopNavBar_Surveys" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Surveys/List.aspx">Surveys</a></li>
+		<li><a id="ctl00_TopNavBar_Showcase" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/showcase/">Product Showcase</a></li>
+		<li><a id="ctl00_TopNavBar_Research" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/ResearchLibrary/Index.aspx">Research Library</a></li>
+
+		<li><a id="ctl00_TopNavBar_Stuff" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Info/Stuff.aspx">CodeProject Stuff</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+
+<li class="openable"><a id="ctl00_TopNavBar_Lounge" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Lounge.aspx">
+            <span class="desktop-only tablet-only">community</span><span class="mobile-only">lounge</span>
+</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_WhosWho" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/Profiles.aspx">Who's Who</a></li>
+		<li><a id="ctl00_TopNavBar_MVPs" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Awards/MVPWinners.aspx">Most Valuable Professionals</a></li>
+		
+
+		<li><a id="ctl00_TopNavBar_LoungeLnk" class="fly highlight2" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Lounge.aspx">The Lounge &nbsp;</a></li>
+		<li><a id="ctl00_TopNavBar_InsiderLnk" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Insider.aspx">The Insider News</a></li>
+		<li><a id="ctl00_TopNavBar_WeirdWonderful" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Feature/WeirdAndWonderful.aspx">The Weird &amp; The Wonderful</a></li>
+		<li><a id="ctl00_TopNavBar_SoapBoxLnk" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1536756/The-Soapbox.aspx">The Soapbox</a></li>
+		<li><a id="ctl00_TopNavBar_PRLnk" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1738007/Press-Releases.aspx">Press Releases</a></li>
+
+		
+		<li class="openable"><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1580229/Hindi.aspx">Non-English Language
+			<span class="has-submenu">&gt;</span></a>
+		<ul>
+		<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1580229/Hindi.aspx">General Indian Topics</a></li>
+		<li><a class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1580230/Chinese.aspx">General Chinese Topics</a></li>
+		</ul>
+		</li><li class="last"></li>
+		
+	</ul>
+
+</li>
+
+
+<li class="openable desktop-only tablet-only" style="margin-left:20px"><a id="ctl00_TopNavBar_Help" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/FAQs/">help</a>
+
+	<ul>
+		<li><a id="ctl00_TopNavBar_HelpWhatIs" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/guide.aspx">What is 'CodeProject'?</a></li>
+		<li><a id="ctl00_TopNavBar_HelpGeneral" class="fly break" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/FAQs/">General FAQ</a></li>
+		<li><a id="ctl00_TopNavBar_HelpPostQuestion" class="fly break highlight2" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Questions/ask.aspx">Ask a Question</a></li>
+		<li><a id="ctl00_TopNavBar_HelpBugs" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/suggestions.aspx">Bugs and Suggestions</a></li>
+		<li><a id="ctl00_TopNavBar_HelpArticles" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Forums/1641/Article-Writing.aspx">Article Help Forum</a></li>
+		<li><a id="ctl00_TopNavBar_HelpSiteMap" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Content/SiteMap.aspx">Site Map</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAdvertise" class="fly" href="https://web.archive.org/web/20170716212047/http://developermedia.com/">Advertise with us</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutAds" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/AboutOurAds.aspx">About our Advertising</a></li>
+		<li><a id="ctl00_TopNavBar_HelpJobs" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/Jobs/">Employment Opportunities</a></li>
+		<li><a id="ctl00_TopNavBar_HelpAboutUs" class="fly" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/about.aspx">About Us</a></li>
+		<li class="last"></li>
+	</ul>
+
+</li>
+
+</ul>
+
+</div>
+    </div>
+	<div class="sub-headerbar-divider"></div>
+	</div>		
+	
+
+	<div id="A" class="container-content-wrap fixed"> 
+	<div class="container-content">
+
+
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> » <a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Chapters/2/Web-Development.aspx">Web Development</a> » <a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/applications/">Applications &amp; Tools</a> » <a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/applications/#General">General</a></div>
+			</div>
+
+            
+
+			<div class="edit-links float-right">
+				
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+                
+				
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+<a id="ctl00_ActionLinks_BookmarkMd_ImgBt" title="Bookmark" alternatetext="Bookmark" name="bm_1118166_2" onclick="return bookmarkMe(1118166,2,&#39;/script/Bookmarks/Ajax/Add.aspx?obid=1118166&amp;obtid=2&amp;bio=true&amp;bis=medium&#39;,&#39;medium&#39;);" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Bookmarks/Add.aspx?obid=1118166&amp;obtid=2&amp;bio=true&amp;bis=medium" style="display:inline-block;height:24px;width:24px;"><img title="Bookmark" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/bookmark24.png" alt="" style="border-width:0px;"></a>
+
+
+<span id="ctl00_ActionLinks_BookmarkMd_StatusMsg" class="tiny-text" style="display:none" name="bm_1118166_2"></span>
+<a id="ctl00_ActionLinks_PrintMd" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu?display=Print">
+	    <img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/print24.png" title="Print" width="24px" height="24px" style="border:0">
+    </a>
+			</div>
+		</div>
+
+		<table class="extended container-article-parts" cellpadding="0" cellspacing="0">
+        <tbody><tr valign="top">
+		<td width="117px" class="article-wing-left">
+
+			<div id="ctl00_Nav" class="container-article-tabs" style="position: static; top: 342px; left: 174.5px;">
+    			
+
+<div class="tabs">
+	<div class="selected">Article</div><div class="unselected"><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/ListAlternatives.aspx?aid=1118166">Alternatives</a></div>
+
+	<div class="unselected"><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/WebControls/#_comments" id="ctl00_ArticleTabs_CommentLink" class="anchorLink">Comments 
+        <span id="ctl00_ArticleTabs_CmtCnt"></span></a>
+	</div>
+</div>	
+
+
+				<a id="ctl00_AddAlternative" title="Write a related article about upgrades or translate this into a different language." class="add-item" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Articles/SubmissionWizard.aspx?at=1&amp;apid=1118166">Add your own<br>alternative version</a>
+
+			    <div>
+                    <h4>Tagged as</h4>
+			        <span id="ctl00_TagList_TagWrp" class="tags vertical">
+
+	
+	
+
+	
+	<span id="ctl00_TagList_VisibleTags"><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/C--hash--" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Javascript" data-id="87">Javascript</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/HTML" data-id="104">HTML</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Architect" data-id="116">Architect</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Dev" data-id="118">Dev</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Design" data-id="148">Design</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Intermediate" data-id="153">Intermediate</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Advanced" data-id="154">Advanced</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/SysAdmin" data-id="261">SysAdmin</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/Manager" data-id="2567">Manager</a></div><div class="t"><a rel="tag" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Tags/DevOps" data-id="2977">DevOps</a></div></span> 
+
+	
+	
+</span>
+
+
+			    </div>
+
+                <div class="stats">
+                <h4>Stats</h4>
+                <div id="ctl00_ArtStats"><div class="stats"><div>15.3K views</div><div>29 bookmarked</div></div></div>
+                </div>
+
+                <div class="subdue padded-top" title="Date First posted">Posted 
+                    23 Aug 2016</div>
+
+                <div title="Licence">
+                    <a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license" href="https://web.archive.org/web/20170716212047/http://www.codeproject.com/info/cpol10.aspx">CPOL</a>
+                </div>
+
+                
+			</div>
+
+		</td>
+		<td>
+			
+			<div id="AT" class="container-article  fixed"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="Op0RXzrxXQTT2Xtijl+UEZ6u9n3g7I5YBTxrEp8W3af0dZSfzktsc2b8h8z0JqNiw6sTKDb0fcV6EmqhE7D1v09uwa+6kAa6Pf3y8p0d/+SKaq/57LlfXQI8/3vDnE7RlhwtLA8lME9hBWh9+rNzMNc0RiKbwGe8cELKhGWyihv7iTp1B5gS/QZiQDQ/7HY2y7rXjzTIc0DyNoumxYXldP5ypk710yBUJo+FjNH+a80JOeXMupcPeZk5lhtmB2lfuXiyI7yxFa5QuoIkAk+lrf6SgX3ZHseaSuaJP+fQvWijDWPhO/xYQNZdmJKbnvRn4ej225RUtriRInx3pwpGkQMCDRGaPaHqIVE8H0B0oh94fXS0XWHqRGIUVcGsuqcRDWK5zVpiPU1sZpnxb7WiC0SvIwRpQlui2RyE3xH30NvEZ9sKSNtkRiG4pNpcimiPjLzPLrxlVbRvAxLbniNE1GQD+JTyAKIhNsIdAKvZ7c3BY8QtOu8+4ArUtaKQWfjDgGAcuRC6/xzv5dcaGGl/VVdPEShBP96KZjR6mIOuWhWwTT6Vh0Wfer3W1OPmxyhPlCsy0qUX/4x3b82Q7Zsr/+K59+EBKbKfp+S9GsmMGuCHLH1Fw0jN2iiLpR7wsOa3uB3ofdoO1+mmSosxZ6fxExmG/aaR0IO7Nz8j2KbsM1yEMtciUPiU0Oa/PZIYazlCfpysCzG41BRB/ZSrgdD6f3kjC+NT8YtN6titcHB5PpZvDHUS6cNt7y8cqyDVZ+2KKNhdspwDc56qjWtAAflKSIVxGXyEL6biU4cG6TE9j1/muQk9ti6gfSbbI1nT02IzmdtOzIBE+9/Onb26tw82wiQwVrpVfk8chSARzLBdCUFwFCWS3W4a6S+9NDaTSXGzSLnZFJSg0rWINpK3/9VfjBe8vhDtXiR4NeRcSKGrGT3onfHIQfZeRqkIIWGx3ma9X7UtnizHdKaXEdbAC1pvTPJEJ1LxDjgk4m7R4pchDwVWwQ72LdyjgwVZJGHooudzLXZkmk5Wt43B/0JHGhnNhF1jxpjsU9uN8XNlLpPOLdMFZ9Rg5jTnY/rQ3/ew3oBTAaNcfGliGt12KcfdtbwtJEWIN0HkeJY8nia9hPuGrysq030sHH4f2298OANsIurAsrZqwOS/u3qC2q+tjoG9hGVsUPtl5QNiZZy5JQ/Cj71AfpFVr7y0mNLL9LfElxWNn6vBUPwUHZgAm48K7nF3sWmjFBlg126mdiAAlZcm/uGrhNHWeBRH1dgXgfI3gl0NUdbbSBQ1GLDUJpUIjZ0kOXdpnd+vdqZb+dnyWK8YWDNuCBMXa1bnrANI+qj5TWcjtkYjVPf8VFtCWWzFFhkvlIPI4GG45frCjp+QZMRriviSOIZj2XU2/nMlkq1t2jCifDf0rB6V+fpfLZnKnOOJhy8FUFWq/L7tOxWP6sp4lROSiYpg6VflYeIRpyXItQ8N6titgQW5ZBQxSn+s5dxmu72puVqZjQBKcHWDpg+cncOngT5Nq5wAKL0ta3TlzWIaprWUk3g+Vv95YAOL2IgjQ3ehbiXPbQH1UlYwojFPIELGXRCrcrAkvr5k42ogaTWhGni6R1Zsepny9xvcblYYpXa8oo5ZRzVV/jxxV3PG6EH5WKcwykuFAWIjR+ytQ56rbZ5EMNOw54XPad520ShmxpmEZgreSHgiaGJGcFu1JEidAhClw136Ij1oKuA2H7xPdiMg0d2cM6+e8th3CFE8e484hqH7K4erzAscZBznw2xk1K2gE3yOHd++aacPsn7gMtO8anDVMqFc/L/NELWlruDje727rBTRhJO4IxfABy3phhEqUl6fk2TyRv505WOOZ4t07d6YCgyk84mmIsj1aENEKSNMrk4cO7rgIJUZtaM73KIuTj7u4K79F3g8AsS2+bndGIIWrj8c6p61vugMjEov86W1s6c5BsgQMMJghLNEf35iCX1+b+uvVBaxE6uVE9Bbgsioxvlm5alskURL8/DaCFFxh7wFBjQsQyw6nNNcSBj3saRXN47+Xbsk+GFp67Se/Hw4OA101P2GZYsUV/wEncl4N79hTLwYJ1U+WEUBMLDcg5CmZFIpSzX4UV+fOKPJ5FvxV0816edPJAAk/630YWYBaA+aqkj7XEQPDRBz4Q/FJlGdJAxreJ1Gtywa9Iq8zV0SH/7MUmI9HnkHmN3swdqqokD+C1Q8wGN5t8ddd78CKEyyhgpGQA4Ghep1xG7hKMsu34qHlSX6Yr30N2Gxk+B2a26ED578xMcB4B093xkoSyC/4FvWzBpBehwgZ4wtfDY/Q+hzUMbwyVR3es161hQ=">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+
+					    
+					    <a name="_articleTop" id="_articleTop"></a>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">TraceHub, a flexible solution for Web based structured logging</h1>
+					    </div>
+
+                        <div style="height:34px">
+					        
+					        <div class="entry float-left">
+
+                                <img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/{50ca0a3e-97bc-4243-b393-5c9db25186cf}.jpg" id="ctl00_avatar" class="float-left avatar">
+
+                                <div class="float-left">
+                                    <div>
+						                <span class="author"><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span>, 
+						                <span class="date" title="Date last updated">
+							            11 Jun 2017</span>
+			                        </div>
+
+                                    
+						            <div id="ctl00_RateArticleRow" class="float-left align-right" style="margin-top:5px">
+
+					                    <div id="ctl00_CurRat" class="tooltip anchorLink column" style="cursor:pointer;margin:2px 20px 0 0" name="CurRat_1118166">
+				
+							                
+
+<table cellpadding="0" cellspacing="0" class="small-text">
+<tbody><tr>
+	
+	<td class="nowrap">
+
+		<span id="ctl00_ArticleRating_VI">
+		<div class="nowrap rating-stars-medium" style="height:18px;width:80px;position:relative;">
+	<div class="clipped align-left float-left" style="height:16px;width:79px;">
+		<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/stars-fill-md.png" style="border-width:0px;">
+	</div><div class="clipped" style="height:16px;width:1px;position:relative;">
+		<img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/stars-empty-md.png" style="border-width:0px;position:absolute;top:0;right:0;">
+	</div>
+</div>
+		</span>
+
+		
+	</td>
+	
+	<td id="ctl00_ArticleRating_VR" class="nowrap">
+		&nbsp;
+		<span id="ctl00_ArticleRating_VotesR">&nbsp;4.95 (9 votes)</span>
+		
+	</td>
+
+</tr>
+
+</tbody></table>
+
+
+							                <div id="ctl00_RB" class="speech-bubble-container-up">
+								                <div class="speech-bubble-up" style="width:150px !important">
+									                            
+<div>
+<table class="feature" width="100%" height="50px" title="Voting Distribution. Recent data only" cellpadding="0" cellspacing="0"><tbody><tr class="chart-row"><td class="chart-column"><span title="0 votes">1</span></td>
+<td class="chart-column"><span title="0 votes">2</span></td>
+<td class="chart-column"><span title="0 votes">3</span></td>
+<td class="chart-column"><div><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/pollcol.gif" width="20pxpx" height="6px" border="0px" alt="1 vote, 11.1%" title="1 vote, 11.1%"></div><span title="1 vote">4</span></td>
+<td class="chart-column"><div><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/pollcol.gif" width="20pxpx" height="50px" border="0px" alt="8 votes, 88.9%" title="8 votes, 88.9%"></div><span title="8 votes">5</span></td>
+</tr></tbody></table><div class="small-text align-center">4.95/5 - 9 votes</div><div class="small-text align-center subdue">μ 4.95, σ<sub>a</sub> 1.05 [<a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/KB/FAQs/RatingReputationFAQ.aspx#noisefilter">?</a>]</div>
+</div>
+								                </div>
+								                <div class="speech-bubble-pointer-up">
+									                <div class="speech-bubble-pointer-up-inner"></div>
+								                </div>
+							                </div>
+
+						                </div>
+                                        <div class="column">
+                                        <div id="ctl00_RateArticle_RateItemWrapper" class="small-text" name="RateItem_1118166">
+
+	<table width="100%" cellpadding="0" cellspacing="0" class="small-text">
+	<tbody><tr>
+		<td id="ctl00_RateArticle_VoteResultDiv" class="rating-result align-right">
+			<span class="align-right"></span>
+			<img class="loaderImg" width="16px" alt="loading..." height="16px" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/animated_loading_blue.gif" style="display:none;"> 
+		</td>
+
+	
+		<td class="voteTbl" style="white-space:nowrap" align="right">
+			<table class="small-text">
+			<tbody><tr>
+				<td id="ctl00_RateArticle_RateText" class="rating-prompt">
+					Rate this:
+				</td>
+
+				
+				<td id="ctl00_RateArticle_VoteFormDiv" class="nowrap rating-stars-voter-medium">
+					
+
+					<span id="ctl00_RateArticle_RB" class="tooltip ajaxHist radio voting">
+						<span id="ctl00_RateArticle_VoteRBL"><input id="ctl00_RateArticle_VoteRBL_0" type="radio" name="ctl00$RateArticle$VoteRBL" value="1" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_1" type="radio" name="ctl00$RateArticle$VoteRBL" value="2" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_2" type="radio" name="ctl00$RateArticle$VoteRBL" value="3" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_3" type="radio" name="ctl00$RateArticle$VoteRBL" value="4" style="display: none;"><input id="ctl00_RateArticle_VoteRBL_4" type="radio" name="ctl00$RateArticle$VoteRBL" value="5" style="display: none;"></span> 
+
+						
+					<div class="rating-star-block"><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" rating="1" class="star outline" title="vote 1">vote 1</a><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" rating="2" class="star outline" title="vote 2">vote 2</a><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" rating="3" class="star outline" title="vote 3">vote 3</a><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" rating="4" class="star outline" title="vote 4">vote 4</a><a href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#" rating="5" class="star outline" title="vote 5">vote 5</a></div></span>
+
+				</td>
+
+				
+				<td style="padding-left:5px">	
+					<input type="submit" name="ctl00$RateArticle$SubmitRateBtn" value="Vote!" id="ctl00_RateArticle_SubmitRateBtn" class="button" style="display: none;">
+				</td>
+			</tr>
+			</tbody></table>
+			
+		</td>
+	</tr>
+	</tbody></table>
+	<div class="hover-container">
+		
+        <div id="ctl00_RateArticle_RSU" class="rating-comment align-left float-right">
+            <div class="padded">
+            Please <a id="ctl00_RateArticle_SignUp" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu">Sign up or sign in</a> to vote.
+            </div>
+        </div>
+	</div>
+</div>
+                                        </div>
+                                    
+                                    </div>
+    						        	
+
+                                </div>
+
+    	                        	
+                                <div class="float-left" style="margin: 25px 0 0 10px;">
+	                                
+	                            </div>
+                         	    	
+    
+					        </div>
+
+                            
+
+						    <div class="float-right align-center">
+                                <div class="msg-210x60" data-format="210x60" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=210x60&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=210x60&amp;c=483425" width="210px" height="60px" target="_blank"/></a></noscript></div>
+						    </div>
+
+                        </div>
+
+                        <div id="ctl00_description" class="summary">Overview of TraceHub, and the design concepts/contexts behind this open source project</div><span id="ctl00_thumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<h1>Part I: Getting Started</h1>
+
+<ul class="download">
+	<li><a href="https://web.archive.org/web/20170716212047/https://github.com/zijianhuang/TraceHubDemos" target="_blank">TraceHub Demo at GitHub</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://github.com/zijianhuang/HelloWorldAuth/tree/branches/TraceHub" target="_blank">WCF Service and TraceHub Demo at GitHub</a></li>
+</ul>
+
+<h2>Introduction</h2>
+
+<p><a href="https://web.archive.org/web/20170716212047/https://github.com/zijianhuang/TraceHub/"><strong>TraceHub</strong> </a>is a Web based centralized logging system that utilizes System.Diagnostic for structured logging, and SignalR for transporting structured traces from your service applications to trace observers. This open source project delivers 4 products out of the box:</p>
+
+<ol>
+	<li><strong>TraceHub MVC</strong>: ASP.NET MVC Application that provides the TraceHub service, displays structured traces from HubTraceListeners injected to your service applications, and push the traces to other clients like TraceHub Console.</li>
+	<li><strong>TraceHub Slim</strong>: Slim edition of TraceHub, with only 1 Web page and without built-in authentication, however with all key features of TraceHub MVC.</li>
+	<li><strong>TraceHub Console</strong>: Windows console application that listens to the TraceHub service and displays the traces, and could be used to relay traces to other trace listeners.</li>
+	<li><strong>HubTraceListener</strong>: Derived class of System.Diagnostics.TraceListener, which uploads structured traces to the TraceHub service.</li>
+</ol>
+
+<p>If you have been using <a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/windows/desktop/bb968803(v=vs.85).aspx">Event Tracing for Windows (ETW)</a> and trace listeners in System.Diagnostics or other tracing and logging frameworks compatible with System.Diagnostics, you may find that the learning curve of using TraceHub is almost zero, and your existing application codes don't need to be altered for logging structured traces to the new medias, thus don't need to be rebuilt.</p>
+
+<p>And this article also introduces some design concepts / contexts behind TraceHub.</p>
+
+<p><a href="https://web.archive.org/web/20170716212047/http://tracehub.fonlow.com/"><img alt="TraceHub MVC" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/TraceHub.PNG"></a></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><img alt="TraceHub Console" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/TraceHubConsole.png"></p>
+
+<p><img alt="TraceHub Slim" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/TraceHubSlim.PNG"></p>
+
+<h2>Use TraceHub</h2>
+
+<p>Presumably, you have been using Trace and TraceSource of System.Diagnostics in your applications, like these examples:</p>
+
+<div class="pre-action-link" id="premain927092" style="width:100%;display:block;"><span id="prehide927092" onclick="processCodeBlocks.togglePre(927092);">Hide</span>  &nbsp; <span id="preShrink927092" onclick="processCodeBlocks.shrinkExpand(927092);">Shrink</span> <img id="preimg927092" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/arrow-up-16.png" style="height:16px;width:16px" onclick="processCodeBlocks.shrinkExpand(927092);">  &nbsp; <span id="copycode927092" onclick="return processCodeBlocks.copyCode(927092);">Copy Code</span></div><pre id="pre927092" processed="true" class="notranslate" style="margin-top: 0px;"> <span class="code-keyword">try</span>
+ {
+     ...
+     Debug.WriteLine(<span class="code-string">"</span><span class="code-string">..."</span>);
+     ...
+     myTraceSource.TraceInformation(<span class="code-string">"</span><span class="code-string">......"</span>);
+     ...
+     myTraceSource.TraceEvent(TraceEventType.Warning, <span class="code-digit">3</span>, <span class="code-string">"</span><span class="code-string">File {0} not found."</span>, <span class="code-string">"</span><span class="code-string">test"</span>);
+     ...
+     <span class="code-keyword">return</span> <span class="code-keyword">true</span>;
+ }
+ <span class="code-keyword">catch</span> (IOException e)
+ {
+     Trace.TraceWarning(e.Message);
+     <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+ }
+ <span class="code-keyword">catch</span> (UnauthorizedAccessException e)
+ {
+     Trace.TraceWarning(e.Message);
+     <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+ }
+ <span class="code-keyword">catch</span> (System.Security.SecurityException e)
+ {
+     Trace.TraceWarning(e.Message);
+     <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+ }
+ <span class="code-keyword">catch</span> (FormatException ex)
+ {
+     System.Diagnostics.Trace.TraceWarning($<span class="code-string">"</span><span class="code-string">{s} is not a valid IP address or range."</span>);
+     <span class="code-keyword">return</span> <span class="code-keyword">false</span>;
+ }
+ <span class="code-keyword">catch</span> (System.Exception ex)
+ {
+     Trace.TraceError(ex.ToString());
+     <span class="code-keyword">throw</span>;
+ }
+
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> TraceErrorAttribute : HandleErrorAttribute
+ {
+     <span class="code-keyword">public</span> <span class="code-keyword">override</span> <span class="code-keyword">void</span> OnException(ExceptionContext filterContext)
+     {
+         System.Diagnostics.Trace.TraceError(<span class="code-string">"</span><span class="code-string">Controller: {0}; View: {1}; Exception: {2}"</span>,
+             filterContext.Controller.ToString(), View, filterContext.Exception.ToString());
+         <span class="code-keyword">base</span>.OnException(filterContext);
+     }
+ }
+</pre>
+
+<p>&nbsp;</p>
+
+<h3>Step 1: Install TraceHub MVC or TraceHub Slim to a server</h3>
+
+<p>Simply download the source codes of TraceHub, build and deploy&nbsp;TraceHub MVC or&nbsp; TraceHub Slim to a server as you would do for ASP.NET applications and configure the URL like http://mytracehub.com.</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>For TraceHub MVC, the Identity 2 database should have a user role named "API", and a user associated with "API". And you can may make TraceHub MVC share the same Identity 2 database with other ASP.NET MVC/Web API applications.</p>
+
+<h3>Step 2: Inject HubTraceListener to you application</h3>
+
+<h4>Step 2.1: Copy the following files in the Fonlow.HubTraceListener CS project to the program directory</h4>
+
+<p><strong>File List:</strong></p>
+
+<ul>
+	<li>Fonlow.HubTraceListener.dll</li>
+	<li>Fonlow.TraceHub.Common</li>
+	<li>Essential.Diagnostics.Core.dll</li>
+	<li>Microsoft.AspNet.SignalR.Client.dll</li>
+	<li>Newtonsoft.Json.dll</li>
+</ul>
+
+<p>Alternatively, you may import NuGet package <a href="https://web.archive.org/web/20170716212047/https://www.nuget.org/packages/Fonlow.HubTraceListener/">Fonlow.HubTraceListener</a>, even though your application codes don't need static references to those files.</p>
+
+<h4>Step 2.2: Modify app.config or Web.config of your application</h4>
+
+<p>Your service applications may be using Web.config or MyService.exe.config.</p>
+
+<p>Example:</p>
+
+<div class="pre-action-link" id="premain93146" style="width:100%;display:block;"><span id="prehide93146" onclick="processCodeBlocks.togglePre(93146);">Hide</span>  &nbsp; <span id="preShrink93146" onclick="processCodeBlocks.shrinkExpand(93146);">Shrink</span> <img id="preimg93146" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/arrow-up-16.png" style="height:16px;width:16px" onclick="processCodeBlocks.shrinkExpand(93146);">  &nbsp; <span id="copycode93146" onclick="return processCodeBlocks.copyCode(93146);">Copy Code</span></div><pre data-lang-guess="HTML" id="pre93146" processed="true" class="notranslate" style="margin-top: 0px;"><span class="code-keyword">&lt;</span><span class="code-leadattribute">system.diagnostics</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">sharedListeners</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">hubListener"</span><span class="code-attribute"> </span><span class="code-attribute">type</span><span class="code-keyword">="</span><span class="code-keyword">Fonlow.Diagnostics.HubTraceListener, Fonlow.HubTraceListener"</span><span class="code-attribute"> </span><span class="code-attribute">template</span><span class="code-keyword">="</span><span class="code-keyword">{Message}{Data}"</span><span class="code-attribute"> </span><span class="code-attribute">hubUrl</span><span class="code-keyword">="</span><span class="code-keyword">http://MyTraceHub.com"</span><span class="code-attribute"> </span><span class="code-attribute">apiUser</span><span class="code-keyword">="</span><span class="code-keyword">api"</span><span class="code-attribute"> </span><span class="code-attribute">apiPassword</span><span class="code-keyword">="</span><span class="code-keyword">MyPassword"</span><span class="code-attribute"> </span><span class="code-attribute">instanceId</span><span class="code-keyword">="</span><span class="code-keyword">MyServiceInstanceId"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">rollingfile"</span><span class="code-attribute"> </span><span class="code-attribute">type</span><span class="code-keyword">="</span><span class="code-keyword">Essential.Diagnostics.RollingFileTraceListener, Essential.Diagnostics"</span><span class="code-attribute"> </span><span class="code-attribute">template</span><span class="code-keyword">="</span><span class="code-keyword">{LocalDateTime:HH':'mm':'ss} [{Thread}] {EventType} {Source}: {Message}{Data}"</span><span class="code-attribute">
+</span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute"> </span><span class="code-attribute">initializeData</span><span class="code-keyword">="</span><span class="code-keyword">%AllUsersProfile%\MyCompany\logs\MyService-{LocalDateTime:yyyy-MM-dd}-p{ProcessId}.log"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">/sharedListeners</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">switches</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">TraceLevelSwitch"</span><span class="code-attribute"> </span><span class="code-attribute">value</span><span class="code-keyword">="</span><span class="code-keyword">Verbose"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">/switches</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">sources</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">source</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">myAppSource"</span><span class="code-attribute"> </span><span class="code-attribute">switchValue</span><span class="code-keyword">="</span><span class="code-keyword">All"</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">listeners</span><span class="code-keyword">&gt;</span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">clear</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">hubListener"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+        <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">rollingfile"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">/listeners</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/source</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">/sources</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">trace</span><span class="code-attribute"> </span><span class="code-attribute">autoflush</span><span class="code-keyword">="</span><span class="code-keyword">true"</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">listeners</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">clear</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">hubListener"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+      <span class="code-keyword">&lt;</span><span class="code-leadattribute">add</span><span class="code-attribute"> </span><span class="code-attribute">name</span><span class="code-keyword">="</span><span class="code-keyword">rollingfile"</span><span class="code-attribute"> </span><span class="code-keyword">/</span><span class="code-keyword">&gt;</span>
+    <span class="code-keyword">&lt;</span><span class="code-leadattribute">/listeners</span><span class="code-keyword">&gt;</span>
+  <span class="code-keyword">&lt;</span><span class="code-leadattribute">/trace</span><span class="code-keyword">&gt;</span>
+<span class="code-keyword">&lt;</span><span class="code-leadattribute">/system.diagnostics</span><span class="code-keyword">&gt;</span>
+</pre>
+
+<p>In this example, the template attribute for hubListener does not include time stamp and trace event type etc., however, TraceHub still display them. This is because HubTraceListener sends not only the formatted trace message according to the template, but also the structured trace data, so the TraceHub Web page would display them and filter them accordingly.<br>
+&nbsp;</p>
+
+<p><strong>Hints:</strong></p>
+
+<p>For TraceHub Slim, the value of the apiUser attribute should be "anonymous", and the value of password is not used.</p>
+
+<h3>Step 3: Up and Run</h3>
+
+<p>Both TraceListener and ASP.NET Web application are starting up in lazy manner. That is, only when the application or the CLR startup logic creates the first trace, the TraceListener instances defined in app.config are created; only when the first HTTP request reaches IIS, an instance of the Web application is created. And there could be significant interval between the first trace and the full operation of TraceHub, and there could be latency and interruptions between your application and TraceHub. HubTraceListener may buffer up to 100,000 traces in case of network outage between your applications and TraceHub. And it is good to keep a local rolling log files through RollingFileTraceListener, since local resources like local file and Windows Events log are the most reliable medias for logging.</p>
+
+<p><strong>Hints:</strong></p>
+
+<p>To minimize the negative impact of lazy loading, you may consider to alter the following setting:</p>
+
+<ol>
+	<li>In Advanced Settings of the IIS Website, set "Start Automatically" or "Preload Enabled" to True.</li>
+	<li>In the Advanced Settings of respective AppPool, set "Start Automatically" to True or set "Start Mode" to "AlwaysRunning".</li>
+	<li>In the Advanced Settings of respective AppPool, set "Idle Time-out(minutes)" to a larger number.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h2>Architecture and Deployments</h2>
+
+<p>HubTraceListener listens to trace events of the service application, and upload the formatted trace message along with some structured trace info to TraceHub; and TraceHub pushes the trace data to Web browsers which are loading the Web pages of TraceHub MVC or TraceHub Slim, so you could view traces on the client side; and an alternative client viewer is TraceHub Console.</p>
+
+<p><img alt="Deploy TraceHub components" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/TraceHubDeployment.PNG"></p>
+
+<p>If you want to introduce more trace sinks, you just inject respective trace listeners implemented in System.Diagnostics, Essential Diagnostics or Semantic Logging to TraceHub Console. You may install TraceHub Console in a Windows workstation or Windows Server, depending on how you would further process trace data.</p>
+
+<p>To use products out of the box, you may download or clone the source codes of TraceHub, build and deploy, as describe in <a href="https://web.archive.org/web/20170716212047/https://github.com/zijianhuang/TraceHub/wiki/UseTraceHub">TraceHub Wiki</a>.</p>
+
+<p>Please note, applications that need HubTraceListener don't need to be compiled with the listener, because derived classes of TraceListener could be injected to an application through app.config. And you just need to make sure <a href="https://web.archive.org/web/20170716212047/https://github.com/zijianhuang/TraceHub/wiki/UseFonlowHubTraceListener">the dependencies</a> are available in the program directory.</p>
+
+<p>&nbsp;</p>
+
+<h1>Part II: Concepts behind TraceHub</h1>
+
+<p>&nbsp;</p>
+
+<h2>Structured tracing and logging have been available since .NET Framework 2!</h2>
+
+<p>Over years, I have come across a few Web based logging and diagnostics tools for ASP.NET Web applications:</p>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20170716212047/http://getglimpse.com/">Glimpse</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://azure.microsoft.com/en-us/services/application-insights/">Application Insights</a></li>
+</ul>
+
+<p>They are excellent tools, though I had rarely used them. And the scope of the TraceHub won't be anywhere closer to Glimpse and Application Insights which cover wider spectrums and more scenarios.</p>
+
+<p>If you have never used Serilog + Seq, you may probably skip this chapter and go next to "Design Concepts".</p>
+
+<p>A few months ago, I was introduced to&nbsp; <a href="https://web.archive.org/web/20170716212047/https://serilog.net/" target="_blank">Serilog&nbsp;</a>+ <a href="https://web.archive.org/web/20170716212047/https://getseq.net/">Seq </a><a href="https://web.archive.org/web/20170716212047/https://serilog.net/" target="_blank">/ </a><a href="https://web.archive.org/web/20170716212047/https://raygun.com/">Raygun </a>in some Web service + Azure projects that I did not lead. So I had a bit hand-on experience in these new toys, while the team leads and other developers were eager to teach me the new concepts of structured logging.&nbsp;I was very puzzled, since I supposedly had been doing structured logging for years without these new toys or being aware of "structured logging". And I had grown up in the .NET world since 2003 with these concepts:</p>
+
+<ol>
+	<li>Use Trace and Debug of System.Diagnostics; and in complex applications and libraries, use TraceSource.</li>
+	<li>.NET codes should have no knowledge of the logging mechanism. The logging is done through trace listeners, and trace listeners generally are injected by .NET runtime according to app settings in element system.diagnostics in app.config, so some CLR startup errors could be logged before the first line of the application code is executed. &nbsp;</li>
+	<li>System.Diagnostics since .NET Framework 2 had already provided advanced tracing of structured data and correlation.</li>
+</ol>
+
+<p>With Serilog, you have to create an instance of LoggerConfiguration in your application codes and library codes, because CLR startup logic has no knowledge of it,</p>
+
+<ol>
+	<li>So CLR startup errors won't be picked up by Serilog.</li>
+	<li>And every libraries you create will need to reference to Serilog just for the sake of logging. Why should I always reference to Serilog in every libraries? Not only 3rd party libraries, but also WCF, WPF and WF etc. had provided specific trace sources for diagnostics. Serilog and alike are missing these. A workaround is to use <a href="https://web.archive.org/web/20170716212047/https://github.com/serilog-trace-listener/SerilogTraceListener">Serilog Tracelistener</a>. But a logging instrument on top of another logging instrument is looking odd to me.</li>
+</ol>
+
+<p>The popular Log4Net has similar shortfalls, even though if you have been using it since .NET Framework 1 you won't see any problem.</p>
+
+<p>A few weeks ago, I happened to have some moment reading the materials about Serilog and Seq in more details in addition to those in the official Websites:</p>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20170716212047/https://nblumhardt.com/2015/01/designing-log-events-for-effective-correlation/">Tagging log events for effective correlation</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://nblumhardt.com/2013/03/serilog/">Serilog at the beginning</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://leastprivilege.com/2015/10/22/identityserver3-logging-monitoring-using-serilog-and-seq/">IdentityServer 3 Logging &amp; Monitoring using Serilog and Seq</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/http://programmers.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging">Benefits of Structured Logging vs basic logging</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://www.troyhunt.com/error-logging-and-tracking-done-right/">Error logging and tracking done right with Raygun.io</a></li>
+</ul>
+
+<p>It is confirmed that <a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/system.diagnostics(v=vs.110).aspx">System.Diagnostics</a> + <a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/">Essential.Diagnostics</a> had covered most of what Serilog offers. To be fair, Serilog does offer some additional sophisticated features:</p>
+
+<ol>
+	<li>Message Template.</li>
+	<li>Preserving Object Structure</li>
+	<li>Flood gate upon identical traces in flooding</li>
+</ol>
+
+<p>It is probably very context specific to value these features.</p>
+
+<p>Structured tracing has been available in System.Diagnostics of .NET Framework since .NET 2 released in year 2005. And for structured logging, there are quite a few free and open source solutions around, and here's an incomplete list:</p>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20170716212047/https://github.com/mspnp/semantic-logging">Semantic Logging&nbsp;</a>(formerly know at the<a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/dn440729(v=pandp.60).aspx"> Semantic Logging Application Block</a> or SLAB)</li>
+	<li><a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/">Essential Diagnostics</a></li>
+</ul>
+
+<p>Both Semantic Logging and Essential Diagnostics were designed on top of&nbsp;<a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/windows/desktop/bb968803(v=vs.85).aspx">Event Tracing for Windows (ETW)</a> and System.Diagnostics.</p>
+
+<h2>Design concepts for Web applications/services</h2>
+
+<p>When I lead a green field project, I would ensure:</p>
+
+<ol>
+	<li>Small and evolvable designs.</li>
+	<li>Basic separation of concerns;</li>
+	<li>Conformation to SOLID; design patterns for right contexts.</li>
+	<li>Component designs</li>
+	<li>Separation of development concerns and deployment concerns; and application and library codes having least knowledge of the deployment environments.</li>
+	<li>Defensive programming</li>
+	<li>Static code analysis</li>
+	<li>Integration tests as early as possible, in local dev machine first, then in the team test environment.</li>
+	<li>Stress testing as early as possible</li>
+</ol>
+
+<p>Also, I would:</p>
+
+<ol>
+	<li>Avoid premature introduction of DI/IoC frameworks like Autofac and Unity etc.</li>
+	<li>Avoid premature scalability with Microservices.&nbsp;</li>
+	<li>Avoid excessive trace and logging. Application codes should have no knowledge of the logging mechanisms, except System.Diagnostics. Trace listeners are generally injected by .NET runtime as defined in app.config.</li>
+	<li>Except in small and simple business applications, do not mix technical logging and <a href="https://web.archive.org/web/20170716212047/https://en.wikipedia.org/wiki/Business_activity_monitoring">business activity monitoring</a> as well as traffic monitoring.</li>
+</ol>
+
+<p>For Web application and services, I would keep the VS projects of WCF, MVC and Web API as thin as possible. Web services, SOAP based or RESTful, are just a transportation layer or tier for delivering server side functions to clients and get feedback from clients. It is good for teamwork and testing to put most if not all the business logic into the model assemblies rather than in the Web entry assembly. And during stress testing of business domain functionality, I would already have good idea about the performances of the core business modules. If you take such approach, you will less likely have surprise about performance after deploying Web applications. If you endorse such design concepts, you may probably find TraceHub appealing.</p>
+
+<h2>Is Logging really important to SDLC?</h2>
+
+<p>While nowadays components of <a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/wikipage?title=Logging%20Levels&amp;referringTitle=Guidance">tracing and logging </a>are fairly fast even in heavy traffic, however, excessive logging could hamper the efforts of debugging because the overwhelming info.</p>
+
+<p>The bottom line is, if your program is highly reliable, you will depend less on logging; if you have good QA, your program will be naturally reliable and robust, and you will depend on less QC and testing; if you have good testing, you will depend less on debugging and logging. Debugging/diagnostic and logging should be the last resort to control quality. If your SDLC heavily depends on debugging/diagnostics and logging, there could be something dirty in your SDLC, eating you alive without you noticing it, even if you enjoy the technical challenges which bring no value to the stakeholders.</p>
+
+<p>You may ask why I would develop something similar to Serilog + Seq etc., after saying all these. Here are my reasons:</p>
+
+<ol>
+	<li><strong>Logging and debugging are wastes that we developers haven't managed to eliminate</strong>! However, we at least could make logging easier and cheaper for most scenarios of development and deployment on the ASP.NET stacks.</li>
+	<li>System.Diagnostics since .NET 2 had already covered almost everything which Log4Net and alike cover. Some simple extensions like Essential.Diagnostics and Serilog are already well complementing what needed for distributed computing, while Essential.Diagnostics conforms more to &nbsp;<a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/windows/desktop/bb968803(v=vs.85).aspx">Event Tracing for Windows (ETW)</a> and System.Diagnostics.</li>
+	<li>Having structured logging and Web based logging together is much easier than you would had thought, as long as you pick the right resources to depend on. When using Serilog + Seq, I had already been feeling: logging shouldn't be so complex, so hard, so slow, so unreliable and so expensive. Logging should be simple, fast, reliable and free, because (technical) logging is a waste in the first place.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h2>Points of Interest</h2>
+
+<p>Over years I have been reviewing or maintaining quite a lot legacy applications with dirty designs and implementations, as well as excessive logging on variety of logging components. A few years ago I have done some <a href="https://web.archive.org/web/20170716212047/http://webandlife.blogspot.com/2013/04/essential-diagnostics.html">extensive researches on logging components</a>, before joining project Essential Diagnostic. I had been thinking of developing a light-weight centralized logging system occasionally over years. There have also been a few good Web based logging and diagnostics systems around like Glimpse and AI. Though they are comprehensive and heavy, there seemed no need for some additions to the landscape. The poor experiences in using Serilog+Seq had prompted me to develop a Web based centralized logging system based on System.Diagnostics + Essential Diagnostics + SignalR. To be fair, Serilog on its own is a well designed and implemented product, and is pretty fast. However, in my observations, people using Serilog had often enjoyed excessive logging and debugging on premature scalability with Microservices and premature usage of CI server like TeamCity, rather than spent more efforts in making simpler designs and writing clean codes. So I was thinking whether a light-weight Web based logging system could be fixing the gap between primitive log files and heavy tools like Glimpse and AI, and providing a free, simpler and more flexible alternative to Seq. Here you are, when you have some light-weight needs for Web based centralized logging as I normally do, you will have more choices for your contexts.</p>
+
+<p>Do you find it interesting that the author of the logging components does not encourage developers to log and debug?</p>
+
+<h3>What's Not</h3>
+
+<p>TraceHub is designed to be a light-weight centralized logging service extending what already in System.Diagnostics and Essential.Diagnostics. While it has some some overlap with Glimpse, Microsoft Application Insights and Azure Event Hubs, it won't be extended to the wider spectrums of these products.</p>
+
+<h3>Differences from Seq</h3>
+
+<p>Seq stores traces, while TraceHub does not store traces directly. If you want to persist traces, there exist trace listeners to be injected to TraceHub Console that could be running on the server side.</p>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/wikipage?title=RollingFileTraceListener">RollingFileTraceListener</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://essentialdiagnostics.codeplex.com/wikipage?title=RollingXmlTraceListener&amp;referringTitle=Listeners">RollingXmlTraceListener</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/wikipage?title=SqlDatabaseTraceListener">SqlDatabaseTraceListener</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://github.com/amccool/ElasticSearch.Diagnostics">ElasticSearchTraceListener</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://github.com/aws/aws-dotnet-trace-listener/">AWS DynamoDB TraceListener</a>&nbsp;</li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-diagnostics-trace-flow/">DiagnosticMonitorTraceListener</a></li>
+</ul>
+
+<p>Other than this, TraceHub has covered most functionality of Seq, additionally, it is free, fast, open source and more flexible.</p>
+
+<h3>Differences from Serilog</h3>
+
+<p>Serilog is apparently to become a better log4net, while HubTraceListener is based on System.Diagnostics and Essential.Diagnostics, inheriting the capability of structured logging. Serilog endorses some fluent API coding style, Most of the differences had already been mentioned in this article about the design concepts and contexts in SDLC.</p>
+
+<h3>Tracing, Logging, Business Activity Monitoring</h3>
+
+<p>The creator of Essential Diagnostics <a href="https://web.archive.org/web/20170716212047/http://www.codeplex.com/site/users/view/sgryphon">Sly Gryphon</a> said: " <a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/wikipage?title=Logging%20Levels&amp;referringTitle=Guidance">A distinction should be made between the concepts of logging and tracing (although sometimes the terminology used is unclear). </a>". In my view, generally you decide what to trace during development/coding, and decide whether to log, what to log and where to log during deployment and operations.</p>
+
+<p><a href="https://web.archive.org/web/20170716212047/https://en.wikipedia.org/wiki/Business_activity_monitoring">Business Activity Monitoring (BAM)</a> is software that aids in monitoring of business activities implemented in computer systems. So BAM is application specific, and it is natural that BAM is tightly associated with your applications codes, while the concrete implementation of logging like trace listeners should be de-coupled from your applications codes, and it is even better that your applications codes have no knowledge of logging until deployment and operation. In small and simple applications, you may probably use tracing (with Trace, TraceSource, Log4Net, or Serilog) and logging (with trace listeners) to implement BAM. However, for more complex applications, it is better to separate technical logging and BAM, and develop or use a dedicated subsystem like Biztalk BAM to monitor business activities.</p>
+
+<p>A few years ago I had maintained some legacy Biztalk applications designed and implemented by a consultant firm, and previous developers had used Biztalk BAM to log all kinds of technical traces and very little business activities. It is not hard to imagine the impacts on development and operations from such design, even if you haven't ever used Biztalk BAM.</p>
+
+<p>There's no one-size-fits-all. It is quite fine that your ASP.NET projects use Glimpse, AI, TraceHub and Azure Event Hubs for different concerns and contexts in order to scale and evolve.</p>
+
+<p>&nbsp;</p>
+
+<h2>Further References</h2>
+
+<ul>
+	<li><a href="https://web.archive.org/web/20170716212047/http://essentialdiagnostics.codeplex.com/wikipage?title=Guidance">Guidance </a>on considerations when implementing logging and other instrumentation for your project.</li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://msdn.microsoft.com/en-us/library/ty48b824(v=vs.110).aspx">Configurae Network Tracking</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/http://www.codeproject.com/Tips/1071853/Use-TraceSource-Efficiently">Use TraceSource Efficiently</a></li>
+	<li><a href="https://web.archive.org/web/20170716212047/https://essentialdiagnostics.codeplex.com/wikipage?title=Hello%20Logging">Logging with Correlation</a></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+
+						</div>
+						
+
+						<div class="float-right" style="margin:20px 0 0 10px;border:1px solid #ccc">
+						<div class="msg-300x250" data-format="300x250" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-loadonview="true" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=300x250&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=300x250&amp;c=483425" width="300px" height="250px" target="_blank"/></a></noscript></div>
+						</div>
+                        
+                        
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="https://web.archive.org/web/20170716212047/http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+                        
+						<h2>Share</h2>
+				        <div class="share-list">
+					        
+
+
+
+<!-- Buttons start here. Copy this ul to your document. -->
+<ul class="rrssb-buttons clearfix rrssb-1">
+    <li class="email" data-initwidth="16.666666666666668" data-size="33" style="width: calc(50% - 84px);">
+
+        <a href="https://web.archive.org/web/20170716212047/mailto:/?subject=TraceHub%2c%20a%20flexible%20solution%20for%20Web%20based%20structured%20logging%20-%20CodeProject&amp;body=Here%27s%20an%20interesting%20article%20on%20for%20you%20on%20codeproject.com%0a%0ahttps%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu%0a">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                        <path d="M20.111 26.147c-2.336 1.051-4.361 1.401-7.125 1.401c-6.462 0-12.146-4.633-12.146-12.265 
+                            c0-7.94 5.762-14.833 14.561-14.833c6.853 0 11.8 4.7 11.8 11.252c0 5.684-3.194 9.265-7.399 
+                            9.3 c-1.829 0-3.153-0.934-3.347-2.997h-0.077c-1.208 1.986-2.96 2.997-5.023 2.997c-2.532 
+                            0-4.361-1.868-4.361-5.062 c0-4.749 3.504-9.071 9.111-9.071c1.713 0 3.7 0.4 4.6 0.973l-1.169 
+                            7.203c-0.388 2.298-0.116 3.3 1 3.4 c1.673 0 3.773-2.102 3.773-6.58c0-5.061-3.27-8.994-9.303-8.994c-5.957 
+                            0-11.175 4.673-11.175 12.1 c0 6.5 4.2 10.2 10 10.201c1.986 0 4.089-0.43 5.646-1.245L20.111 
+                            26.147z M16.646 10.1 c-0.311-0.078-0.701-0.155-1.207-0.155c-2.571 0-4.595 2.53-4.595 5.529c0 
+                            1.5 0.7 2.4 1.9 2.4 c1.441 0 2.959-1.828 3.311-4.087L16.646 10.068z"></path></g>
+                </svg>
+            </span>
+            <span class="text">email</span>
+        </a>
+    </li>
+    <li class="twitter" data-initwidth="16.666666666666668" data-size="47" style="width: calc(50% - 84px);">
+        <!-- Replace href with your Meta and URL information  -->
+        <a href="https://web.archive.org/web/20170716212047/http://twitter.com/home?status=TraceHub%2c+a+flexible+solution+for+Web+based+structured+logging+-+CodeProject+-+https%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                <path d="M24.253,8.756C24.689,17.08,18.297,24.182,9.97,24.62c-3.122,0.162-6.219-0.646-8.861-2.32
+                    c2.703,0.179,5.376-0.648,7.508-2.321c-2.072-0.247-3.818-1.661-4.489-3.638c0.801,0.128,1.62,0.076,2.399-0.155
+                    C4.045,15.72,2.215,13.6,2.115,11.077c0.688,0.275,1.426,0.407,2.168,0.386c-2.135-1.65-2.729-4.621-1.394-6.965
+                    C5.575,7.816,9.54,9.84,13.803,10.071c-0.842-2.739,0.694-5.64,3.434-6.482c2.018-0.623,4.212,0.044,5.546,1.683
+                    c1.186-0.213,2.318-0.662,3.329-1.317c-0.385,1.256-1.247,2.312-2.399,2.942c1.048-0.106,2.069-0.394,3.019-0.851
+                    C26.275,7.229,25.39,8.196,24.253,8.756z"></path>
+                </svg>
+            </span>
+            <span class="text">twitter</span>
+        </a>
+    </li>
+
+    <li class="facebook small" data-initwidth="16.666666666666668" data-size="56" style="width: 42px;">
+        <!-- Replace with your URL. For best results, make sure you page has the proper FB Open Graph tags in header: 
+        https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/ -->
+        <a href="https://web.archive.org/web/20170716212047/https://www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M27.825,4.783c0-2.427-2.182-4.608-4.608-4.608H4.783c-2.422,0-4.608,2.182-4.608,4.608v18.434
+                        c0,2.427,2.181,4.608,4.608,4.608H14V17.379h-3.379v-4.608H14v-1.795c0-3.089,2.335-5.885,5.192-5.885h3.718v4.608h-3.726
+                        c-0.408,0-0.884,0.492-0.884,1.236v1.836h4.609v4.608h-4.609v10.446h4.916c2.422,0,4.608-2.188,4.608-4.608V4.783z"></path>
+                </svg>
+            </span>
+            <span class="text">facebook</span>
+        </a>
+    </li>
+    
+    <li class="linkedin small" data-initwidth="16.666666666666668" data-size="51" style="width: 42px;">
+        <!-- Replace href with your meta and URL information -->
+        <a href="https://web.archive.org/web/20170716212047/http://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu&amp;title=TraceHub%2c+a+flexible+solution+for+Web+based+structured+logging+-+CodeProject&amp;summary=&amp;source=codeproject.com" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <path d="M25.424,15.887v8.447h-4.896v-7.882c0-1.979-0.709-3.331-2.48-3.331c-1.354,0-2.158,0.911-2.514,1.803
+                        c-0.129,0.315-0.162,0.753-0.162,1.194v8.216h-4.899c0,0,0.066-13.349,0-14.731h4.899v2.088c-0.01,0.016-0.023,0.032-0.033,0.048
+                        h0.033V11.69c0.65-1.002,1.812-2.435,4.414-2.435C23.008,9.254,25.424,11.361,25.424,15.887z M5.348,2.501
+                        c-1.676,0-2.772,1.092-2.772,2.539c0,1.421,1.066,2.538,2.717,2.546h0.032c1.709,0,2.771-1.132,2.771-2.546
+                        C8.054,3.593,7.019,2.501,5.343,2.501H5.348z M2.867,24.334h4.897V9.603H2.867V24.334z"></path>
+                </svg>
+            </span>
+            <span class="text">linkedin</span>
+        </a>
+    </li>
+    <li class="reddit small" data-initwidth="16.666666666666668" data-size="39" style="width: 42px;">
+        <a href="https://web.archive.org/web/20170716212047/http://www.reddit.com/submit?url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu&amp;title=TraceHub%2c+a+flexible+solution+for+Web+based+structured+logging+-+CodeProject">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve"><g>
+                <path d="M11.794 15.316c0-1.029-0.835-1.895-1.866-1.895c-1.03 0-1.893 0.865-1.893 1.895s0.863 1.9 1.9 1.9 C10.958 17.2 11.8 16.3 11.8 15.316z"></path>
+                <path d="M18.1 13.422c-1.029 0-1.895 0.864-1.895 1.895c0 1 0.9 1.9 1.9 1.865c1.031 0 1.869-0.836 1.869-1.865 C19.969 14.3 19.1 13.4 18.1 13.422z"></path>
+                <path d="M17.527 19.791c-0.678 0.678-1.826 1.006-3.514 1.006c-0.004 0-0.009 0-0.014 0c-0.004 0-0.01 0-0.015 0 
+                c-1.686 0-2.834-0.328-3.51-1.005c-0.264-0.265-0.693-0.265-0.958 0c-0.264 0.265-0.264 0.7 0 1 c0.943 0.9 2.4 1.4 
+                4.5 1.402c0.005 0 0 0 0 0c0.005 0 0 0 0 0c2.066 0 3.527-0.459 4.47-1.402 c0.265-0.264 0.265-0.693 0.002-0.958C18.221 
+                19.5 17.8 19.5 17.5 19.791z"></path><path d="M27.707 13.267c0-1.785-1.453-3.237-3.236-3.237c-0.793 0-1.518 0.287-2.082 
+                0.761c-2.039-1.295-4.646-2.069-7.438-2.219 l1.483-4.691l4.062 0.956c0.071 1.4 1.3 2.6 2.7 2.555c1.488 0 2.695-1.208 
+                2.695-2.695C25.881 3.2 24.7 2 23.2 2 c-1.059 0-1.979 0.616-2.42 1.508l-4.633-1.091c-0.344-0.081-0.693 0.118-0.803 
+                0.455l-1.793 5.7 C10.548 8.6 7.7 9.4 5.6 10.75C5.006 10.3 4.3 10 3.5 10.029c-1.785 0-3.237 1.452-3.237 3.2 c0 1.1 0.6 
+                2.1 1.4 2.69c-0.04 0.272-0.061 0.551-0.061 0.831c0 2.3 1.3 4.4 3.7 5.9 c2.299 1.5 5.3 2.3 8.6 2.325c3.228 0 6.271-0.825 
+                8.571-2.325c2.387-1.56 3.7-3.66 3.7-5.917 c0-0.26-0.016-0.514-0.051-0.768C27.088 15.5 27.7 14.4 27.7 13.267z M23.186 
+                3.355c0.74 0 1.3 0.6 1.3 1.3 c0 0.738-0.6 1.34-1.34 1.34s-1.342-0.602-1.342-1.34C21.844 4 22.4 3.4 23.2 3.355z M1.648 
+                13.3 c0-1.038 0.844-1.882 1.882-1.882c0.31 0 0.6 0.1 0.9 0.209c-1.049 0.868-1.813 1.861-2.26 2.9 C1.832 14.2 1.6 13.8 1.6 
+                13.267z M21.773 21.57c-2.082 1.357-4.863 2.105-7.831 2.105c-2.967 0-5.747-0.748-7.828-2.105 
+                c-1.991-1.301-3.088-3-3.088-4.782c0-1.784 1.097-3.484 3.088-4.784c2.081-1.358 4.861-2.106 7.828-2.106 c2.967 0 5.7 
+                0.7 7.8 2.106c1.99 1.3 3.1 3 3.1 4.784C24.859 18.6 23.8 20.3 21.8 21.57z M25.787 14.6 
+                c-0.432-1.084-1.191-2.095-2.244-2.977c0.273-0.156 0.59-0.245 0.928-0.245c1.035 0 1.9 0.8 1.9 1.9 
+                C26.354 13.8 26.1 14.3 25.8 14.605z"></path></g></svg>
+            </span>
+            <span class="text">reddit</span>
+        </a>
+    </li>
+    <li class="googleplus small" data-initwidth="16.666666666666668" data-size="52" style="width: 42px;">
+        <!-- Replace href with your meta and URL information.  -->
+        <a href="https://web.archive.org/web/20170716212047/https://plus.google.com/share?url=https%3a%2f%2fwww.codeproject.com%2fArticles%2f1118166%2fTraceHub-a-flexible-solution-for-Web-based-structu" class="popup">
+            <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="28px" height="28px" viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve">
+                    <g>
+                        <g>
+                            <path d="M14.703,15.854l-1.219-0.948c-0.372-0.308-0.88-0.715-0.88-1.459c0-0.748,0.508-1.223,0.95-1.663
+                                c1.42-1.119,2.839-2.309,2.839-4.817c0-2.58-1.621-3.937-2.399-4.581h2.097l2.202-1.383h-6.67c-1.83,0-4.467,0.433-6.398,2.027
+                                C3.768,4.287,3.059,6.018,3.059,7.576c0,2.634,2.022,5.328,5.604,5.328c0.339,0,0.71-0.033,1.083-0.068
+                                c-0.167,0.408-0.336,0.748-0.336,1.324c0,1.04,0.551,1.685,1.011,2.297c-1.524,0.104-4.37,0.273-6.467,1.562
+                                c-1.998,1.188-2.605,2.916-2.605,4.137c0,2.512,2.358,4.84,7.289,4.84c5.822,0,8.904-3.223,8.904-6.41
+                                c0.008-2.327-1.359-3.489-2.829-4.731H14.703z M10.269,11.951c-2.912,0-4.231-3.765-4.231-6.037c0-0.884,0.168-1.797,0.744-2.511
+                                c0.543-0.679,1.489-1.12,2.372-1.12c2.807,0,4.256,3.798,4.256,6.242c0,0.612-0.067,1.694-0.845,2.478
+                                c-0.537,0.55-1.438,0.948-2.295,0.951V11.951z M10.302,25.609c-3.621,0-5.957-1.732-5.957-4.142c0-2.408,2.165-3.223,2.911-3.492
+                                c1.421-0.479,3.25-0.545,3.555-0.545c0.338,0,0.52,0,0.766,0.034c2.574,1.838,3.706,2.757,3.706,4.479
+                                c-0.002,2.073-1.736,3.665-4.982,3.649L10.302,25.609z"></path>
+                            <polygon points="23.254,11.89 23.254,8.521 21.569,8.521 21.569,11.89 18.202,11.89 18.202,13.604 21.569,13.604 21.569,17.004
+                                23.254,17.004 23.254,13.604 26.653,13.604 26.653,11.89      "></polygon>
+                        </g>
+                    </g>
+                </svg>
+            </span>
+            <span class="text">google+</span>
+        </a>
+    </li>
+    
+</ul>
+<!-- Buttons end here -->
+
+				        </div> 
+    			        
+
+
+						
+						<h2 id="ctl00_AboutHeading">About the Author</h2>
+						    
+
+
+<div class="author-wrapper">
+
+    <div class="pic-wrapper"> 
+        <img id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberPhoto" class="profile-pic" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/{50ca0a3e-97bc-4243-b393-5c9db25186cf}.jpg" style="border-width:0px;transform:rotate(1deg);">
+
+    </div>
+
+    <div class="container-member">  
+        <b><a id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberProfileLink" class="author" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Members/Zijian">Zijian</a></b>
+
+        <table class="extended">
+        <tbody><tr>
+            <td rowspan="2" nowrap="" valign="middle">
+            <div id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_FollowOn" class="follow">
+	            
+	            
+	            <a href="https://web.archive.org/web/20170716212047/https://www.linkedin.com/in/zijianhuang/"><img style="vertical-align:middle;border:0;height:24px;width:24px" alt="LinkedIn" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/linkedin-32.png"></a> 
+            </div>
+            </td>
+            <td width="100%">
+                <div class="company">
+                    <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberJobTitle">Software Developer</span>
+	                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberCompany"></span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span id="ctl00_AboutAuthorRptr_ctl00_AboutAuthor_memberLocation">Australia <img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/AU.gif" alt="Australia" width="16px" height="11px"></span>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+    <div class="description">
+        I started my IT career in programming on different embedded devices since 1992, such as credit card readers, smart card readers and Palm Pilot. <br>
+<br>
+Since 2000, I have mostly been developing business applications on Windows platforms while also developing some tools for myself and developers around the world, so we developers could focus more on delivering business values rather than repetitive tasks of handling technical details.<br>
+<br>
+Beside technical works, I enjoy reading literatures, playing balls, cooking and gardening.
+
+        
+    </div>
+
+</div><br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    <div class="msg-728x90" data-format="728x90" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-loadonview="true" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5,pos_bottom"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=728x90&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=728x90&amp;c=483425" width="728px" height="90px" target="_blank"/></a></noscript></div>
+				</div>
+				
+
+                
+        <h2 id="ctl00_AlsoRead_RelatedResults_ctl00_Header" class="also-read">You may also be interested in...</h2>
+        <table class="spaced content-list also-read">
+    
+	    <tbody><tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl01_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl01_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/ResearchLibrary/260/Designing-For-DevOps"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/LibraryItemThumbnail_260_100x130.png" alt="" style="border-width:0px;"></a>
+            <div class="pro-badge">Pro</div></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl01_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/ResearchLibrary/260/Designing-For-DevOps">Designing For DevOps</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl02_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl02_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/ResearchLibrary/261/Public-Private-and-Hybrid-Cloud-Whats-the-differen"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/LibraryItemThumbnail_261_100x130.png" alt="" style="border-width:0px;"></a>
+            <div class="pro-badge">Pro</div></div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl02_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/ResearchLibrary/261/Public-Private-and-Hybrid-Cloud-Whats-the-differen">Public, Private, and Hybrid Cloud: What's the difference?</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl03_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl03_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/783696/Service-Based-Logging-Solution"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/Thumb-783696.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl03_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/783696/Service-Based-Logging-Solution">Service Based Logging Solution</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl04_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl04_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/Thumb-23.gif" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl04_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/23/SAPrefs-Netscape-like-Preferences-Dialog">SAPrefs - Netscape-like Preferences Dialog</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+	    <tr>
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl05_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl05_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/5431/A-flexible-charting-library-for-NET"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/Thumb-5431.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl05_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/5431/A-flexible-charting-library-for-NET">A flexible charting library for .NET</a></div>
+                
+            </div>
+        </td>
+	
+        <td class="content-list-item" width="50%" valign="top">
+            <div id="ctl00_AlsoRead_RelatedResults_ctl06_ThumbnailContainer" class="thumbnail">
+                <a id="ctl00_AlsoRead_RelatedResults_ctl06_Thumbnail" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/47864/Generate-and-add-keyword-variations-using-AdWords"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/Thumb-47864.png" alt="" style="border-width:0px;"></a>
+            </div>
+            <div class="text">
+                <div class="title"><a id="ctl00_AlsoRead_RelatedResults_ctl06_Link" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/47864/Generate-and-add-keyword-variations-using-AdWords">Generate and add keyword variations using AdWords API</a></div>
+                
+            </div>
+        </td>
+	    </tr>
+	
+		</tbody></table>
+	
+
+
+
+				
+				
+
+					<h2>Comments and Discussions</h2>
+					<a class="float-left" name="_comments" id="_comments">&nbsp;</a><div id="_MessageBoardctl00_MessageBoard" onclick="return SwitchMessage(event, null)">
+<table id="ForumTable" class="forum compact" cellpadding="0" cellspacing="0">
+<tbody><tr>
+<td><a name="xx0xx"></a><table border="0" cellpadding="2px" cellspacing="0" width="100%">
+<tbody><tr class="navbar">
+<td></td><td style="text-align:right;width:50%;"></td><td style="text-align:right;white-space:nowrap;">&nbsp;</td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><table border="0" cellpadding="0" cellspacing="0" width="100%" class="fixed-layout blank-background">
+<tbody><tr>
+<td><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr><tr>
+<td align="center" class="small-text">-- There are no messages in this forum --</td>
+</tr>
+</tbody></table></td>
+</tr><tr>
+<td><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/t(1).gif" border="0" width="1px" height="5px" alt=""></td>
+</tr>
+</tbody></table>
+</div>
+				
+
+			</div>
+			
+		</td>
+		<td width="170px" class="article-wing-right">
+			<div id="ctl00_RightSideBar" class="container-article-info">
+
+                <div id="RHSticky" class="container-article-info-sticky" style="position: static; top: 342px; left: 1042.5px;">
+        			
+
+<div class="article-summary">
+
+    
+
+    
+
+</div>
+
+				    <div id="ctl00_SectionSponsor" class="padded-top">
+					    <div class="msg-160x200" data-format="160x200" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=160x200&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=160x200&amp;c=483425" width="160px" height="200px" target="_blank"/></a></noscript></div>
+				    </div>
+
+				    <div style="width:160px;margin: 10px auto;">
+					    <div class="msg-160x600" data-format="160x600" data-type="ad" data-publisher="lqm.codeproject.site" data-zone="Web-Development/Applications-Tools/General" data-tags="C#, Javascript, HTML, Architect, Dev, Design, Intermediate, Advanced, SysAdmin, Manager, DevOps,rating4.5"><noscript><a href="https://web.archive.org/web/20170716212047/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=160x600&amp;c=483425"><img src="https://web.archive.org/web/20170716212047im_/https://pubads.g.doubleclick.net/gampad/jump?iu=/6839/lqm.codeproject.site/Web-Development/Applications-Tools/General&amp;sz=160x600&amp;c=483425" width="160px" height="600px" target="_blank"/></a></noscript></div>
+				    </div>
+
+                    
+
+				    
+
+				    
+
+				    
+
+                    <div class="anchorLink gototop" id="gototop">
+                        <a id="ctl00_GoToTop" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu#_articleTop">Go to top</a>
+                    </div>
+
+				</div>
+
+			</div>
+		</td>
+		</tr></tbody></table>
+
+		
+		<div class="theme1-background" style="height:2px" id="stickyStop"></div>
+
+		<div class="extended tiny-text">
+			<div class="row">
+				<div class="float-left">
+					<a id="ctl00_PermaLink" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu">Permalink</a> | 
+					<a id="ctl00_AdvertiseLink" href="https://web.archive.org/web/20170716212047/http://developermedia.com/">Advertise </a> |
+					<a id="ctl00_PrivacyLink" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/privacy.aspx">Privacy</a> |
+                    <a id="ctl00_TermsOfUseLink" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a> |
+					<a id="ctl00_Mobile">Mobile</a>
+					<br>
+								
+					
+					Web02 |
+					2.8.170713.1 |
+					Last Updated 11 Jun 2017								
+				</div>
+
+                <div id="ctl00_GoogleTranslate" class="translate float-left"><div class="skiptranslate goog-te-gadget" dir="ltr" style="display: none;"><div id=":0.targetLanguage" class="goog-te-gadget-simple" style="white-space: nowrap;"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/cleardot.gif" class="goog-te-gadget-icon" alt="" style="background-image: url(&quot;https://web.archive.org/web/20170716212047/https://translate.googleapis.com/translate_static/img/te_ctrl3.gif&quot;); background-position: -65px 0px;"><span style="vertical-align: middle;"><a aria-haspopup="true" class="goog-te-menu-value" href="javascript:void(0)"><span></span><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span style="border-left: 1px solid rgb(187, 187, 187);">​</span><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/cleardot.gif" alt="" width="1" height="1"><span aria-hidden="true" style="color: rgb(118, 118, 118);">▼</span></a></span></div></div></div>      
+
+				<div class="float-right align-right">
+					Article Copyright 2016 by Zijian<br>Everything else
+					Copyright © <a href="https://web.archive.org/web/20170716212047/mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2017 <br>
+				</div>
+
+				
+
+
+<div class="page-width">
+Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu?PageFlow=FixedWidth">fixed</a>
+|
+<a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://web.archive.org/web/20170716212047/https://www.codeproject.com/Articles/1118166/TraceHub-a-flexible-solution-for-Web-based-structu?PageFlow=Fluid">fluid</a>
+</div>
+
+
+
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div>
+</div>
+
+
+<img id="ctl00_Audience" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/DFPAudiencePixel" style="border-width:0px;height:1px;width:1px;">
+
+
+
+<script type="text/javascript" language="Javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/article.min.js.download"></script>
+<script type="text/javascript" language="Javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/f.txt"></script>
+<script type="text/javascript" language="Javascript" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/MemberProfilePopup.min.js.download"></script>
+<script type="text/javascript" language="Javascript">//<![CDATA[
+$(document).ready(function () { processCodeBlocks.Initialise('#contentdiv'); });
+function googleTranslateElementInit() {  new google.translate.TranslateElement({   pageLanguage: 'en',   layout: google.translate.TranslateElement.InlineLayout.SIMPLE,   autoDisplay: false,   gaTrack: true,   gaId: 'UA-1735123-1'},  'ctl00_GoogleTranslate');}
+$(document).ready(function() { anchorAnimate();
+$('#RHSticky').sticky($('#stickyStop'));
+$('#ctl00_Nav').sticky($('#stickyStop'));
+});
+$(document).ready(function() {   $('.alert-bar').fadeIn('slow');   $('.alert-bar a.close-notify').click(function() {      $('.alert-bar').fadeOut('fast');        return false;    });});
+$(function ()
+                {
+                    $('.oauth').click(function () {
+                        $this = $(this);
+                        href = $this.attr('href');
+                        var myWindow = window.open(href, 'popup',
+                                    'width=800,height=600,location=0,menubar=0,resizeable=0,scrollbars=0,toolbar=0');
+                        myWindow.focus();
+                        var timer = setInterval(function () {
+                                        if (myWindow.closed) {
+                                            clearInterval(timer);
+                                            // window.location.reload(); // May do a POST reload, shows a warning
+                                            window.location = window.location; // force a GET reload
+                                        }
+                                    }, 200);
+                        return false;
+                    });
+                });
+var retrievalService=function(n){var t=!1;n=n||{};var r=n.RetrievalServiceUrl||"/script/content/webservices/RetrieveContent.aspx/GetContent",u=n.RetrievalServiceRetries||3,f=n.RetrievalServiceTimeout||5e3,e=function(){t||(t=!0,$(window).bind("resize scroll",i),i())},i=function(){if(typeof DMAds=="undefined"){var n=$('[data-type="ad"]');n.each(function(){var n=$(this),u=n.attr("data-format")||"",f=n.attr("data-publisher")||"",e=n.attr("data-zone")||"",t=n.attr("data-loadonview"),i=n.attr("data-noadx"),h=n.attr("data-tags")||"",c=n.find("iframe").length!==0||n.find("img").length!==0,r=n.attr("data-processed");t=typeof t=="string"&&t.toLowerCase()==="true";i=typeof i=="string"&&i.toLowerCase()==="true";r=typeof r=="string"&&r.toLowerCase()==="true";r||c||t&&!s(this)||(o(n,u,f,e,i,h),n.attr("data-processed","true"))})}},o=function(n,t,i,e,o,s){var h=new $.Deferred,c=JSON.stringify({format:t,publisher:i,zone:e,noAdX:o,tags:s});$.ajax({url:r,cache:!1,type:"POST",data:c,contentType:"application/json; charset=utf-8",dataType:"json",tryCount:0,retryLimit:u,timeout:f}).done(function(t){var i=t?t.d:null;h.resolve(i);i&&i.ClickUrl&&i.ImageData&&n.html('<a href="'+decodeURIComponent(i.ClickUrl)+'"><img src="data:image/png;base64,'+decodeURIComponent(i.ImageData)+'"></a>')}).fail(function(n,t){h.reject(t)})},s=function(n){var t,f,e,o;if(!h(n))return!1;var u=!1,i=0,r=0;try{t=n.getBoundingClientRect();typeof innerWidth=="number"?(i=window.innerWidth,r=window.innerHeight):document.documentElement&&(document.documentElement.clientWidth||document.documentElement.clientHeight)?(i=document.documentElement.clientWidth,r=document.documentElement.clientHeight):document.body&&(document.body.clientWidth||document.body.clientHeight)&&(i=document.body.clientWidth,r=document.body.clientHeight);f=-200;t.top===t.bottom&&(f+=n.height*-1);e=t.top>=0&&t.top-200<=r||t.top<=0&&t.top>=f;o=i>t.left&&t.right>=0;u=e&&o}catch(s){u=!0}return u},h=function(n){var t=!1,i;return n&&n.style.position!=="fixed"&&n.offsetParent?t=!0:n&&n.style.position==="fixed"&&(i=window.getComputedStyle(n),t=i&&i.display!=="none"),t&&c()},c=function(){var t=!0,n="";return typeof document.hidden!="undefined"?n="hidden":typeof document.mozHidden!="undefined"?n="mozHidden":typeof document.msHidden!="undefined"?n="msHidden":typeof document.webkitHidden!="undefined"&&(n="webkitHidden"),n!==null&&document[n]&&(t=!1),t};return{init:e}};$(document).ready(function(){var n=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("MSXML2.XMLHTTP"),t;n.onreadystatechange=function(){try{if(n.readyState==4)if(n.status==200){var t=document.createElement("script");t.type="text/javascript";t.innerHTML=n.responseText;document.getElementsByTagName("body")[0].appendChild(t)}else(new retrievalService).init()}catch(i){(new retrievalService).init()}};try{t=('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn2.developermedia.com/a.min.js';n.open("GET",t,!0);n.send()}catch(i){(new retrievalService).init()}});
+var oSrchFlt = false, oSrchBox=false,srchBoxFoc=false;
+$(document).ready(function() {
+ if(InitWatermark)InitWatermark('sb_tb', 'Search for articles, questions, tips');
+ var sbar = $('#sb_tb'); 
+ var sfilter = $('#SearchFilter');
+ if (sbar && sfilter) {
+  sfilter.removeClass('popup'); sfilter.hide(); sfilter.removeClass('open');
+  sbar.blur(function() {
+ if (!oSrchFlt) {sfilter.hide(); sfilter.removeClass('open');}
+ srchBoxFoc=false;
+ });
+  sbar.focus(function() {
+ oSrchFlt=false; srchBoxFoc=true;
+ sfilter.show(); sfilter.addClass('open');
+ });
+  sbar.mouseleave(function() { oSrchBox=false; });
+  sbar.mouseover(function() { oSrchBox=true; });
+  sfilter.mouseleave(function() { oSrchFlt=false; if (!srchBoxFoc&&!oSrchBox) { sfilter.hide(); sfilter.removeClass('open'); }});
+  sfilter.mouseover(function() { oSrchFlt=true; });
+ }
+});
+$('#clear-rate_ctl00_RateArticle_RSU').click(function () {    $('#ctl00_RateArticle_RSU').hide(); return false;});$("#ctl00_RateArticle_RateItemWrapper")   .removeClass("container-rating")   .hover( function() { $('#ctl00_RateArticle_RSU').fadeIn('fast'); },            function() { $('#ctl00_RateArticle_RSU').fadeOut('fast'); } );
+function PostBack_ctl00_RateArticle_RateItemWrapper() {
+  return rateItem(1118166,2,1,true,true,0,'MediumStars');
+}
+
+                        function getVotesHistogram(objectId, objectTypeId, containerId, loadingId) {
+                            if (!$('#' + containerId).attr('alreadyRequested')){
+                                $.ajax({
+                                    url: '/script/Ratings/Ajax/Histogram.aspx?obid=' + objectId + '&obtid='+objectTypeId,
+                                    success: function (data) {
+                                        $('#' + containerId).html(data);
+                                        $('#' + loadingId).hide();
+                                    }
+                                });
+                                $('#' + containerId).attr('alreadyRequested', 'true');
+                            }
+                        }
+$(document).ready(function() {
+  new starRating('#ctl00_RateArticle_VoteFormDiv', PostBack_ctl00_RateArticle_RateItemWrapper,'ctl00_RateArticle');
+  $('#ctl00_RateArticle_RB').mouseenter(function() {     getVotesHistogram(1118166,2   ,'ctl00_RateArticle_Histogram','ctl00_RateArticle_Loading');
+  });
+})
+
+$(document).ready(function() {
+  $('#ctl00_RateArticle_SubmitRateBtn').hide();
+});
+
+$(document).ready(function() {
+  $('#ctl00_RateArticle_SubmitRateBtn').hide();
+});
+function ChkRtctl00_RateArticle(){}
+
+forumDir = '/script/Forums/';
+staticServer = 'https://web.archive.org/web/20170716212047/https://codeproject.global.ssl.fastly.net';
+allowReporting = false;
+allowRating = false;
+allowRatingDisplay = true;
+var smoothScroll = true;
+Selected        = -1;
+oldTitle        = document.title;
+minMessageScore = 1;
+minMessageScore = 5;
+abuseScore      = -2;
+spamScore       = -1;
+getRatingUrl    = '/script/Ratings/Ajax/GetRatings.aspx';
+getRatingRefKey = 'obrs';
+
+
+//]]>
+</script>
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  display: inline-block;  content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 3px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><div id="MemberProfilePopupDiv" class="raised box" style="display: none; position: absolute;"></div><style type="text/css">.copied::after {  position: absolute;  display: inline-block;  content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 3px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; transform: translateX(-100%); } 70% { opacity: 1; transform: translateX(0); } 100% { opacity: 0; } } </style><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/translate_24dp.png" width="20" height="20" alt="Google Translate"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">Original text</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">Contribute a better translation</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div><script type="text/javascript">var _____WB$wombat$assign$function_____ = function(name) {return (self._wb_wombat && self._wb_wombat.local_init && self._wb_wombat.local_init(name)) || self[name]; };
+if (!self.__WB_pmw) { self.__WB_pmw = function(obj) { this.__WB_source = obj; return this; } }
+{
+let window = _____WB$wombat$assign$function_____("window");
+let globalThis = _____WB$wombat$assign$function_____("globalThis");
+let self = _____WB$wombat$assign$function_____("self");
+let document = _____WB$wombat$assign$function_____("document");
+let location = _____WB$wombat$assign$function_____("location");
+let top = _____WB$wombat$assign$function_____("top");
+let parent = _____WB$wombat$assign$function_____("parent");
+let frames = _____WB$wombat$assign$function_____("frames");
+let opener = _____WB$wombat$assign$function_____("opener");
+{
+var _qevents,googletag;if(typeof DMAds=="undefined"){var SendSearchTermsToServer=!0,OnlySendForCodeProject=!1,CodeProjectPublisherId="lqm.codeproject.site",QuantScriptRequired=!1,EnableMutableAds=!0,EnableViewOnScroll=!0,adServer=adServer||window.location.protocol+"//ads.DeveloperMedia.com/",SearchTermUrl=window.location.protocol+"//apps.developermedia.com/Ads/PageTerms/GetTerms",AdClickUrl=window.location.protocol+"//apps.developermedia.com/Ads/PageTerms/LogClick",DownvoteUrl=window.location.protocol+"//apps.developermedia.com/Ads/AdVote/DownvoteByFingerprint",UndoDownvoteUrl=window.location.protocol+"//apps.developermedia.com/Ads/AdVote/UndoDownvote",ReportAdUrl=window.location.protocol+"//apps.developermedia.com/Ads/AdVote/ReportAd",CloseAdImageUrl=window.location.protocol+"//apps.developermedia.com/Content/images/undo.png",UndoCloseAdImageUrl=window.location.protocol+"//apps.developermedia.com/Content/images/redo.png",DmLogoImageUrl=window.location.protocol+"//apps.developermedia.com/Content/images/dm-logo-150x23.png",GlobalIdUrl=window.location.protocol+"//apps.developermedia.com/Ads/GlobalUserIdentification/",PIIViolatingUrls=["http://www.aspsnippets.com/handlers/comments.ashx","codeproject.com/script/membership/sendpassword.aspx","http://www.dailyfreecode.com/userlogin.aspx","codeproject.com/script/membership/modify.aspx","dotnetspider.com/account/login.aspx","codeproject.com/script/membership/logon.aspx"],DMAds={GetQueryTerms:function(){function u(n){for(var i,u="",t=0;t<r.length;t++)if(i=r[t],n.indexOf(i.d)>=0){u=i.q;break}return u}function f(n,t){var r=t.toLowerCase().indexOf(n),u,i;return r<0||r+n.length>=t.length?"":(u=t.indexOf("&",r),u<0&&(u=t.length),i=t.substring(r+n.length,u),i=i.replace(/\+/gi," "),i=decodeURIComponent(i),i.replace(/\"/gi,""))}function e(n){if(n===undefined)return"";var t=n.replace(/^\s+|\s+$/gi,"");return t?(t=t.replace(/\bAND\b|\bNOT\b|^NOT\b|\bOR\b|[^A-Z0-9\+\-\#\._\s]+|\b[A-Z0-9]+:/gi," "),t.replace(/\s+/g," ")):""}var r=[{d:"www.google.",q:"q="},{d:"www.bing.com",q:"q="},{d:"search.live.com",q:"q="},{d:"search.yahoo.com",q:"p="},{d:"codeproject.com",q:"q="},{d:"msdn.microsoft.com",q:"query="},{d:"www.ask.com",q:"q="},{d:"yandex.com",q:"text="},{d:"yandex.ru",q:"text="},{d:"www.baidu.com",q:"wd="},{d:"localhost",q:"q="},{d:"mkyong.com",q:"q="},{d:"codeplex.com",q:"query="},{d:"aspsnippets.com",q:"q="},{d:"trirand.com",q:"s="}],n=document.URL,i="",t=u(n);if(t!==""&&(i=e(f(t,n))),i==""){if(n=document.referrer.toLocaleLowerCase(),!n)return"";t=u(n);t!=""&&(i=e(f(t,n)))}return i},GetRandom:function(n,t){for(var u,i="",r=0;r<n;r++)u=Math.floor(Math.random()*t).toString(t).toUpperCase(),i=i+u;return i},PageRandomNumber:null,PageSearchTerms:null,Tile:1,CurrentDocument:null,CreateAdsCalled:!1,GPTRenderingMode:1,BuildIFrameTag:function(n){var t='<iframe id="dmad{tile}" allowtransparency="false" style="z-index:10" ';return t=n&&n.width&&n.width>1?t+'width="{width}" ':t+'width="100%" ',t=n&&n.height&&n.height>0?t+'height="{height}" ':t+'height="0" ',t=t+'marginwidth="0" marginheight="0" frameborder="0" scrolling="no"><\/iframe>',this.ReplacePlaceholders(t,n)},BuildJavaScriptTag:function(n){var t='<script language="JavaScript" src="'+window.location.protocol+'//ad.doubleclick.net/N6839/adj/{sitename}/{zonename};{searchterm}sz={format};{dc_ref}{type}tile={tile};{noadx}ord={timestamp}?" type="text/javascript"><\/script>';return this.ReplacePlaceholders(t,n)},BuildInlineGPTTagScript:function(n){var t="div-gpt-ad-"+n.sitename+"-"+n.zonename+"-"+n.tile,i="/6839/"+n.sitename+"/"+n.zonename,r="["+n.width+", "+n.height+"]",u=(n.tags||"")+","+(DMAds.PageSearchTerms||""),f="<div id='"+t+"'>     <script type='text/javascript'>         googletag.cmd.push(function() {             googletag.defineSlot('"+i+"', "+r+",'"+t+"')                 .addService(googletag.pubads())                 .setTargeting('kw', '"+u+"');             googletag.enableServices();             googletag.display('"+t+"');         });     <\/script> <\/div>";return"<script type='text/javascript'> var googletag = googletag || {}; googletag.cmd = googletag.cmd || []; (function() {     var gads = document.createElement('script');     gads.async = true;     gads.type = 'text/javascript';     var useSSL = 'https:' == document.location.protocol;     gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';     var node =document.getElementsByTagName('script')[0];     node.parentNode.insertBefore(gads, node); })(); <\/script>"+f},BuildGPTTag:function(n,t){var i=document.createElement("DIV"),r;i.style.height=n.height+"px";i.style.width=n.width+"px";i.style.boxSizing="border-box";i.style.border="0px";i.style.fontSize="0px";r="div-gpt-ad-"+n.sitename+"/"+n.zonename+"-"+n.tile;i.id=r;i.adIndex=n.index;t.appendChild(i);googletag.cmd.push(function(){var u="/6839/"+n.sitename+"/"+n.zonename,i=(n.tags||"")+","+(DMAds.PageSearchTerms||""),t;i=DMAds.EscapeSpecialCharacters({tags:i});t=googletag.defineSlot(u,[n.width,n.height],r).setTargeting("kw",i);n.articleid&&n.articleid>0&&t.setTargeting("articleid",n.articleid);t.addService(googletag.pubads());n.collapse_empty==="true"&&t.setCollapseEmptyDiv(!0,!0);googletag.display(r);googletag.pubads().refresh([t],{changeCorrelator:!1})})},BuildInlineGPTTag:function(n,t){var i,r,u;if(t.innerHTML=DMAds.BuildIFrameTag(n),i=t.getElementsByTagName("iframe")[0],i.onerror=function(){return!0},r=i.contentDocument||i.contentWindow.document||i.contentWindow.window.document,u=function(){n.height<=1&&(this.height=GetDocHeight(r));DMAds.HideRefs(r,t,n)},i.addEventListener)i.addEventListener("load",u,!1);else try{i.attachEvent("onload",u)}catch(f){}return r.write(DMAds.BuildInlineGPTTagScript(n)),r},ReplacePlaceholders:function(n,t){n=n.replace(/\{sitename\}/g,t.sitename);n=n.replace(/\{zonename\}/g,t.zonename);n=t.tags?n.replace(/\{searchterm\}/g,"kw="+encodeURIComponent(this.EscapeSpecialCharacters(t))+";"):n.replace(/\{searchterm\}/g,"");n=n.replace(/\{tile\}/g,t.tile.toString());n=n.replace(/\{format\}/g,t.format);n=n.replace(/\{width\}/g,t.width);n=n.replace(/\{height\}/g,t.height);n=n.replace(/\{target\}/g,t.target);n=n.replace(/\{timestamp\}/g,this.PageRandomNumber);n=t.type?n.replace(/\{type\}/g,"type="+encodeURIComponent(t.type)+";"):n.replace(/\{type\}/g,"");n=t.noadx&&t.noadx.toLowerCase()==="true"?n.replace(/\{noadx\}/g,"noadx=true;"):n.replace(/\{noadx\}/g,"");var i=encodeURIComponent(location.href);return n.length+i.length<2048?n.replace(/\{dc_ref\}/g,"dc_ref="+i+";"):n.replace(/\{dc_ref\}/g,"")},EscapeSpecialCharacters:function(n){var t=n.tags,i;t=t.replace(/\+/gi,"{plus}");t=t.replace(/\#/gi,"{sharp}");t=t.replace(/\./gi,"{dot}");t=t.replace(/[\#\*\.\(\)\+\<\>\[\]]/gi,"");for(var r=t.split(","),u=[];r.length>0;)i=r.shift(),/[^\u0020-\u007f]/.test(i)||u.push(i);return u.join(",")},IsDragAndDropSupported:function(){var n=document.createElement("div");return"draggable"in n||"ondragstart"in n&&"ondrop"in n},IsFireFox:function(){return navigator.userAgent.toLowerCase().indexOf("firefox")>-1},B64toBlob:function(n,t,i){var e,o,r,f,s,u,h;for(t=t||"",i=i||512,e=atob(n),o=[],r=0;r<e.length;r+=i){for(f=e.slice(r,r+i),s=new Array(f.length),u=0;u<f.length;u++)s[u]=f.charCodeAt(u);h=new Uint8Array(s);o.push(h)}return new Blob(o,{type:t})},GetArticleId:function(n){var t=0,i,r;if(n&&n==CodeProjectPublisherId)try{i="Articles";r=window.location.href.indexOf(i);r>=0&&(t=window.location.href.substring(r+i.length+1),t=t.substring(0,t.indexOf("/")),t=parseInt(t),isNaN(t)&&(t=0))}catch(u){t=0}return t},IsPagePIICompliant:function(){var t=!0,i,n,r;try{for(i=window.location.href.toLowerCase(),n=0,r=PIIViolatingUrls.length;n<r&&t;n++)t=!(i.indexOf(PIIViolatingUrls[n])>=0)}catch(u){}return t},tagInfo:[{id:1,n:"Standard Banner",h:60,w:468},{id:2,n:"Product Spotlight",h:2,w:1},{id:3,n:"Hosting Spotlight",h:2,w:1},{id:4,n:"Skyscraper",h:600,w:120},{id:5,n:"Square",h:125,w:125},{id:6,n:"Medium Rectangle",h:250,w:300},{id:7,n:"Large Rectangle",h:280,w:336},{id:8,n:"Leaderboard",h:90,w:728},{id:9,n:"HTML Ad",h:0,w:0},{id:10,n:"Fixed Square",h:125,w:125},{id:11,n:"Fixed Banner",h:60,w:468},{id:12,n:"Half Skyscraper",h:300,w:120},{id:13,n:"IAB Button",h:90,w:120},{id:14,n:"Rectangle",h:120,w:150},{id:15,n:"Thin Horizontal",h:27,w:408},{id:16,n:"Button",h:30,w:100},{id:17,n:"DogEar",h:0,w:0},{id:18,n:"Wide Skyscraper",h:600,w:160},{id:19,n:"Tracking Only",h:1,w:1},{id:20,n:"Mixed 120x90-Text",h:5,w:1},{id:21,n:"Home page top left (150 X 80)",h:80,w:150},{id:22,n:"SponsorEmail",h:0,w:0},{id:23,n:"Email",h:60,w:60},{id:24,n:"TextLinks",h:0,w:0},{id:25,n:"Zone",h:0,w:0},{id:26,n:"Goal group",h:0,w:0},{id:27,n:"Article",h:0,w:0},{id:28,n:"Search Sponsor Box",h:30,w:120},{id:29,n:"Microbar",h:31,w:88},{id:30,n:"Sponsor Link",h:1,w:0}],DetermineTagSize:function(n){var i,u,r,t;if(n.format)if(isNaN(n.format))i=n.format.split("x"),i.length==2&&(isFinite(i[0])&&(n.width=i[0]),isFinite(i[1])&&(n.height=i[1]));else for(u=!1,r=0;r<this.tagInfo.length&&!u;)t=this.tagInfo[r],t.id==n.format&&(t.w!=0&&(n.width=t.w),t.h!=0&&(n.height=t.h),n.type=t.name,u=!0,n.format=""+t.w+"x"+t.h),r++},MapDmIdsToDart:function(n){var t="lqm.",i=".site";n.publisher?(n.sitename=isNaN(n.publisher)?n.publisher:t+"pub"+n.publisher+i,this.MapDmZoneToDartZone(n)):n.site&&(n.sitename=t+"codeplex"+i,n.zonename=n.charity?"donated2charity":n.site.toLowerCase())},GetRequestData:function(n){var t=[],i;for(adIndex=0;adIndex<n.length;adIndex++)i=n[adIndex],t[adIndex]=DMAds.GetDivRequestData(i,adIndex);return t},GetDivRequestData:function(n,t){for(var u,f,i={height:0,width:0,publisher:undefined,zone:undefined,site:undefined,tags:undefined,sitename:undefined,zonename:undefined,target:undefined,format:undefined,tile:undefined,type:undefined,noadx:!1,collapse_empty:!1},o=n.attributes,s=o.length,r={},e=0;e<s;e++)u=o.item(e),u.nodeName.indexOf("lqm_")==0&&(f=u.nodeName.slice(4),r[f]=u.value||u.nodeValue),u.nodeName.indexOf("data-")==0&&(f=u.nodeName.slice(5),r[f]=u.value||u.nodeValue);return i.publisher=r.publisher,i.zone=r.zone,i.site=r.site,i.tags=r.tags,i.format=r.format,i.charity=r.charity,i.noadx=r.noadx,i.collapse_empty=r.collapse_empty,i.tile=t+1,i.index=t,i.target="_blank",i.tags&&(i.tags=decodeURIComponent(i.tags)),DMAds.DetermineTagSize(i),i.width=parseInt(i.width),i.height=parseInt(i.height),DMAds.MapDmIdsToDart(i),i.articleid=DMAds.GetArticleId(i.publisher),i},zoneInfo:[{id:1,n:"ron"},{id:51,n:"it"},{id:52,n:"designer"},{id:2,n:"above_the_fold"},{id:9,n:"wpf"},{id:14,n:"silverlight"},{id:3,n:"reportingservices"},{id:4,n:"sql"},{id:5,n:"whitepaper"},{id:6,n:"featuredwhitepaper"},{id:7,n:"crystalreports"},{id:10,n:"vs2005video"},{id:11,n:"ros_dogear"},{id:12,n:"homepage_dogear"},{id:13,n:"excludehomepage_dogear"},{id:15,n:"lqm_dogear"},{id:17,n:"mvc"},{id:18,n:"ajax"},{id:38,n:"devexpress_video"},{id:39,n:"devmavens_sidebar"},{id:40,n:"devmavens_offer"},{id:44,n:"silverlight"},{id:45,n:"wpf"},{id:54,n:"csharp_articles"}],MapDmZoneToDartZone:function(n){if(n.zone){for(var i=!1,t=0;t<this.zoneInfo.length&&!i;)this.zoneInfo[t].id==n.zone&&(n.zonename=this.zoneInfo[t].n,i=!0),t++;i||(n.zonename=isNaN(n.zone)?n.zone.toLowerCase():"ron")}else n.zonename="ron"},GetDocHeight:function(n){return n.height||n.body&&n.body.scrollHeight},HideRefs:function(n,t,i){var e=this,u,f,o,r;for(i.format.indexOf("1x")===0?(t.innerHTML=n.body.innerHTML,u=t):u=n,f=u.getElementsByTagName("a"),o=function(n){var t=n.href,i,f=t.indexOf("&adurl="),r,u;if(i=f>0?decodeURIComponent(t.substring(f+7)):adServer+e.GetRandom(4,16)+"-"+e.GetRandom(7,16),n.href=i,r=function(){n.href=t},u=function(){n.href=i},n.addEventListener)n.addEventListener("mousedown",r,!1),n.addEventListener("mouseover",u,!1);else try{n.attachEvent("onmousedown",r);n.attachEvent("onmouseover",u)}catch(o){}},r=0;r<f.length;r++)o(f[r])},GetDomain:function(){var t=document.location.hostname,n=/([^.]+\.[^.]{3,})$/i.exec(t);return n!=null?n[1]:(n=/([^.]+\.[^.]+\.[^.]{2})$/i.exec(t),n!=null?n[1]:t)},SetCookie:function(n,t,i,r,u,f){var e="",o;e=n+"="+t;i>0&&(o=new Date,o.setTime(o.getTime()+i*864e5))&&(e+="; expires="+o.toGMTString());r&&(e+="; path="+r);u&&u.indexOf(".")!=-1&&(e+="; domain="+u);f&&(e+="; secure");document.cookie=e},GetCookieValue:function(n){var r=document.cookie,u=null,t,i;if(r!="")for(t=r.split(";"),index=0;index<t.length;index++)if(i=t[index].replace(/^\s+/,""),i.substring(0,n.length+1)==n+"="){u=i.substring(n.length+1);break}return u},CookiesEnabled:function(){return navigator.cookieEnabled!=void 0?navigator.cookieEnabled:(document.cookie="testcookie=test; max-age=10000",document.cookie.indexOf("testcookie=test")>=0)},CreateDMIFrame:function(n){var t=document.createElement("IFRAME");return t.width=1,t.height=1,t.src=GlobalIdUrl,t.id="DMGlobalUserIdetifierIFRAME",t.name="DMGlobalUserIdetifierIFRAME",t.style.display="none",document.body.appendChild(t),t.onload=n,t},DmGlobalUserId:0,DmGlobalUserIdKey:"dmaduid",DmGlobalUserIdCookieConfirmedKey:"dmaduid_confirm",PublisherPageViewID:0,PublisherPageViewGuid:""};if(typeof DMAds.CreateAds!="function"&&(DMAds.CreateAds=function(n){var y=this,p=1e3,s;this.PageRandomNumber=this.GetRandom(32,16);var ut=function(n,t,i,r){var o=[],u,e;i==null&&(i=document);r==null&&(r="*");var f=i.getElementsByTagName(r),s=f.length,h=new RegExp("(^|\\s)"+t+"(\\s|$)");for(u=0,e=0;u<s;u++)h.test(f[u].getAttribute(n))&&(o[e]=f[u],e++);return o},ft=function(n,t,i){var e=[],r,f;t==null&&(t=document);i==null&&(i="*");var u=t.getElementsByTagName(i),o=u.length,s=new RegExp("(^|\\s)"+n+"(\\s|$)");for(r=0,f=0;r<o;r++)s.test(u[r].className)&&(e[f]=u[r],f++);return e},et=function(n,t,i){var u=50,r=0,f=window.setInterval(function(){var e=y.GetDocHeight(n);e>0&&((--u==0||e===r)&&(window.clearInterval(f),y.HideRefs(n,i,t)),r=e)},100)},ot=function(n,t){var i=document.createElement("input"),r;i.type="image";i.src=CloseAdImageUrl;i.title="Report Ad";i.align="left";i.style.cssText="z-index:1000; position:relative; left:0px; top:-"+n.height+"px;margin-top: 0px; margin-left: 0px; display:block; font-size:0px; border: 0px; padding: 0px; height:14px; width:14px";r=st(n);n.closeAdButton=i;n.adContainer=t;n.closeAdDisplay=r;t.appendChild(i);t.parentNode.appendChild(r);i.onclick=n.width==125&&n.height==125?function(){return w(n),b(n),!1}:function(){return w(n),!1}},st=function(n){var i=n.width,r=n.height,t=document.createElement("div"),e="<select class='reportReason' style='max-width:150px !important; padding: 0px !important'><option>Offensive<\/option><option>Abusive<\/option><option>Off topic<\/option><option>Don't like the Ad<\/option><option>Wrong language<\/option><\/select>",o="<input type='button' disabled class='reportButton' style='padding: 0px !important' value='Report'><\/input>",u,f;return i==728&&r==90?(t.innerHTML="<div class='sendReportContainer' style='padding-left: 2px; display:block; line-height:initial !important'><div style='display:inline-block; font:14px/18px \"Segoe UI\", Arial'><b>Don't like this Ad?<\/b><\/div><div class='dropzone' contenteditable='true' style='margin-left:10px; height:60px; width: 250px; background-color:lightgray; border-style:dotted; border-color:black; border-radius: 5px; border-width: 2px; text-align: center; display:inline-block; white-space:normal'>1. Hit the refresh icon to show the ad again and take a screenshot. 2. Drag and Drop or paste the screenshot here<\/div><div style='margin-left:10px; display:inline-block; font:14px/18px \"Segoe UI\", Arial;'> "+e+"&nbsp;"+o+"<\/div><\/div><div class='reportSentContainer' style='display:none; padding: 15px 20px; font:14px/18px \"Segoe UI\", Arial;'><span style='color:#999'>Thank you for the report!<\/span><\/div><a href='http://www.developermedia.com/' target='_blank'><img src='"+DmLogoImageUrl+"' style='max-width:100%;position:absolute; right:10px; top:10px;'><\/a>",t.style.cssText="display:none; width:"+i+"px; height:"+r+"px; z-index:100; text-align:left;border-style:solid; border-width:1px; position:relative; background-color:white;box-sizing:border-box; top:0px; left:0px"):i==300&&r==250?(t.innerHTML="<div class='sendReportContainer' style='padding: 5px 5px; display:block; line-height:initial !important'><div style='padding-bottom:5px; font:14px/18px \"Segoe UI\", Arial;'><b>Don't like this Ad?<\/b><\/div><div class='dropzone' contenteditable='true' style='height:100px; width: 290px; margin-top:20px; margin-bottom: 20px; background-color:lightgray; border-style:dotted; border-color:black; border-radius: 5px; border-width: 2px; text-align: center; box-sizing:border-box; white-space:normal'>1. Hit the refresh icon to show the ad again so you can take a screenshot <br/>2. Drag and Drop or paste the screenshot here<\/div><div style='margin-top:5px; font:14px/18px \"Segoe UI\", Arial; '> "+e+"<\/div><div style='margin-top:5px; display:block; font:14px/18px \"Segoe UI\", Arial;'>"+o+"<\/div><\/div><div class='reportSentContainer' style='display:none; padding: 15px 20px; font:14px/18px \"Segoe UI\", Arial; '><span style='color:#999;'>Thank you for the report!<\/span><\/div><a href='http://www.developermedia.com/' target='_blank'><img src='"+DmLogoImageUrl+"' style='max-width:100%;position:absolute; right:20px; bottom:10px;'><\/a>",t.style.cssText="display:none; width:"+i+"px; height:"+r+"px; z-index:100; text-align:left;border-style:solid; border-width:1px; position:relative; background-color:white;box-sizing:border-box; top:0px; left:0px"):i==160&&r==600?(t.innerHTML="<div class='sendReportContainer' style='padding: 20px 15px; display:block; line-height:initial !important'><div style='padding-bottom:20px; display:block; font:14px/18px \"Segoe UI\", Arial;'><b>Don't like this Ad?<\/b><\/div><div class='dropzone' contenteditable='true' style='height:180px; width: 130px; margin-top:20px; margin-bottom: 20px; background-color:lightgray; border-style:dotted; border-color:black; border-radius: 5px; border-width: 2px; text-align: center; box-sizing:border-box; white-space:normal'>1. Hit the refresh icon to show the ad again so you can take a screenshot <br/><br/>2. Drag and Drop or paste the screenshot here<\/div><div style='padding-bottom:10px; padding-top: 10px display:block; font:14px/18px \"Segoe UI\", Arial;'> "+e+"<\/div><div style='font:14px/18px \"Segoe UI\", Arial;'>"+o+"<\/div><\/div><div class='reportSentContainer' style='display:none; padding: 15px 20px; font:14px/18px \"Segoe UI\", Arial;'><span style='color:#999;'>Thank you for the report!<\/span><\/div><a href='http://www.developermedia.com/' target='_blank'><img src='"+DmLogoImageUrl+"' style='max-width:120px;position:absolute; right:20px; bottom:20px;'><\/a>",t.style.cssText="display:none; width:"+i+"px; height:"+r+"px; z-index:100; text-align:left;border-style:solid; border-width:1px; position:relative; background-color:white;box-sizing:border-box; top:0px; left:0px"):i==125&&r==125&&(t.innerHTML="<div class='reportSentContainer' style='padding: 5px 5px;font:14px/18px \"Segoe UI\", Arial; width: 100px; height: 100px'><span style='color:#999;'>Thank you for the report!<\/span><\/div>",t.style.cssText="display:none; width:"+i+"px; height:"+r+"px; z-index:100; text-align:left;border-style:solid; border-width:1px; position:relative; background-color:white;box-sizing:border-box; top:0px; left:0px"),(i==728&&r==90||i==300&&r==250||i==160&&r==600)&&(n.reportButton=t.getElementsByClassName("reportButton")[0],u=t.getElementsByClassName("dropzone")[0],u.adIndex=n.index,u.addEventListener("paste",ct,!1),n.dropzone=u,DMAds.IsDragAndDropSupported()&&(u.ondragenter=function(n){n.currentTarget.style.backgroundColor="yellow";n.currentTarget.innerHTML="<br/><br/>Drag and Drop the ad here"},u.ondragleave=function(n){n.currentTarget.style.backgroundColor="lightgray";yt(n)},u.ondragover=function(n){n.stopPropagation();n.preventDefault();n.currentTarget.style.backgroundColor="yellow"},u.ondrop=function(n){n.currentTarget.style.backgroundColor="lightgreen";at(n)},u.onmouseover=function(n){vt(n)}),DMAds.IsFireFox()&&u.addEventListener("DOMSubtreeModified",function(){for(var n,t=this,i=0;i<t.children.length;i++)n=t.children[i],n.nodeName.toLowerCase()==="img"&&n.style.display!="none"&&n.src&&(n.style.display="none",lt(n.src,t))})),f=document.createElement("input"),f.type="image",f.src=UndoCloseAdImageUrl,f.title="Show Ad",f.style.cssText="z-index:1000; position:relative; left:0px; top:0px; width:14px; height:14px;margin-top: 0px; margin-left: 0px; font-size:0px; display:block; padding: 0px; border: 0px",t.insertBefore(f,t.children[0]),f.onclick=function(){return k(n),!1},t},ht=function(n){var i,t;window.location.href&&window.location.href.includes("show_creative_id=1")&&n&&n.creativeId&&console.log(n.creativeId);EnableMutableAds&&n&&!n.isEmpty&&(!n.lineItemId||n.lineItemId&&n.lineItemId==0)?(t=document.getElementById(n.slot.getSlotElementId()),i=r[t.adIndex],i.contentUrl=n.slot.getContentUrl&&n.slot.getContentUrl(),ot(i,t)):n&&n.isEmpty&&(t=document.getElementById(n.slot.getSlotElementId()),t.style.width="0px",t.style.height="0px",t.style.display="none");d(document)},w=function(n){k(n)},b=function(n){var t={},i,u,f;t.DmGlobalUserId=DMAds.DmGlobalUserId;i=n.closeAdDisplay.getElementsByClassName("reportReason")[0];t.reason=i&&i.options[i.selectedIndex].value||"Unspecified";u=n.closeAdDisplay.getElementsByClassName("sendReportContainer")[0];f=n.closeAdDisplay.getElementsByClassName("reportSentContainer")[0];u&&(u.style.display="none");f&&(f.style.display="block");try{var s=DownvoteUrl,e=new XMLHttpRequest,r=new FormData,o=null;n.fileList&&n.fileList.length>0&&(o=n.fileList[0]);e.open("POST",s,!0);r.append("adScreenshot",o);r.append("reason",t.reason);r.append("DmGlobalUserId",t.DmGlobalUserId);e.send(r)}catch(h){}},ct=function(n){var t,u,e,i,f,s,h;if(!DMAds.IsFireFox()){if(n.preventDefault(),t=[],u=!1,window.clipboardData)t=window.clipboardData.files,u=!0;else if((n.clipboardData||n.originalEvent.clipboardData)&&(e=n.clipboardData||n.originalEvent.clipboardData,i=e&&e.items||[],t=[],i&&i.length>0))for(u=!0,f=0;f<i.length;f++)s=i[f],s.kind==="file"&&(t[t.length]=s.getAsFile());t&&t.length>0?(h=n.currentTarget.adIndex,r[h].fileList=t,o(h,n.currentTarget)):n.currentTarget.innerHTML=u?"<br/><br/> No files found on clipboard <br/>":"<br/><br/> Paste not supported on your browser <br/>"}},lt=function(n,t){if(n){var u=n.indexOf(","),i=n.substring(0,u),e=i.indexOf(":"),s=i.indexOf(";"),h=i.substring(e+1,s),c=n.substring(u+1),l=DMAds.B64toBlob(c,h,512),f=t.adIndex;r[f].fileList=[l];o(f,t)}},at=function(n){var t;n.stopPropagation();n.preventDefault();var u=n.currentTarget.adIndex,i=[];if(n.dataTransfer.files&&n.dataTransfer.files.length>0)for(t=0;t<n.dataTransfer.files.length;t++)n.dataTransfer.files[t].type&&n.dataTransfer.files[t].type.indexOf("image")>=0&&(i[i.length]=n.dataTransfer.files[t]);i.length>0?(r[u].fileList=i,o(u,n.currentTarget)):(n.currentTarget.style.backgroundColor="yellow",n.currentTarget.innerHTML="<br/><br/>The dropped item was not an image")},vt=function(n){n.buttons>0&&o(n.currentTarget.adIndex,n.currentTarget)},yt=function(n){n.x==0&&n.y==0&&o(event.currentTarget.adIndex,event.currentTarget)},o=function(n,t){var i=r[n];t.style.backgroundColor="lightgreen";t.innerHTML=i.width==160&&i.height==600?"<br/> Your screenshot has been received – thanks! <br/><br/> Next step: What’s wrong with the ad":i.width==300&&i.height==250?"<br/> Your screenshot has been received – thanks! <br/><br/> Next step: What’s wrong with the ad":i.width==728&&i.height==90?"Your screenshot has been received – thanks! Next step: What’s wrong with the ad":"Ad info received. Press Report to submit";i.reportButton.disabled=!1;i.reportButton.onclick=function(){return b(r[n]),!1}},h=function(n,t,i,r){var u=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("MSXML2.XMLHTTP"),e=JSON.stringify(t),f=!1;server_write_timeout=setTimeout(function(){r?u.abort():(f=!0,i(null))},p);u.onreadystatechange=function(){try{u.readyState==4&&(clearTimeout(server_write_timeout),u.status==200?f||i(u.responseText):f||i(null))}catch(n){clearTimeout(server_write_timeout);!f&&i&&i(null)}};try{u.open("POST",n,!0);u.setRequestHeader("Content-Type","application/json");u.send(e)}catch(o){clearTimeout(server_write_timeout);i(null)}},k=function(n){n.closeAdDisplay.style.display==="none"?(n.closeAdDisplay.style.display="table",n.closeAdButton.style.display="none",n.adContainer.style.display="none",n.dropzone.focus()):(n.closeAdDisplay.style.display="none",n.closeAdButton.style.display="block",n.adContainer.style.display="block")},d=function(n){setTimeout(function(){n&&n.body&&top.postMessage&&top.__WB_pmw(self.window).postMessage(n.body.innerHTML?"DM-enabled":"DM-disabled","*")},1e3)},g=function(n){var u=t[n],f=r[n];if(DMAds.GPTRenderingMode==1)DMAds.BuildGPTTag(f,u);else{var i=DMAds.BuildInlineGPTTag(f,u),e=navigator.userAgent&&navigator.userAgent.indexOf("MSIE")>=0,o=navigator.userAgent&&navigator.userAgent.indexOf("Opera")>=0;e||o||!i.close||i.close();(e||o)&&et(i,f,u);d(i)}},pt=function(n){var c=t[n],l=r[n],e=!1,u=0,f=0,i,o,s,h;try{i=c.getBoundingClientRect();typeof innerWidth=="number"?(u=window.innerWidth,f=window.innerHeight):document.documentElement&&(document.documentElement.clientWidth||document.documentElement.clientHeight)?(u=document.documentElement.clientWidth,f=document.documentElement.clientHeight):document.body&&(document.body.clientWidth||document.body.clientHeight)&&(u=document.body.clientWidth,f=document.body.clientHeight);o=-200;i.top==i.bottom&&(o+=l.height*-1);s=i.top>=0&&i.top-200<=f||i.top<=0&&i.top>=o;h=u>i.left&&i.right>=0;e=s&&h}catch(a){e=!0}return e},e=function(){for(var i=0,n=0;n<t.length;n++)f[n]===!1&&pt(n)&&a(n)&&(f[n]=!0,g(n)),f[n]===!0&&(i++,u[n]||(u[n]=nt(n)),it(n));i==t.length&&clearInterval(v)},wt=function(n){var t,i;try{for(t=0,i=n.length;t<i;t++){var r=Math.random()+"",u=r*1e13,f=new Image;f.src="https://pubads.g.doubleclick.net/activity;dc_iu=/6839/DFPAudiencePixel;ord="+u+";dc_seg="+n[t]+"?"}}catch(e){}},bt=function(n,i,r){var b=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("MSXML2.XMLHTTP"),f,s,u,e,c,v,l,o,y,a,w;if(!b||!JSON)return r();f=document.URL;f.indexOf("?")>0&&(f=f.substring(0,f.indexOf("?")));try{s=top.document.title}catch(k){s="FAILED TO GET DOCUMENT TITLE"}if(u={},u.terms=n,u.title=s,u.url=f,u.publisher=i,u.DmGlobalUserId=DMAds.DmGlobalUserId,u.numberOfAdsOnPage=t!=null?t.length:0,e=function(t){if(clearTimeout(server_write_timeout),t){var i=JSON.parse(t);i?(i.SearchTerms&&(DMAds.PageSearchTerms=n+","+i.SearchTerms),i.PublisherPageViewGuid&&(DMAds.PublisherPageViewGuid=i.PublisherPageViewGuid),i.aid&&i.aid.length&&i.aid.length>0&&wt(i.aid)):DMAds.PageSearchTerms=n}r()},DMAds.CookiesEnabled())if(c=DMAds.GetCookieValue(DMAds.DmGlobalUserIdKey),v=DMAds.GetCookieValue(DMAds.DmGlobalUserIdCookieConfirmedKey),!v&&JSON){if(l=!1,o={},o.sender=location.href,o.Id=DMAds.PageRandomNumber,receiveMessageTimeout=setTimeout(function(){l=!0;h(SearchTermUrl,u,e,!1)},p),y=function(){w.contentWindow.postMessage(JSON.stringify(o),GlobalIdUrl)},a=function(n){var t=null,i;try{t=JSON.parse(n.data)}catch(r){}t&&t.Id&&t.Id===o.Id&&(clearTimeout(receiveMessageTimeout),i=DMAds.GetDomain(),DMAds.SetCookie(DMAds.DmGlobalUserIdKey,t.DmGlobalUserId,18250,"/",i,!1),DMAds.SetCookie(DMAds.DmGlobalUserIdCookieConfirmedKey,t.DmGlobalUserConfirmResponse,18250,"/",i,!1),u.DmGlobalUserId=t.DmGlobalUserId,DMAds.DmGlobalUserId=t.DmGlobalUserId,l||h(SearchTermUrl,u,e,!1))},window.addEventListener)window.addEventListener("message",a,!1);else try{window.attachEvent("message",a)}catch(d){}w=DMAds.CreateDMIFrame(y)}else u.DmGlobalUserId=c,DMAds.DmGlobalUserId=c,h(SearchTermUrl,u,e,!1);else h(SearchTermUrl,u,e,!1)},c=function(){var u=function(){typeof googletag.pubadsReady=="undefined"?(googletag.pubads().enableSingleRequest(),googletag.pubads().disableInitialLoad(),googletag.pubads().enableAsyncRendering(),googletag.enableServices(),DMAds.GPTRenderingMode=1,googletag.pubads().addEventListener("slotRenderEnded",function(n){ht(n)})):DMAds.GPTRenderingMode=2},o=function(){for(var i,u,o=t[0].getAttribute("lqm_publisher")||t[0].getAttribute("data-publisher"),r=EnableViewOnScroll,n=0;n<t.length;n++)f[n]=!1,i=t[n].getAttribute("data-display")||t[n].getAttribute("lqm_loadOnView"),i==="onscroll"||i==="true"?r=!0:(i==="always"||i==="false")&&(r=!1),!r&&a(n)&&(g(n),f[n]=!0);if(e(),window.addEventListener)window.addEventListener("resize",function(){e();tt()},!1),window.addEventListener("scroll",e,!1);else try{window.attachEvent("onresize",function(){e();tt()});window.attachEvent("onscroll",e)}catch(s){}for(kt(),dt(QuantScriptRequired),u=!1,n=0;n<t.length;n++)a(n)||(u=!0);u&&(v=setInterval(e,100))},n=function(){googletag.cmd.push(u);googletag.cmd.push(o)},i=DMAds.IsPagePIICompliant(),r;!i||window.googletag&&googletag.apiReady?i&&n():r=setInterval(function(){window.googletag&&googletag.apiReady&&(clearInterval(r),n())},100)},kt=function(){var n=null;typeof document.hidden!="undefined"?n="visibilitychange":typeof document.mozHidden!="undefined"?n="mozvisibilitychange":typeof document.msHidden!="undefined"?n="msvisibilitychange":typeof document.webkitHidden!="undefined"&&(n="webkitvisibilitychange");n&&document.addEventListener(n,e,!1)},dt=function(n){var t,i;n&&(t=document.createElement("script"),t.src=(document.location.protocol=="https:"?"https://secure":"http://edge")+".quantserve.com/quant.js",t.async=!0,t.type="text/javascript",i=document.getElementsByTagName("script")[0],i.parentNode.insertBefore(t,i))},nt=function(n){if(t[n].children[0]){var r=l(t[n].children[0]),i={};return(i.isStickyRequired=t[n].getAttribute("data-sticky")&&t[n].getAttribute("data-sticky").toLowerCase()==="top",i.absoluteTop=r.y,i.absoluteLeft=r.x,i.absoluteTop===-1)?null:(i.originalPosition=t[n].style.position,i)}},tt=function(){for(i=0;i<u.length;i++)u[i]&&t&&t.length>i&&t[i]&&t[i].children&&t[i].children.length&&t[i].children[0]&&(t[i].children[0].style.position=u[i].originalPosition,u[i]=nt(i),it(i))},it=function(n){var i=u[n],r,s,o,h,f,e;i&&i.isStickyRequired&&t[n].children[0].getBoundingClientRect&&document.getElementsByClassName&&(r=document.getElementsByClassName("sticky-stop")[0],r&&(s=l(r),o=r.getBoundingClientRect()),h=l(t[n].children[0]),f=t[n].children[0].getBoundingClientRect(),r&&h.y+f.height+Math.abs(f.top)>s.y&&o.top<f.height?e=o.top-f.height+"px":window.pageYOffset+10>=i.absoluteTop&&(e="10px"),e?(t[n].children[0].style.position="fixed",t[n].children[0].style.top=e,t[n].children[0].style.left=i.absoluteLeft-window.pageXOffset+"px",t[n].clientHeight===0&&(t[n].style.height=t[n].children[0].clientHeight+"px"),t[n].clientWidth===0&&(t[n].style.width=t[n].children[0].clientWidth+"px")):t[n].children[0].style.position=i.originalPosition)},l=function(n){var t={};if(t.x=-1,t.y=-1,n.getBoundingClientRect){var r=n.getBoundingClientRect(),i=document.documentElement,u=window.pageYOffset||i.scrollTop||document.body.scrollTop||0,f=window.pageXOffset||i.scrollLeft||document.body.scrollLeft||0,e=i.clientTop||document.body.clientTop||0,o=i.clientLeft||document.body.clientLeft||0;t.y=r.top+u-e;t.x=r.left+f-o}return t},a=function(n){var i=t[n],r=!1,u;return i&&i.style.position!="fixed"&&i.offsetParent?r=!0:i&&i.style.position=="fixed"&&(u=window.getComputedStyle(i),r=u&&u.display!="none"),r&&gt()},gt=function(){var t=!0,n="";return typeof document.hidden!="undefined"?n="hidden":typeof document.mozHidden!="undefined"?n="mozHidden":typeof document.msHidden!="undefined"?n="msHidden":typeof document.webkitHidden!="undefined"&&(n="webkitHidden"),n!=null&&document[n]&&(t=!1),t},rt=function(){if(t!=null&&t.length>0){var n=r[0].sitename;if(SendSearchTermsToServer&&(!OnlySendForCodeProject||n===CodeProjectPublisherId))try{bt(DMAds.PageSearchTerms,n,c)}catch(i){c()}else c()}},f=f||[],u=u||[],r=r||[],v=v||null,t=t||[];DMAds.PageSearchTerms||(DMAds.PageSearchTerms=DMAds.GetQueryTerms());n||DMAds.CreateAdsCalled?n&&(f[f.length]=!1,u[u.length]=null,t[t.length]=n,r[r.length]=DMAds.GetDivRequestData(n,t.length-1),rt()):(DMAds.CreateAdsCalled=!0,s=ut("data-type","ad",document,"div"),(s==null||s.length<=0)&&(s=ft("lqm_ad",document,"div")),t=(s||[]).concat(),r=DMAds.GetRequestData(t).concat(),rt())}),typeof DMAds.ShowAdDiv!="function"&&(DMAds.ShowAdDiv=function(n){DMAds.CreateAds(n)}),document.readyState==="complete")DMAds.CreateAds();else if(window.addEventListener)window.addEventListener("load",function(){DMAds.CreateAds()},!1),window.addEventListener("DOMContentLoaded",function(){DMAds.CreateAds()},!1);else try{window.attachEvent("onload",function(){DMAds.CreateAds()})}catch(e){DMAds.CreateAds()}_qevents=_qevents||[];_qevents.push({qacct:"p-g6uZkrDA2nB2y"});!window.googletag&&DMAds.IsPagePIICompliant()&&(googletag=googletag||{},googletag.cmd=googletag.cmd||[],function(){var n=document.createElement("script"),i,t;n.async=!0;n.type="text/javascript";i="https:"==document.location.protocol;n.src=(i?"https:":"http:")+"//www.googletagservices.com/tag/js/gpt.js";t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(n,t)}())}
+
+}}</script><div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div><iframe frameborder="0" class="goog-te-menu-frame skiptranslate" title="Language Translate Widget" style="visibility: visible; display: none;" allow="autoplay &#39;self&#39;; fullscreen &#39;self&#39;" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/saved_resource.html"></iframe><iframe width="1" height="1" src="./TraceHub, a flexible solution for Web based structured logging - CodeProject_files/saved_resource(1).html" id="DMGlobalUserIdetifierIFRAME" name="DMGlobalUserIdetifierIFRAME" style="display: none;" allow="autoplay &#39;self&#39;; fullscreen &#39;self&#39;"></iframe></body></html>

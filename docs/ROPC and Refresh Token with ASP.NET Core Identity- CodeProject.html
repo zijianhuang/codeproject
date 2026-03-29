@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<!-- saved from url=(0094)https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<link rel="preconnect" href="https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://www.codeproject.com/">
+
+
+	<link rel="preload" href="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/jquery-3.4.1.min.js.download" as="script" type="text/javascript">
+
+
+	<title>ROPC and Refresh Token with ASP.NET Core Identity- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" async="" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/analytics.js.download"></script><script type="text/javascript" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Implement Resource Owner Password Credentials Grant and Refreshing Token with ASP.NET Core Identity through strongly typed API">
+<meta name="Keywords" content="C#, authentication, OAuth2, JWT">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="7/12/2024 9:46:00 PM">
+<meta property="article:modified_time" content="7/12/2024 9:46:00 PM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="4 min read">
+<meta property="og:url" content="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity">
+<meta property="og:title" content="ROPC and Refresh Token with ASP.NET Core Identity">
+<meta property="og:description" content="Implement Resource Owner Password Credentials Grant and Refreshing Token with ASP.NET Core Identity through strongly typed API">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity"
+   },
+  "name": "ROPC and Refresh Token with ASP.NET Core Identity",
+  "headline": "ROPC and Refresh Token with ASP.NET Core Identity",
+  "url": "https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity",
+  "discussionUrl": "https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,authentication,OAuth2,JWT",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3873871"
+  },
+  "license": "http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "Implement section 4.3 and 6 of  The OAuth 2.0 Authorization Framework (RFC6749)",
+  "articleSection": "C#",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2024-07-12",
+  "dateCreated": "2024-07-12",
+  "dateModified": "2024-07-12"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Languages",
+      "name" : "Languages"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Csharp",
+      "name" : "C#"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' , {'user_id': '8f2e3ce4-85f7-4385-a40d-bf8b3be0485b'});
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="chrome chrome129">
+
+
+
+<a class="access-link" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity#Main"><img alt="Click here to Skip to main content" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a rel="nofollow" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Languages">Languages</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Csharp">C#</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity?display=Print" class="tooltip" title="">
+   <img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://www.codeproject.com/Articles/5385175/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="KUhxjV5NqtmlvJA7Wjc2BKch1vN7YGG1AA2sjVvPMRzHz9svXQAUQWG1H/WH/t739eu+wIEqUVR2O/0xZutwk2RAm+BtthAyrGxgTSDzWy5ozz10qvV0HjUiOUPrco28ITOKWNZ/hCqekKcJaI8bwkSeb8KXfeFRlJqimqHDBxYqDmTMzgl5zbjSjzaSrH0R7PULbcEKSiERo40kspW8jDSyzeQbSYWZFMd3nZ/7W0kux68FrkKNg3R3eNIAVIfUDgoFXi5ktieoElyeGTA42Dyeh5BXKOsF7AjtbDqJTn+2Va0R2p3G5VdXapX5JAQQdTY1rLNu5JDgAorFEysdUPdkv80bSp79WgTxl2bRYIIHrXh/t5otUT9YawuJkmcVxxzGGj8r8MHBYfRD4oHxqfyDYuXSH2bqYoE1Kzlk8D/cOgSHP2ZLhl12qO9nDol3vGoT3FkadGBcHJxB7WY/jHCAg7laYtiPwDtK1jpn1i7JLpUQSZqOj8xiPo8eS1uYl2GdyQB12StBylwhlA0cVYLtjbejUfLjSOcrr5LOhDi9MZW5B6bvAy8aJwnbucrq/ni/sto6tIQjO8JNuPAPcjr2kPefQp2N6hGydW7HYGu3X+ZFIOinRbYVWF5i+Baa+QFE+fWPplkIwTntosYxENRISDSvxZ8zyz7XTOJiqm3AFupvrflWCmMnpkv9nuiEkkxITGYYcsuhPkL1pJ7WsWW/XDuEpVMdOBFC2CzMGmbOH0/weTe85GfhzwkS+HSZJA2tUPP2W/arpW/u1OFhyReyCVVGVS34UkXAr1kHGb8LiF9+YsVvRQTQLuAI70ocZ/DdhFNL7BLJwzlceZGICmiS9uLCyS9iPKUxJMOtSi5+dyiXMsEq8MnTEJLtWZEMjdFMPtsHKBVqlAh+pOn96aNhT0ZVLrQAd7Pql9PrTlAolz1RZzPEyUgUMD7IGLnAVZ9pFZo3L8CMt6iqb+XcULAorNpzQRO2k2Ikn26+pGFHne7fVPyPiLr0E0LrtcI284UsDNRIoCqgL/SWlUgnDZ+U/AkuqPg+FqYxlDOIdozuH/obk6Cz9ziRcJZwzmTpO1y83lKl9Z47NpIZVG+KVjA5gITo9lFOtIGw7VN0NhQrZJ5ZvkB7rA0LgU/x2auidY3z91gUYyWBizO53Fc0OQ/hv34hjMO0k82N91c6roL/itsGt+If7Yu4r/LuiLX4I3elIUvbIh1hRUtuPcbNpLfIcH4kKmo0C9lSUQR0bGsGzKb6AW3wWvdLWeRxBlIY+yqwIJ5aCE7n3lJCFo1BOFvtPSF3PULAwyNLo9oMMhufllGp73dSS2VpattY/0TJHgucpBmzILtMbXYx4ZozssWDjlEWwcOYn1Vmmgw/XrbVtm1zfkdB8U36Ymzv7pJvlWg8usF7t8gik49rW0dwjEaVUcpRD8Tos30kqcmmEmZVDNuonMxL/K7eTJKNyOlHRQ3Gtjp3Z44RZqicSpcGUgMz/dl6WqmKkfWhn+eoLhIgxYyPb3HYtFdk3MXf+TBtmYU0K03pTjjtMWb1qalDzfT4FvkBnpMwdQelWTwf7x9k0Ml5JVmZGZmfEgboyt6iAKVtL5d4ZOfEFZ4YsryDTaE3hGIay3T+vGab9h6yGe/fwr0J1waKGqrudmO64aE2nurqamvNRnjiAg+4tsmAriLqOJAL2ThBxd5jRQRgRqOPRn5Kzv84zGexrf45XnXGDFnM5tOZdSnvFU8BZxDlGvU/pwf03O/nMERF468arfAhQTIo1rkyH7Axooj09BVDhh5iA6Jnkl7ZDnOtmgmoFnEemKFFc/i7RIqPWa1ZzPqH2V/YXHBc8nrxNJFRd1kTMOjCcvrcvAA3Cd32EunxNlX08DmzbKayEG+vr7KbygZHEEwsO8Q6H9Uujyd/NLqeF/Hknb21GADxEUIbda/k5UcsI2f0pEGFiEN9Ne45avRnBJYYlsgCpZ1Wna5tEvfY+JfMFBWWoP/T7U+4neuTPk7o7cxXFeuqXqSzUe/EONnR+RNBjJakoffz8/WiK7WLODtWHOrdtFhn8zfyur6Kmm+SyouTlIiRopxGVxeDGMZl45leDKgHdvZ4TDQcPR/HfoZm2e3kkjMo2NwbEMHm1URsnKVaaqxmc2bl3P35g+ebjZVL2qnG5th5rsx3Xnu/29z0UpsiEY/Bl4TWQWPU1DmvX/RK8Q+rwSONgyCXFu81ko0q1s0oUozmKHM5hqaYSe+ug3Fy9Ik9e86n0EH+M53m2CiDnJMDMlHHdQfY5sHfZ3PTtd4kjNxFwg9KzzpT9wuJ/2PlPjIwflYQeZV2AUqLlNo=">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/authentication" data-id="2125">authentication</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/OAuth2" data-id="3102">OAuth2</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/JWT" data-id="3787">JWT</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">ROPC and Refresh Token with ASP.NET Core Identity</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_5385175">
+
+	<meta itemprop="upvoteCount" content="2">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (2 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">12 Jul 2024</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">4 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./ROPC and Refresh Token with ASP.NET Core Identity- CodeProject_files/views32.png" style="width:16px"> 6.2K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">Implement Resource Owner Password Credentials Grant and Refreshing Token with ASP.NET Core Identity through strongly typed API</div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					<div id="ctl00_Abstract" class="abstract">Implement section 4.3 and 6 of  The OAuth 2.0 Authorization Framework (RFC6749)</div>
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<ul class="download">
+	<li><a href="https://github.com/zijianhuang/AuthEF">Source Codes at GitHub</a></li>	<li><a href="https://github.com/zijianhuang/AuthEF/tree/V3">Tag V3 for this article</a></li></ul>
+
+<h2>Introduction</h2>
+
+<p>The scaffolding codes of ASP.NET Identity and ASP.NET Core Identity have provided a basic framework for user/name password login as well as interfacing with 3rd authentication providers like Google, Facebook and Apple etc. This article introduce:</p>
+
+<ol>
+	<li>Single API endpoint for both ROPC and refreshing token, conforming to&nbsp;<a href="https://datatracker.ietf.org/doc/html/rfc6749#autoid-45">section 4.3</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6749#autoid-57">section 6</a> of&nbsp; the OAuth 2.0 Authorization Framework (<a href="https://datatracker.ietf.org/doc/html/rfc6749">RFC6749</a>)</li>	<li>The token API is strongly typed.</li></ol>
+
+<p>The authorization server is "<a href="https://github.com/zijianhuang/AuthEF/tree/master/Core3WebApi">Core3WebApi</a>", and in particular, the auth endpoint is "<a href="https://github.com/zijianhuang/AuthEF/blob/master/Core3WebApi/Controllers/AuthController.cs">AuthController.cs</a>".</p>
+
+<div class="pre-lang" id="premain86713"><div></div><div class="pre-action-link"><span id="copycode86713" class="copy-code" data-index="86713" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre86713" style="margin-top:0;" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true" class="notranslate">+----------+
+| Resource |
+|  Owner   |
+|          |
++----------+
+     v
+     |    Resource Owner
+    (A) Password Credentials
+     |
+     v
++---------+                                  +---------------+
+|         |&gt;--(B)---- Resource Owner -------&gt;|               |
+|         |         Password Credentials     | Authorization |
+| Client  |                                  |     Server    |
+|         |&lt;--(C)---- Access Token ---------&lt;|               |
+|         |    (w/ Optional Refresh Token)   |               |
++---------+                                  +---------------+
+</pre>
+
+<p><strong>Remarks:</strong></p>
+
+<ul>
+	<li>This article covers only "<a href="https://datatracker.ietf.org/doc/html/rfc6749#autoid-16">public client</a>" of "user-agent-based application".</li></ul>
+
+
+
+<h2>Background</h2>
+
+<p>This article is to follow up the articles below:</p>
+
+<ol>
+	<li><a href="https://www.codeproject.com/Articles/5378824/Decouple-ASP-NET-Core-Identity-Authentication-and" id="ctl00_MC_AR_ctl51_CAR_Title">Decouple ASP.NET Core Identity, Authentication and Database Engines</a></li>	<li><a href="https://www.codeproject.com/Articles/5382165/Share-Identity-Bearer-Tokens-among-ASP-NET-Core-We" id="ctl00_MC_AR_ctl50_CAR_Title">Share Identity Bearer Tokens among ASP.NET Core Web APIs</a></li></ol>
+
+
+<h2>Using the code</h2>
+
+<p>In the payload examples of RFC6749 and many implementations of OAuth2, the token payloads are all through a single endpoint "/token".</p>
+
+<p>When crafting ASP.NET Core Web API, technically&nbsp;you may just use a weak and dynamic type "object" when crafting your ASP.NET Core Web API, as you do in JavaScript programing. And this article introduce "<a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/advanced/custom-model-binding">polymorphic model binding</a>" to be used in the token endpoint, with the "<code>application/x-www-form-urlencoded</code>" request.</p>
+
+<h3>Token Request Models</h3>
+
+<p>As what described in <a href="https://datatracker.ietf.org/doc/html/rfc6749#autoid-45">Section 4.3.2</a> and <a href="https://datatracker.ietf.org/doc/html/rfc6749#autoid-57">Section 6</a>:</p>
+
+<div class="pre-lang" id="premain417449"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="417449" id="preShrink417449">Shrink ▲</span> &nbsp; <span id="copycode417449" class="copy-code" data-index="417449" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre417449" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">DataContract</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> RequestBase
+{
+    [Required]
+    [JsonPropertyName(<span class="code-string">"</span><span class="code-string">grant_type"</span>)]
+    [JsonPropertyOrder(-10)]
+    [DataMember(Name = <span class="code-string">"</span><span class="code-string">grant_type"</span>)]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> grant_type { <span class="code-keyword">get</span>; <span class="code-keyword">protected</span> <span class="code-keyword">set</span>; }
+}
+
+<span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span><span class="code-summarycomment">///</span><span class="code-comment"> Section 4.3 and 4.3.2.
+</span><span class="code-summarycomment">///</span><span class="code-comment"> GrantType must be Value MUST be set to "password".
+</span><span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>[DataContract]
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> ROPCRequst : RequestBase
+{
+    <span class="code-keyword">public</span> ROPCRequst()
+    {
+        grant_type = <span class="code-string">"</span><span class="code-string">password"</span>;
+    }
+
+    [Required]
+    [DataMember]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Username { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+    [Required]
+    [DataMember]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Password { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+    [DataMember]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Scope { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+}
+
+<span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span><span class="code-summarycomment">///</span><span class="code-comment"> Section 6
+</span><span class="code-summarycomment">///</span><span class="code-comment"> Grant type MUST be set to "refresh_token".
+</span><span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>[DataContract]
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> RefreshAccessTokenRequest : RequestBase
+{
+    <span class="code-keyword">public</span> RefreshAccessTokenRequest()
+    {
+        grant_type = <span class="code-string">"</span><span class="code-string">refresh_token"</span>;
+    }
+
+    [Required]
+    [JsonPropertyName(<span class="code-string">"</span><span class="code-string">refresh_token"</span>)]
+    [DataMember(Name = <span class="code-string">"</span><span class="code-string">refresh_token"</span>)]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> refresh_token { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+    [DataMember]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Scope { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}
+</pre>
+
+<h3>Token Endpoint</h3>
+
+<p><a href="https://github.com/zijianhuang/AuthEF/blob/master/Core3WebApi/Controllers/AuthController.cs">AuthController.cs</a>:</p>
+
+<div class="pre-lang" id="premain142307"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="142307" id="preShrink142307">Shrink ▲</span> &nbsp; <span id="copycode142307" class="copy-code" data-index="142307" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre142307" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">AllowAnonymous</span>]
+[Consumes(<span class="code-string">"</span><span class="code-string">application/x-www-form-urlencoded"</span>)] <span class="code-comment">//</span><span class="code-comment"> redundant generally because of FromForm below</span>
+[HttpPost]
+<span class="code-keyword">public</span> <span class="code-keyword">async</span> Task&lt;ActionResult&lt;TokenResponseModel&gt;&gt; Authenticate([FromForm] RequestBase model)
+{
+    <span class="code-keyword">if</span> (model <span class="code-keyword">is</span> ROPCRequst)
+    {
+        ROPCRequst ropcRequest = model <span class="code-keyword">as</span> ROPCRequst;
+        ApplicationUser user = <span class="code-keyword">await</span> UserManager.FindByNameAsync(ropcRequest.Username);
+        <span class="code-keyword">if</span> (user == <span class="code-keyword">null</span>)
+        {
+            <span class="code-keyword">return</span> Unauthorized(<span class="code-keyword">new</span> { message = <span class="code-string">"</span><span class="code-string">Username or password is invalid"</span> });
+        }
+
+        <span class="code-keyword">bool</span> passwordIsCorrect = <span class="code-keyword">await</span> UserManager.CheckPasswordAsync(user, ropcRequest.Password);
+        <span class="code-keyword">if</span> (!passwordIsCorrect)
+        {
+            <span class="code-keyword">return</span> Unauthorized(<span class="code-keyword">new</span> { message = <span class="code-string">"</span><span class="code-string">Username or password is incorrect"</span> });
+        }
+
+        <span class="code-keyword">var</span> tokenHelper = <span class="code-keyword">new</span> UserTokenHelper(UserManager, symmetricSecurityKey, authSettings);
+        <span class="code-keyword">return</span> <span class="code-keyword">await</span> tokenHelper.GenerateJwtToken(user, ropcRequest.Username, Guid.Empty); <span class="code-comment">//</span><span class="code-comment">todo: some apps may need to deal with scope</span>
+    }
+    <span class="code-keyword">else</span> <span class="code-keyword">if</span> (model <span class="code-keyword">is</span> RefreshAccessTokenRequest refreshAccessTokenRequest)
+    {
+        <span class="code-keyword">if</span> (AuthenticationHeaderValue.TryParse(Request.Headers.Authorization, <span class="code-keyword">out</span> <span class="code-keyword">var</span> headerValue)){
+            <span class="code-keyword">var</span> scehma = headerValue.Scheme;
+            Debug.Assert(<span class="code-string">"</span><span class="code-string">bearer"</span>.Equals(scehma, StringComparison.OrdinalIgnoreCase));
+            <span class="code-keyword">var</span> accessToken = headerValue.Parameter;
+            <span class="code-keyword">var</span> jwtSecurityToken = <span class="code-keyword">new</span> JwtSecurityTokenHandler().ReadJwtToken(accessToken);
+            <span class="code-keyword">var</span> uniqueNameClaim = jwtSecurityToken.Claims.<span class="code-sdkkeyword">Single</span>(d =&gt; d.Type == <span class="code-string">"</span><span class="code-string">unique_name"</span>);
+            <span class="code-keyword">var</span> username = uniqueNameClaim.Value;
+            <span class="code-keyword">var</span> user = <span class="code-keyword">await</span> UserManager.FindByNameAsync(username);
+
+            <span class="code-keyword">if</span> (user == <span class="code-keyword">null</span>)
+            {
+                <span class="code-keyword">return</span> BadRequest(<span class="code-keyword">new</span> { message = <span class="code-string">"</span><span class="code-string">Username or password is invalid"</span> });
+            }
+
+            <span class="code-keyword">var</span> tokenHelper = <span class="code-keyword">new</span> UserTokenHelper(UserManager, symmetricSecurityKey, authSettings);
+            <span class="code-keyword">var</span> tokenTextExisting = <span class="code-keyword">await</span> tokenHelper.MatchToken(user, <span class="code-string">"</span><span class="code-string">RefreshToken"</span>, refreshAccessTokenRequest.refresh_token, Guid.Empty);
+            <span class="code-keyword">if</span> (!tokenTextExisting)
+            {
+                <span class="code-keyword">return</span> StatusCode(<span class="code-digit">401</span>, <span class="code-keyword">new</span> { message = <span class="code-string">"</span><span class="code-string">Invalid to retrieve token through refreshToken"</span> }); <span class="code-comment">//</span><span class="code-comment"> message may be omitted in prod build, to avoid exposing implementation details.</span>
+            }
+
+            <span class="code-keyword">return</span> <span class="code-keyword">await</span> tokenHelper.GenerateJwtToken(user, username, Guid.Empty);
+        }
+    }
+
+    <span class="code-keyword">throw</span> <span class="code-keyword">new</span> NotSupportedException();
+}</pre>
+
+
+
+<h3><a href="https://learn.microsoft.com/en-us/aspnet/core/mvc/advanced/custom-model-binding">Polymorphic Model Binding</a></h3>
+
+<p>The technical detail of polymorphic model binding is out of the scope of this article, please google "ASP.NET Core polymorphic model binding" for good articles.</p>
+
+<p><a href="https://github.com/zijianhuang/AuthEF/blob/master/Core3WebApi/Helpers/OAuth2RequestBinderProvider.cs">OAuth2RequestBinderProvider.cs</a>:</p>
+
+<div class="pre-lang" id="premain864783"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="864783" id="preShrink864783">Shrink ▲</span> &nbsp; <span id="copycode864783" class="copy-code" data-index="864783" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre864783" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> OAuth2RequestBinderProvider : Microsoft.AspNetCore.Mvc.ModelBinding.IModelBinderProvider
+{
+    <span class="code-keyword">public</span> IModelBinder GetBinder(ModelBinderProviderContext context)
+    {
+        <span class="code-keyword">if</span> (context.Metadata.ModelType != <span class="code-keyword">typeof</span>(RequestBase))
+        {
+            <span class="code-keyword">return</span> <span class="code-keyword">null</span>;
+        }
+
+        <span class="code-keyword">var</span> subclasses = new[] { <span class="code-keyword">typeof</span>(ROPCRequst), <span class="code-keyword">typeof</span>(RefreshAccessTokenRequest), };
+
+        <span class="code-keyword">var</span> binders = <span class="code-keyword">new</span> Dictionary&lt;Type, (ModelMetadata, IModelBinder)&gt;();
+        <span class="code-keyword">foreach</span> (<span class="code-keyword">var</span> type <span class="code-keyword">in</span> subclasses)
+        {
+            <span class="code-keyword">var</span> modelMetadata = context.MetadataProvider.GetMetadataForType(type);
+            binders[type] = (modelMetadata, context.CreateBinder(modelMetadata));
+        }
+
+        <span class="code-keyword">return</span> <span class="code-keyword">new</span> RequestModelBinder(binders);
+    }
+}
+
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> RequestModelBinder : IModelBinder
+{
+    <span class="code-keyword">private</span> Dictionary&lt;Type, (ModelMetadata, IModelBinder)&gt; binders;
+
+    <span class="code-keyword">public</span> RequestModelBinder(Dictionary&lt;Type, (ModelMetadata, IModelBinder)&gt; binders)
+    {
+        <span class="code-keyword">this</span>.binders = binders;
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task BindModelAsync(ModelBindingContext bindingContext)
+    {
+        <span class="code-keyword">if</span> (bindingContext.HttpContext.Request.ContentType.Contains(<span class="code-string">"</span><span class="code-string">application/json"</span>))
+        {
+            <span class="code-keyword">return</span>;
+        }
+
+        <span class="code-keyword">var</span> modelKindName = ModelNames.CreatePropertyModelName(bindingContext.ModelName, <span class="code-string">"</span><span class="code-string">grant_type"</span>);
+        <span class="code-keyword">var</span> modelTypeValue = bindingContext.ValueProvider.GetValue(modelKindName).FirstValue;
+
+        IModelBinder modelBinder;
+        ModelMetadata modelMetadata;
+        <span class="code-keyword">if</span> (modelTypeValue == <span class="code-string">"</span><span class="code-string">password"</span>)
+        {
+            (modelMetadata, modelBinder) = binders[typeof(ROPCRequst)];
+        }
+        <span class="code-keyword">else</span> <span class="code-keyword">if</span> (modelTypeValue == <span class="code-string">"</span><span class="code-string">refresh_token"</span>)
+        {
+            (modelMetadata, modelBinder) = binders[typeof(RefreshAccessTokenRequest)];
+        }
+        <span class="code-keyword">else</span>
+        {
+            bindingContext.Result = ModelBindingResult.Failed();
+            <span class="code-keyword">return</span>;
+        }
+
+        <span class="code-keyword">var</span> newBindingContext = DefaultModelBindingContext.CreateBindingContext(
+            bindingContext.ActionContext,
+            bindingContext.ValueProvider,
+            modelMetadata,
+            bindingInfo: <span class="code-keyword">null</span>,
+            bindingContext.ModelName);
+
+        <span class="code-keyword">await</span> modelBinder.BindModelAsync(newBindingContext);
+        bindingContext.Result = newBindingContext.Result;
+
+        <span class="code-keyword">if</span> (newBindingContext.Result.IsModelSet)
+        {
+            bindingContext.ValidationState[newBindingContext.Result.Model] = <span class="code-keyword">new</span> ValidationStateEntry
+            {
+                Metadata = modelMetadata,
+            };
+        }
+    }
+}</pre>
+
+<p>And then register the provider in the startup codes:</p>
+
+<div class="pre-lang" id="premain604509"><div>C#</div><div class="pre-action-link"><span id="copycode604509" class="copy-code" data-index="604509" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre604509" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true">builder.Services.AddControllers(configure =&gt;
+{
+    configure.ModelBinderProviders.Insert(<span class="code-digit">0</span>, <span class="code-keyword">new</span> OAuth2RequestBinderProvider());
+})</pre>
+
+
+
+<h3>Client API Codes to Request Tokens</h3>
+
+<p><a href="https://github.com/zijianhuang/AuthEF/blob/master/CoreWebApi.ClientApi/AuthClient.cs">AuthClient.cs</a>:</p>
+
+<div class="pre-lang" id="premain823303"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="823303" id="preShrink823303">Shrink ▲</span> &nbsp; <span id="copycode823303" class="copy-code" data-index="823303" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre823303" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> AuthClient
+{
+    <span class="code-keyword">private</span> System.Net.Http.HttpClient client;
+
+    <span class="code-keyword">private</span> JsonSerializerOptions jsonSerializerSettings;
+
+    <span class="code-keyword">public</span> AuthClient(System.Net.Http.HttpClient client, JsonSerializerOptions jsonSerializerSettings = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">if</span> (client == <span class="code-keyword">null</span>)
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentNullException(<span class="code-keyword">nameof</span>(client), <span class="code-string">"</span><span class="code-string">Null HttpClient."</span>);
+
+        <span class="code-keyword">if</span> (client.BaseAddress == <span class="code-keyword">null</span>)
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentNullException(<span class="code-keyword">nameof</span>(client), <span class="code-string">"</span><span class="code-string">HttpClient has no BaseAddress"</span>);
+
+        <span class="code-keyword">this</span>.client = client;
+        <span class="code-keyword">this</span>.jsonSerializerSettings = jsonSerializerSettings;
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task&lt;Fonlow.Auth.Models.Client.AccessTokenResponse&gt; PostRopcTokenRequestAsFormDataToAuthAsync(Fonlow.Auth.Models.Client.ROPCRequst model, Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">token"</span>;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Post, requestUri);
+        <span class="code-keyword">var</span> pairs = <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;[]
+                    {
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;( <span class="code-string">"</span><span class="code-string">grant_type"</span>, model.grant_type ),
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;( <span class="code-string">"</span><span class="code-string">username"</span>, model.Username ),
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt; ( <span class="code-string">"</span><span class="code-string">password"</span>, model.Password )
+                    };
+        <span class="code-keyword">var</span> content = <span class="code-keyword">new</span> FormUrlEncodedContent(pairs);
+        httpRequestMessage.Content = content;
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> responseMessage = <span class="code-keyword">await</span> client.SendAsync(httpRequestMessage);
+        responseMessage.EnsureSuccessStatusCodeEx();
+        <span class="code-keyword">var</span> stream = <span class="code-keyword">await</span> responseMessage.Content.ReadAsStreamAsync();
+        <span class="code-keyword">return</span> JsonSerializer.Deserialize&lt;Fonlow.Auth.Models.Client.AccessTokenResponse&gt;(stream, jsonSerializerSettings);
+    }
+
+    <span class="code-keyword">public</span> <span class="code-keyword">async</span> Task&lt;Fonlow.Auth.Models.Client.AccessTokenResponse&gt; PostRefreshTokenRequestAsFormDataToAuthAsync(Fonlow.Auth.Models.Client.RefreshAccessTokenRequest model, Action&lt;System.Net.Http.Headers.HttpRequestHeaders&gt; handleHeaders = <span class="code-keyword">null</span>)
+    {
+        <span class="code-keyword">var</span> requestUri = <span class="code-string">"</span><span class="code-string">token"</span>;
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> httpRequestMessage = <span class="code-keyword">new</span> HttpRequestMessage(HttpMethod.Post, requestUri);
+        <span class="code-keyword">var</span> pairs = <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;[]
+                    {
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;( <span class="code-string">"</span><span class="code-string">grant_type"</span>, model.grant_type ),
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt;( <span class="code-string">"</span><span class="code-string">refresh_token"</span>, model.refresh_token ),
+                        <span class="code-keyword">new</span> KeyValuePair&lt;string, string&gt; ( <span class="code-string">"</span><span class="code-string">scope"</span>, model.Scope )
+                    };
+        <span class="code-keyword">var</span> content = <span class="code-keyword">new</span> FormUrlEncodedContent(pairs);
+        httpRequestMessage.Content = content;
+        handleHeaders?.Invoke(httpRequestMessage.Headers);
+        <span class="code-keyword">using</span> <span class="code-keyword">var</span> responseMessage = <span class="code-keyword">await</span> client.SendAsync(httpRequestMessage);
+        responseMessage.EnsureSuccessStatusCodeEx();
+        <span class="code-keyword">var</span> stream = <span class="code-keyword">await</span> responseMessage.Content.ReadAsStreamAsync();
+        <span class="code-keyword">return</span> JsonSerializer.Deserialize&lt;Fonlow.Auth.Models.Client.AccessTokenResponse&gt;(stream, jsonSerializerSettings);
+    }
+}</pre>
+
+<p><strong>Hints:</strong></p>
+
+<ul>
+	<li>While I have hand crafted AuthClient.cs,&nbsp;<code>Fonlow.Auth.Models.Client.ROPCRequst</code> along with other client API codes are generated by "<a href="https://github.com/zijianhuang/webapiclientgen">Strongly Typed Client API Generators</a>".</li></ul>
+
+<div class="pre-lang" id="premain552541"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="552541" id="preShrink552541">Shrink ▲</span> &nbsp; <span id="copycode552541" class="copy-code" data-index="552541" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre552541" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span><span class="code-summarycomment">///</span><span class="code-comment"> Section 4.3 and 4.3.2.
+</span><span class="code-summarycomment">///</span><span class="code-comment"> GrantType must be Value MUST be set to "password".
+</span><span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>[System.Runtime.Serialization.DataContract(Namespace=<span class="code-string">"</span><span class="code-string">http://demoapp.client/2024"</span>)]
+<span class="code-keyword">public</span> <span class="code-keyword">class</span> ROPCRequst : Fonlow.Auth.Models.Client.RequestBase
+{
+    
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> Required
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    [System.ComponentModel.DataAnnotations.Required()]
+    [System.Runtime.Serialization.DataMember()]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Password { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    [System.Runtime.Serialization.DataMember()]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Scope { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    
+    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> Required
+</span>    <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>    [System.ComponentModel.DataAnnotations.Required()]
+    [System.Runtime.Serialization.DataMember()]
+    <span class="code-keyword">public</span> <span class="code-keyword">string</span> Username { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+}</pre>
+
+
+
+<h3>Integration Testing</h3>
+
+<p>This test gets the access token first, then uses an authenticated client to refresh token.</p>
+
+<div class="pre-lang" id="premain910851"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="910851" id="preShrink910851">Shrink ▲</span> &nbsp; <span id="copycode910851" class="copy-code" data-index="910851" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre910851" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">async</span> Task TestPostRefreshTokenRequestAsFormDataToAuthAsync()
+{
+    <span class="code-keyword">var</span> ra = <span class="code-keyword">await</span> api.PostRopcTokenRequestAsFormDataToAuthAsync(<span class="code-keyword">new</span> ROPCRequst
+    {
+        grant_type = <span class="code-string">"</span><span class="code-string">password"</span>,
+        Username = <span class="code-string">"</span><span class="code-string">admin"</span>,
+        Password = <span class="code-string">"</span><span class="code-string">Pppppp*8"</span>
+    });
+
+    HttpClient client = <span class="code-keyword">new</span> HttpClient();
+    client.BaseAddress = <span class="code-keyword">new</span> Uri(baseUrl);
+    client.DefaultRequestHeaders.Authorization = <span class="code-keyword">new</span> System.Net.Http.Headers.AuthenticationHeaderValue(<span class="code-string">"</span><span class="code-string">Bearer"</span>, ra.access_token);
+    AuthClient authClient = <span class="code-keyword">new</span> AuthClient(client);
+    <span class="code-keyword">var</span> r = <span class="code-keyword">await</span> authClient.PostRefreshTokenRequestAsFormDataToAuthAsync(<span class="code-keyword">new</span> RefreshAccessTokenRequest
+    {
+        grant_type = <span class="code-string">"</span><span class="code-string">refresh_token"</span>,
+        refresh_token = ra.refresh_token
+    });
+
+    Assert.Equal(<span class="code-string">"</span><span class="code-string">bearer"</span>, r.token_type, <span class="code-keyword">true</span>);
+    Assert.NotNull(r.access_token);
+    Assert.NotNull(r.refresh_token);
+    Assert.True(r.expires_in &gt; <span class="code-digit">0</span>);
+}</pre>
+
+
+
+<h2>Points of Interest</h2>
+
+<h3>Polymorphic Binding and Conformation to C# Property Naming Convention</h3>
+
+<p>You might be curious about why certain property names in the token request models don’t adhere to the standard C# property naming convention. The issue is, the encoding of the request payload is&nbsp;"<code>application/x-www-form-urlencoded</code>", and the request model binding of ASP.NET Core won't respect what declared in <code>JsonPropertyNameAttribute</code>&nbsp;, and the runtime can at best transform TitleCase to camelCase.</p>
+
+<p>It appears that there isn’t a built-in mechanism in ASP.NET Core specifically designed to handle an “access_token” associated with a property named “AccessToken.” If you happen to discover one or have insights, feel free to share your findings in the comments section.</p>
+
+<h3>Alternative Auth Services</h3>
+
+<p>As a .NET developer, you check out this article and its repository probably because:</p>
+
+<ul>
+	<li>You don't want to use commercial auth services like Okta, Auth0, Microsoft Azure AD / Entra, at least not yet, due to various reasons.</li>	<li>You want to conform to RFC6749 as much as possible for basic bar of security and easy migration to more&nbsp;comprehensive auth service, commercial or free.</li></ul>
+
+<p>There was a once popular free auth server "<a href="https://github.com/IdentityServer/IdentityServer4">Identity Server</a>", which became discontinued in 2022. However, <a href="https://duendesoftware.com/products/identityserver">DuendeSoftware has&nbsp;taken over</a>. You may want to <a href="https://github.com/DuendeSoftware/IdentityServer">check this out</a>&nbsp;,&nbsp;when considering a more comprehensive auth server which will be integrated into your business applications.</p>
+
+<h3>ROPC To Be Deprecated</h3>
+
+<p>Like it or not, ROPC is to be deprecated, though it could be handy in small applications in some contexts, for examples, your target users don't like 2FA/MFA for some reasons. Also, it may be a part of the transition solution migrating from OAuth2 provider A to OAuth2 provider B.</p>
+
+<p><strong>References:</strong></p>
+
+<ul>
+	<li><a href="https://blog.logto.io/deprecated-ropc-grant-type/">Why you should deprecate the Resource Owner Password Credentials (ROPC) grant type</a></li>	<li><a href="https://www.bleepingcomputer.com/news/security/mfa-fatigue-hackers-new-favorite-tactic-in-high-profile-breaches/">MFA Fatigue: Hackers’ new favorite tactic in high-profile breaches</a></li>	<li><a href="https://www.ietf.org/archive/id/draft-ietf-oauth-v2-1-09.html">OAuth 2.1</a>&nbsp;:&nbsp;The Resource Owner Password Credentials grant is omitted from this specification as per Section 2.4 of&nbsp;[<a href="https://www.ietf.org/archive/id/draft-ietf-oauth-v2-1-09.html#I-D.ietf-oauth-security-topics">I-D.ietf-oauth-security-topics</a>]</li></ul>
+
+<h3>Do You Agree ROPC Should Be&nbsp;Deprecated?</h3>
+
+<p>I am not a security expert.&nbsp;As far as I understand, typical MFA requires extra devices like SMS, smartphone apps, or stick&nbsp;in addition to the&nbsp;primary info access device like PC. Some groups of people simply cannot handle the procedures of MFA.</p>
+
+<p>In fact, in Australia, for online banking some major banks require&nbsp;only customer ID + password for online banking on a Web browser. No SMS code needed even for the first login on a new PC. I am sure the security behind the scene on both frontend and backend check many things, however, at least from the consumer point of view, they just need username + password. And only the first payment to a new recipient requires SMS verification, however, this is of authorization, not the sign-in authentication. The balance between convenience and literal security is somewhere for real security and real value for the users.</p>
+
+<p>Can you think of some more scenarios that ROPC is still good old tech that is legitimate for certain contexts?</p>
+
+<p>I can think of 2 scenarios:</p>
+
+<ol>
+	<li>Large portion of&nbsp;retirees who could barely use smartphone, or easily get confused by doggy apps.</li>	<li>Many school children and most pre-school school children who have no smartphone.</li></ol>
+
+<p>How to improve security in addition to ROPC is well another big subject.</p>
+
+<!-- Article Ends -->
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/5385175/ROPC-and-Refresh-Token-with-ASP-NET-Core-Identity?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2024 by Zijian<br>Everything else
+				Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>

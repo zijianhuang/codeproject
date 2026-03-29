@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T-2 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<link rel="preconnect" href="https://www.google-analytics.com/">
+
+	<link rel="preconnect" href="https://www.codeproject.com/">
+
+
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/logo250x135.gif" as="image">
+
+
+	<link rel="preload" href="https://www.codeproject.com/App_Themes/CodeProject/Img/logo135-bg.gif" as="image">
+	<link rel="preload" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/jquery-3.4.1.min.js.download" as="script" type="text/javascript">
+
+
+	<title>Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication- CodeProject</title> 
+    
+	<link type="text/css" rel="stylesheet" href="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/Article.min.css">
+
+
+    <script type="text/javascript" async="" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/analytics.js.download"></script><script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/jquery-3.4.1.min.js.download" defer=""></script>
+<script type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/article.min.js.download" defer=""></script>
+
+	
+<meta http-equiv="content-language" content="en-US">
+
+<meta name="Description" content="Persistence with WorkflowApplication ">
+<meta name="Keywords" content="C#, .NET, Dev, Intermediate, Advanced, .NET4, .NET4.5">
+<meta name="Author" content="Zijian">
+<meta name="Rating" content="General">
+<meta name="Revisit-After" content="1 days">
+<meta name="application-name" content="CodeProject">
+<meta name="google-translate-customization" content="d908bb7ce7aff658-4c2f3a504525c916-g629383f736781a8a-13">
+
+
+
+<link rel="dns-prefetch" href="https://ajax.googleapis.com/"> 
+<link rel="canonical" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@CodeProject">
+<meta name="og:site_name" content="CodeProject">
+<meta name="twitter:creator" content="@CodeProject">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="4/8/2016 8:07:00 AM">
+<meta property="article:modified_time" content="4/8/2016 8:07:00 AM">
+<meta name="twitter:label1" content="Written by">
+<meta name="twitter:data1" content="Zijian">
+<meta name="twitter:label2" content="Reading time">
+<meta name="twitter:data2" content="4 min read">
+<meta property="og:url" content="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit">
+<meta property="og:title" content="Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication">
+<meta property="og:description" content="Persistence with WorkflowApplication ">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="apple-touch-icon" sizes="144x144" href="https://www.codeproject.com/favicon/apple-touch-icon.png"> 
+<link rel="icon" type="image/png" sizes="32x32" href="https://www.codeproject.com/favicon/favicon-32x32.png"> 
+<link rel="icon" type="image/png" sizes="16x16" href="https://www.codeproject.com/favicon/favicon-16x16.png"> 
+<link rel="manifest" href="https://www.codeproject.com/favicon/manifest.json"> 
+<link rel="mask-icon" href="https://www.codeproject.com/favicon/safari-pinned-tab.svg" color="#ff9900">
+	<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit"
+   },
+  "name": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication",
+  "headline": "Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication",
+  "url": "https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit",
+  "discussionUrl": "https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit#_comments",
+  "isFamilyFriendly": "true",
+  "image": "https://www.codeproject.com/App_Themes/CodeProject/Img/Article100.png",
+  "keywords": "C#,.NET,Dev,Intermediate,Advanced,.NET4,.NET4.5",
+  "commentCount": "0",
+  "editor" : {
+    "@type" : "Person",
+    "name" : "Editor",
+    "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+  },
+  "license": "http://www.codeproject.com/info/cpol10.aspx",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "CodeProject"
+  },
+  "description": "Persistence with WorkflowApplication",
+  "articleSection": "C#",
+  "author" : [{
+      "@type" : "Person",
+      "name" : "Zijian",
+      "url" : "https://www.codeproject.com/script/Membership/View.aspx?mid=3627575"
+    }],
+  "datePublished": "2016-04-08",
+  "dateCreated": "2016-04-08",
+  "dateModified": "2016-04-08"
+,
+  "contentRating" : {
+    "@type" : "Rating",
+    "ratingValue" : 5.00,
+    "bestRating" : 5,
+    "worstRating" : 1
+  }
+}</script>
+
+<script type="application/ld+json">{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Languages",
+      "name" : "Languages"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item" : {
+      "@id" : "/script/Content/Tag.aspx?tags=Csharp",
+      "name" : "C#"
+    }
+  }]
+}</script>
+
+
+	<!--<base target="_top">--><base href="." target="_top">
+	
+    
+
+
+<script type="text/javascript">
+function defrm () { /* thanks twitter */
+    document.write = '';
+    window.top.location = window.self.location;
+    setTimeout(function() { document.body.innerHTML = ''; }, 0);
+    window.self.onload = function(evt) { document.body.innerHTML = ''; };
+}
+
+if (window.top !== window.self) {
+    try {
+        if (window.top.location.host) { /* will throw for all except chrome */ }
+        else { defrm(); /* chrome */ }
+    } catch (ex) { defrm(); /* everyone else */ }
+}
+
+// Specific case where a site is screwing with us.
+if (typeof(DemoUrl) !== 'undefined') {
+    document.write(unescape('%3Cme') + 'ta http' + '-equiv="re' + 'fresh con' +
+                           'tent="1;url=' + DemoUrl + unescape('"%3CE'));
+}
+</script>
+	
+
+
+
+
+
+    <script async="" type="text/javascript" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/js"></script>
+    <script type="text/javascript">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-1735123-1' , {'user_id': '8f2e3ce4-85f7-4385-a40d-bf8b3be0485b'});
+    </script>
+
+<style type="text/css"></style></head>	
+
+<body class="chrome chrome129">
+
+
+
+<a class="access-link" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T-2#Main"><img alt="Click here to Skip to main content" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/t.gif"></a>
+
+
+
+
+<div class="page-background">
+
+	
+	
+
+	
+
+	
+    <div id="ctl00_STM" class="site-top-menu fixed narrow">
+        <div class="main-content">
+            
+
+<div class="container memberbar clearfix flex-container flex-extend">
+
+	<div id="ctl00_MemberBar_GenInfo" class="flex-item align-left">65,938 articles</div>
+	
+	<div id="ctl00_MemberBar_ChangeNotice" class="flex-item align-left">CodeProject
+	is changing. <a href="https://www.codeproject.com/info/Changes.aspx">Read more</a>.</div>
+
+	<div class="flex-item">
+		
+	</div>
+
+	<div class="flex-item align-right">
+
+		
+
+		
+
+		
+	</div>
+</div>
+        </div>
+    </div>
+
+	
+    <div id="ctl00_SH" class="site-header fixed narrow">
+        <div class="main-content">
+            <div class="logo"><a href="https://www.codeproject.com/"><img id="ctl00_Logo" tabindex="1" title="CodeProject" src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/logo250x135.gif" alt="Home" style="height:135px;width:250px;border-width:0px;"></a></div>
+            <div class="promo"></div>
+        </div>
+    </div>
+
+	
+			
+	
+
+	<div id="A" class="container-content-wrap fixed narrow"> 
+
+	<div class="container-content">
+
+        
+		<div class="clearfix">
+			<div class="container-breadcrumb float-left ">
+				<div><a rel="nofollow" href="https://www.codeproject.com/script/Content/SiteMap.aspx">Articles</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Languages">Languages</a> / <a rel="nofollow" href="https://www.codeproject.com/script/Content/Tag.aspx?tags=Csharp">C#</a></div>
+			</div>
+
+            <div class="float-left">
+				
+			</div>
+
+			<div class="edit-links float-right">
+				
+
+
+
+ 
+&nbsp;
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+			<div class="article-nav float-right">
+				
+
+
+<div style="display:inline-block;position:relative;top:-6px;margin-right:20px">
+    
+</div>
+
+
+
+ 
+
+<a id="ctl00_ActionLinks_PrintMd" data-tooltip="Print" data-enabletooltip="true" data-width="auto" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit?display=Print" class="tooltip" title="">
+   <img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/print48.png" width="24" height="24" style="border:0">
+<div class="speech-bubble-container-up" style="width:auto">  <div class="speech-bubble-up" style="text-align:center"> Print</div>  <div class="speech-bubble-pointer-up">    <div class="speech-bubble-pointer-up-inner"></div>  </div></div></a>
+
+
+
+<span id="ctl00_ActionLinks_R">
+    
+    
+</span>
+			</div>
+		</div>
+
+        
+		<div class="extended article-container-parts">
+
+			
+		    
+            
+
+			
+			<div id="AT" class="article-container  fixed narrow" style="max-width:inherit;"> 
+
+				<div class="article">
+
+					<form name="aspnetForm" method="post" action="https://www.codeproject.com/Articles/1087267/View.aspx" id="aspnetForm" style="margin:0;padding:0">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="hW8ieCTe1Lc6asN7+BclXVyjIgcL4fCWV5LJvA1BAr6folA9c5cL7FwT2Qys/PIGjrtg7eM6zBHehne+JKRzS4pOjkRtykEITR5C8zQHvBxj9cN46d6EGrjobNsRC/FyxmZb6a7ozEIEUGP3bEPxPtOZZZkw33Gjq+rwVVmxYDowNlhRRLYIKEEeGn6pC1gwj5cj/GmJe3kHTlBNI3kJ18SdQm6ezow3jgD7JlA721WV1JlL6ipVRpLZxL2pyUs0644h7a7fGp6GZZOxovcC+5eCcoVFHbqTjdlwZ1e4lp0R+mCdlsOLSG0/dfU7gyus2Ge+kxQBvcBtQ/6kb3EbpTNUUo0wqr1hjinu0yfzcjrsC51w+fZQPXygFIC0to6UK9OoSW9eatuzMR9VEvnwo/j+YuU6qtl9yNZp8jihwZafQFwoPBWFycnD5mU0D5OmsD1Gvbvtf24B3E+MDfcziQmRXqaQEaGiTGDvsCSZjAPnsTlmzJtLlToseEhW+0ieDSTL8CPFj6yb9UOZl9Bd7B4SpPLlm44qhd33iNXdPZdVw8hSMBfJgoii2y2bCwWCOv4f/a/ID0b9gyiMXqM4WnV+e/KkR6c1mYl3KYEAcYoufFtIVr6TGvjiZDEsKjE8Udh+9HV4uPhcPnZJa8XXDJ1f/oA3kWJEwV7dVzWmyCzxCvIxgvUcxD2f3REH7wlcZ4Xl0U8C/G7UIZroYpHF2RFotKglqJKs/9xub3pCmKn4iYOoRncEdFM1CAJXe7k6HVv3/hbDIR6zrwJ5yzmc1iTd4fvY3uF/aNPQqP64zeFzKZ/nuXMQk++nwAGPmyoyU/WAJuRWJJZ1No/2Z3vaR0g/oRIb3BrBTHOZzqzNqPRCqxKnHUf9qJmDKtbJPfsuEEZ5wEhifkprZyNC7B4Vvay+c6WjfhAh3TCM3n9fABX3ollKrwGiwxdRtEWIqPs6xCpqIaVc2UqG5SEg1y31S9aGW/EvY2vOmMiLc6uc5UUUIH9IiuGGrk1aMX/OsnMwVbHafGYfrWmmgySi1j/uFvNHYHkuAlSXykquYAlyBiOfYb3P6cuS/RUfLLyPZcuxYZPK7epyAfJMr/hGtecuL2oVWH+c+66p8bfiJb2w0yVXKhsHLBFAv/OyR40gUyavT++q/86RWOW3zj2os0CnVgC7qae4kC7Bnn7uMV5k9VBiuxq8EvKXbE/UVBOFyLGQlZAieY77sHVWxup8uw7XLBkIwLvZlwXa5yrwOJTtcJ+RgECdZp+yRm44nd66FlmeVeQhIqWY/+KsYHZbimgBf3q5PD3tqLu2dPhXKiJR+jCEbatwBt2HAobrQsbyKK5WsHeZYZ1Ca2umHiiu46HcRIGumO9uZ1iguYyzZ/2ytls/iC0nOPtGVzokkiGYRvJ8bbMAL+Wa8/BeNdA15sDaEF+rbFwhft7FyUGDJsFqvmbiKSTfFoUFczS4QbRIKEvRtYacTORuL/f/Gfw6D1mCmDV8g6IGbep3uoYpQFZi79TqF6bKZmuZB2DbW6B8zURJiaBV07K8iK2lKkVEYUqd305TBXw3VYXyhzO/I/JndY//dHGi9LLGJZwI96iJ14gWbaCPm7DcT4NeD+BVxJBvrMIh0PN/pGJ6mNJSvEx2ln1KxungO2YcSgH9I5AG71oninFefTUT3vrPa5CvAhjyuaPUaLF5HxgQCcCqdlwD1+ujnz6Nbz/umZcuaTAxGLIAL96uMqn4ObDxYRIQEV5jcktV8sxiovltDM58DBCzNH3yU6XNxcjlAFnb8gYXZ8HFWVK0G+NJWsrao63gMo8G7SwpKJN2IKkLtacP36n7U46vkvOaIf3BbfmD4H0+zdNg6eMdBs+Oxj2EikfSsssO4539ikPgkFa0DnSJlsHxj9I7pgD8ak9C3WUidpkzxmQoPN20Ckya2zJj121zaf7VtiscZkZvQNOOXcYCTrskG6oap91eZpchBuBrp+bk+rjFtelJ02On38uNrPUEmtno+9kUr/pWu/zAmoIXsHT1wqBQtOK36Kp6quvTAXweyJT450s9EGrTqdaoVzhKT+UOgKTW4/zvP6RwvN+xUypFTWn3wJzgrdN9RWCegFYYmLPN4/uBeDsBnJjuya3YHuJZNyPc1HoBSefNlJfGE4DtHs/Gt5lRhISG6XkhEfvXToWKMWvl1gzgTgUOAXMNuOBivGqr20BxgPjgyJVsK7tUk8uP25yiIzIjar9O9GKu4tJ/BczFUhhNoc4U0nEETO3caIYrxEA=">
+</div>
+
+<div>
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="10C1FD69">
+</div>
+
+					
+					 
+					<div class="header">
+					    <a name="Main"></a>
+					    <a name="_articleTop" id="_articleTop"></a>
+
+					    
+						<div>
+							<span id="ctl00_TagListHorz_TagWrp" class="tags horizontal">
+
+	
+	
+
+	
+	<span id="ctl00_TagListHorz_VisibleTags"><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/Csharp" data-id="81">C#</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET" data-id="98">.NET</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4" data-id="1057">.NET4</a></div><div class="t"><a rel="tag" href="https://www.codeproject.com/Tags/.NET4.5" data-id="2119">.NET4.5</a></div></span> 
+
+	
+	
+</span>
+
+
+						</div>
+					    <div class="title">
+					        <h1 id="ctl00_ArticleTitle">Learn Windows Workflow Foundation 4.5 through Unit Testing: Persistence with WorkflowApplication</h1>
+					    </div>
+
+                        <div>
+					        
+					        <div class="entry flex-container">
+
+								
+
+                                <div class="flex-item" style="flex:1 1 auto">
+                                    <div class="flex-container" style="justify-content:space-between;flex-wrap:wrap-reverse">
+                                       <span id="ctl00_Authors" class="author flex-item"><a href="https://www.codeproject.com/script/Membership/View.aspx?mid=3627575" rel="author">Zijian</a></span> 
+
+                                        <div class="flex-item" style="margin-top:-4px;">
+                                            <div id="ctl00_RateArticle_RatingTable" class="small-text" data-objectref="2_1087267">
+
+	<meta itemprop="upvoteCount" content="5">
+
+
+	<div id="ctl00_RateArticle_RatingRow" class="flex-container rating-container large-stars">
+
+					
+		
+
+		
+		<div class="nowrap tooltip">
+
+			
+			<div id="ctl00_RateArticle_ResultNoHist" class="rating-result"><div class="flex-container rating-stars large-stars"><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div><div><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/star-fill-lg.png" style="width:24px;height:24px"></div></div></div>
+			
+
+			
+			
+
+			
+            
+
+			
+                
+
+		</div>
+		
+	
+		
+		<div id="ctl00_RateArticle_VoteCountNoHist" class="rating-votes nowrap">5.00/5  (5 votes)</div>	
+
+		
+
+		
+		<div class="rating-undo" title="Undo vote" style="margin-left:5px;display:none"></div>
+
+		
+		
+	</div>
+
+	
+	
+
+</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="flex-container" style="color:#666;font-size:smaller">
+                                        <span id="ctl00_LastUpdated" class="date flex-item-tight" title="Date last updated">8 Apr 2016</span><a id="ctl00_LicenseLink" title="The Code Project Open License (CPOL)" class="license flex-item-tight" href="http://www.codeproject.com/info/cpol10.aspx">CPOL</a><span id="ctl00_ReadingTime" class="stats flex-item-tight">4 min read</span><span id="ctl00_HorizontalStats" class="stats flex-item-tight"><span class="stats"><span title="Views"><img src="./Learn Windows Workflow Foundation 4.5 through Unit Testing_ Persistence with WorkflowApplication- CodeProject_files/views32.png" style="width:16px"> 11.2K</span> &nbsp; </span></span>
+                                    </div>
+                                </div>
+					        </div>
+
+                            
+
+                        </div>
+
+                        <div id="ctl00_DescriptionSpot" class="summary">Persistence with WorkflowApplication </div><span id="ctl00_ThumbnailUrl" class="date" content="https://www.codeproject.com/script/Articles/Images/article100x80.png"></span>			
+
+                    </div>
+                    
+					
+					
+
+					
+
+					
+					
+
+					
+					
+
+						
+					
+
+					
+
+						
+						<div id="contentdiv" class="text">
+						
+
+
+
+<!-- Article Starts -->
+
+<h2>Background</h2>
+
+<p>I had started to learn Windows Workflow Foundation sometime ago. I prefer to learn a major technology framework through systematic study rather then googling around. However, I found that most well written books and articles were published between 2006-2009, so outdated, particularly missing new features in .NET 4 and 4.5; and a few books published in recent years for WF 4.0 and 4.5 were poorly written. While I generally prefer systematic, dry and abstract study, this time I would make up some wet materials for studying.</p>
+
+<h2>Introduction</h2>
+
+<p>Supporting long running process is one of the things that make WF shine. And technically to support long running process against all odds, persisting the workflow is a key. For persistence, WF 3.5, 4.0 and 4.5 have quite significant differences. Googling around may return mix information, outdate ones and updated ones, quite confusing. In this article, I would like to present some unit testing cases for demonstrating the behaviors of persistence.</p>
+
+<p>This is the 5th article in the series. And source code is available at https://github.com/zijianhuang/WorkflowDemo</p>
+
+<p>Other articles in this series are given below:</p>
+
+<ul>
+	<li><a href="http://www.codeproject.com/Articles/1083927/Learn-Windows-Workflow-Foundation-through-Unit-Tes" target="_blank">Learn Windows Workflow Foundation 4.5 through Unit Testing: CodeActivity</a></li>	<li><a href="http://www.codeproject.com/Articles/1086857/Learn-Windows-Workflow-Foundation-through-Unit" id="ctl00_MC_AR_ctl16_CAR_Title">Learn Windows Workflow Foundation 4.5 through Unit Testing: InvokeMethod and DynamicActivity</a></li>	<li><a href="http://www.codeproject.com/Articles/1088005/Learn-Windows-Workflow-Foundation-through-Unit-T">Learn Windows Workflow Foundation 4.5 through Unit Testing: WorkflowApplication and WorkflowServiceHost</a></li></ul>
+
+<p>&nbsp;</p>
+
+<p>And this article about persistence is utilizing WorkflowApplication and WorkflowServiceHost since both have full access to WF runtime, particularly the persistence.</p>
+
+<h2>Using the Code</h2>
+
+<p>The source code is available at <a href="https://github.com/zijianhuang/WorkflowDemo">https://github.com/zijianhuang/WorkflowDemo</a>.</p>
+
+<p>Prerequsites:</p>
+
+<ol>
+	<li>Visual Studio 2015 Update 1 or Visual Studio 2013 Update 3</li>	<li><a href="http://xunit.github.io/" target="_blank">xUnit </a>(included)</li>	<li><a href="https://essentialdiagnostics.codeplex.com/">EssentialDiagnostics</a> (included)</li>	<li>Workflow Persistence SQL database, with default local database WF.</li></ol>
+
+<p>Examples in this article are from a test class: WorkflowApplicationPersistenceTests.</p>
+
+<h2>WorkflowApplication with persistable workflow</h2>
+
+<h3>Bookmark</h3>
+
+<div class="pre-lang" id="premain688244"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="688244" id="preShrink688244">Shrink ▲</span> &nbsp; <span id="copycode688244" class="copy-code" data-index="688244" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre688244" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">sealed</span> <span class="code-keyword">class</span> ReadLine : NativeActivity&lt;string&gt;
+{
+    <span class="code-keyword">public</span> ReadLine()
+    {
+    }
+
+    <span class="code-keyword">public</span> InArgument&lt;string&gt; BookmarkName { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> <span class="code-keyword">bool</span> CanInduceIdle
+    {
+        <span class="code-keyword">get</span>
+        {
+            <span class="code-keyword">return</span> <span class="code-keyword">true</span>;
+        }
+    }
+
+    <span class="code-keyword">protected</span> <span class="code-keyword">override</span> <span class="code-keyword">void</span> Execute(NativeActivityContext context)
+    {
+        <span class="code-keyword">string</span> name = <span class="code-keyword">this</span>.BookmarkName.Get(context);
+
+        <span class="code-keyword">if</span> (name == <span class="code-keyword">null</span>)
+        {
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentException(<span class="code-keyword">string</span>.Format(<span class="code-string">"</span><span class="code-string">ReadLine {0}: BookmarkName cannot be null"</span>, <span class="code-keyword">this</span>.DisplayName), <span class="code-string">"</span><span class="code-string">BookmarkName"</span>);
+        }
+
+        context.CreateBookmark(name, <span class="code-keyword">new</span> BookmarkCallback(OnReadComplete));
+    }
+
+    <span class="code-keyword">void</span> OnReadComplete(NativeActivityContext context, Bookmark bookmark, <span class="code-keyword">object</span> state)
+    {
+        <span class="code-keyword">string</span> input = state <span class="code-keyword">as</span> <span class="code-keyword">string</span>;
+
+        <span class="code-keyword">if</span> (input == <span class="code-keyword">null</span>)
+        {
+            <span class="code-keyword">throw</span> <span class="code-keyword">new</span> ArgumentException(<span class="code-keyword">string</span>.Format(<span class="code-string">"</span><span class="code-string">ReadLine {0}: ReadLine must be resumed with a non-null string"</span>), <span class="code-string">"</span><span class="code-string">state"</span>);
+        }
+
+        context.SetValue(<span class="code-keyword">base</span>.Result, input);
+    }
+}
+
+
+    [Fact]
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> TestPersistenceWithBookmark()
+    {
+        <span class="code-keyword">var</span> x = <span class="code-digit">100</span>;
+        <span class="code-keyword">var</span> y = <span class="code-digit">200</span>;
+        <span class="code-keyword">var</span> t1 = <span class="code-keyword">new</span> Variable&lt;int&gt;(<span class="code-string">"</span><span class="code-string">t1"</span>);
+
+        <span class="code-keyword">var</span> plus = <span class="code-keyword">new</span> Plus()
+        {
+            X = x,
+            Y = y,
+            Z = t1,  <span class="code-comment">//</span><span class="code-comment">So Output Z will be assigned to t1</span>
+        };
+        <span class="code-keyword">var</span> bookmarkName = NewBookmarkName();
+        <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> System.Activities.Statements.Sequence()
+        {
+            Variables =
+                    {
+                        t1
+                    },
+            Activities = {
+                        <span class="code-keyword">new</span> Multiply()
+                        {
+                            X=<span class="code-digit">3</span>, Y=<span class="code-digit">7</span>,
+                        },
+
+                        <span class="code-keyword">new</span> ReadLine()
+                        {
+                            BookmarkName=bookmarkName,
+                        },
+
+                        plus,
+
+                    },
+        };
+
+        <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+        <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+        <span class="code-keyword">bool</span> isIdle = <span class="code-keyword">false</span>;
+
+        AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+        <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a);
+        app.InstanceStore = WFDefinitionStore.Instance.Store;
+        app.PersistableIdle = (eventArgs) =&gt;
+        {
+            <span class="code-keyword">return</span> PersistableIdleAction.Unload;<span class="code-comment">//</span><span class="code-comment">so persist and unload</span>
+        };
+
+        app.OnUnhandledException = (e) =&gt;
+        {
+
+            <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+        };
+
+        app.Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+        {
+            unloaded1 = <span class="code-keyword">true</span>;
+
+        };
+
+        app.Aborted = (eventArgs) =&gt;
+        {
+
+        };
+
+        app.Unloaded = (eventArgs) =&gt;
+        {
+            unloaded1 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        };
+
+        app.Idle = e =&gt;
+        {
+            Assert.Equal(<span class="code-digit">1</span>, e.Bookmarks.Count);
+            isIdle = <span class="code-keyword">true</span>;
+        };
+
+        <span class="code-comment">//</span><span class="code-comment">  app.Persist();//This is optional, since Workflow runtime will persist when the execution reach to ReadLine.</span>
+        <span class="code-keyword">var</span> id = app.Id;
+        app.Run();
+        syncEvent.WaitOne();
+
+        Assert.False(completed1);
+        Assert.True(unloaded1);
+        Assert.True(isIdle);
+        <span class="code-comment">//</span><span class="code-comment">At this point, DB WF/InstancesTable has a new record, and the value of column BlockingBookmark contains the bookmarkName</span>
+
+        <span class="code-comment">//</span><span class="code-comment">Now to use a new WorkflowApplication to load the persisted instance.</span>
+        LoadWithBookmarkAndComplete(a, id, bookmarkName, <span class="code-string">"</span><span class="code-string">abc"</span>);
+        <span class="code-comment">//</span><span class="code-comment">The record is now deleted by WF runtime.</span>
+    }
+
+    <span class="code-keyword">static</span> IDictionary&lt;string, object&gt; LoadWithBookmarkAndComplete(Activity workflowDefinition, Guid instanceId, <span class="code-keyword">string</span> bookmarkName, <span class="code-keyword">string</span> bookmarkValue)
+    {
+        <span class="code-keyword">bool</span> completed2 = <span class="code-keyword">false</span>;
+        <span class="code-keyword">bool</span> unloaded2 = <span class="code-keyword">false</span>;
+        AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+        IDictionary&lt;string, object&gt; outputs = <span class="code-keyword">null</span>;
+
+        <span class="code-keyword">var</span> app2 = <span class="code-keyword">new</span> WorkflowApplication(workflowDefinition)
+        {
+            Completed = e =&gt;
+            {
+                <span class="code-keyword">if</span> (e.CompletionState == ActivityInstanceState.Closed)
+                {
+                    outputs = e.Outputs;
+                }
+                completed2 = <span class="code-keyword">true</span>;
+            },
+
+            Unloaded = e =&gt;
+            {
+                unloaded2 = <span class="code-keyword">true</span>;
+                syncEvent.Set();
+            },
+
+            InstanceStore = WFDefinitionStore.Instance.Store,
+        };
+
+        app2.Load(instanceId);
+        <span class="code-keyword">var</span> br = app2.ResumeBookmark(bookmarkName, bookmarkValue);
+        Assert.Equal(BookmarkResumptionResult.Success, br);
+
+        syncEvent.WaitOne();
+
+        Assert.True(completed2);
+        Assert.True(unloaded2);
+
+        <span class="code-keyword">return</span> outputs;
+    }
+</pre>
+
+<p><span id="cke_bm_113E">&nbsp;</span>&nbsp;</p>
+
+<p>It is optional to explicitly call app.Persist(), since the WF runtime will persist the workflow when reaching activity ReadLine. And the workflow is unloaded and not completed, before running LoadAndComplete. Then another WorkflowApplication in this example is created, picking up the instance stored, and resume with the bookmark and the data expected.</p>
+
+<p><strong>Remarks:</strong></p>
+
+<p>In the case, you see the 2nd run of the workflow gets the workflowDefinition defined before the first run. In real world scenarios, sometimes it is not nice to have the definition hanging around in the application for the whole lifecycle. It is better to persist the definition somewhere, so the 2nd run just needs the instanceId and bookmarkName in order to resume from last breakpoint. In WF3.5, WF did support natively persisting the definition, however, this had been removed from WF4 and 4.5. So it is up to the application developers to persist the definitions.</p>
+
+<h3>Persist workflow definitions</h3>
+
+<p>When you are using Workflow Designer of Visual Studio, you probably notice that the custom made workflow is an XAML file which is transformed to C# codes at design time. And the C# codes is compiled when you build projects. And in WF, there's a function to transform a workflow definition in memory into XAML. So XAML is a natural way of persisting and reloading workflows.</p>
+
+<p><strong>Some helper functions to serialize and deserialize a workflow:</strong></p>
+
+<div class="pre-lang" id="premain984889"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="984889" id="preShrink984889">Shrink ▲</span> &nbsp; <span id="copycode984889" class="copy-code" data-index="984889" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre984889" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span> <span class="code-summarycomment">///</span><span class="code-comment"> Persist activity for purpose of resuming later.
+</span> <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span> <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">remarks</span><span class="code-summarycomment">&gt;</span>The functions here are for bookmark and long running only, not for general purpose.<span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/remarks</span><span class="code-summarycomment">&gt;</span>
+</span> <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">example</span><span class="code-summarycomment">&gt;</span>inspired by https://msdn.microsoft.com/en-us/library/ff458319%28v=vs.110%29.aspx<span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/example</span><span class="code-summarycomment">&gt;</span>
+</span> <span class="code-keyword">public</span> <span class="code-keyword">static</span> <span class="code-keyword">class</span> ActivityPersistenceHelper
+ {
+     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment">
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">param</span><span class="code-summarycomment"> </span><span class="code-summarycomment">name="activity"</span><span class="code-summarycomment">&gt;</span><span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/param</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">param</span><span class="code-summarycomment"> </span><span class="code-summarycomment">name="stream"</span><span class="code-summarycomment">&gt;</span>External XML UTF8 stream. Caller is responsible to set position if the stream supports random seek, and to dispose.<span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/param</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-keyword">public</span> <span class="code-keyword">static</span> <span class="code-keyword">void</span> SaveActivity(Activity activity, Stream stream)
+     {
+         <span class="code-keyword">using</span> (<span class="code-keyword">var</span> streamWriter = <span class="code-keyword">new</span> StreamWriter(stream, Encoding.UTF8, <span class="code-digit">512</span>, <span class="code-keyword">true</span>))
+         <span class="code-keyword">using</span> (<span class="code-keyword">var</span> xw = ActivityXamlServices.CreateBuilderWriter(<span class="code-keyword">new</span> System.Xaml.XamlXmlWriter(streamWriter, <span class="code-keyword">new</span> System.Xaml.XamlSchemaContext())))
+         {
+             System.Xaml.XamlServices.Save(xw, activity);
+         }
+     }
+
+     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">summary</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment">
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/summary</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">param</span><span class="code-summarycomment"> </span><span class="code-summarycomment">name="stream"</span><span class="code-summarycomment">&gt;</span>XAML stream defining an Activity<span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/param</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-summarycomment">///</span><span class="code-comment"> <span class="code-summarycomment">&lt;</span><span class="code-summarycomment">returns</span><span class="code-summarycomment">&gt;</span><span class="code-summarycomment">&lt;</span><span class="code-summarycomment">/returns</span><span class="code-summarycomment">&gt;</span>
+</span>     <span class="code-keyword">public</span> <span class="code-keyword">static</span> Activity LoadActivity(Stream stream)
+     {
+         <span class="code-keyword">var</span> settings = <span class="code-keyword">new</span> ActivityXamlServicesSettings()
+         {
+             CompileExpressions = <span class="code-keyword">true</span>,
+         };
+
+         <span class="code-keyword">var</span> activity = ActivityXamlServices.Load(stream, settings);
+         <span class="code-keyword">return</span> activity;
+     }
+
+     <span class="code-keyword">public</span> <span class="code-keyword">static</span> Activity LoadActivity(byte[] bytes)
+     {
+         <span class="code-keyword">var</span> settings = <span class="code-keyword">new</span> ActivityXamlServicesSettings()
+         {
+             CompileExpressions = <span class="code-keyword">true</span>,
+         };
+
+         <span class="code-keyword">using</span> (<span class="code-keyword">var</span> stream = <span class="code-keyword">new</span> MemoryStream(bytes))
+         {
+             <span class="code-keyword">var</span> activity = ActivityXamlServices.Load(stream, settings);
+             <span class="code-keyword">return</span> activity;
+         }
+     }
+</pre>
+
+<p><strong>Dictionary to map instance ID with workflow definition:</strong></p>
+
+<div class="pre-lang" id="premain908776"><div>C#</div><div class="pre-action-link"><span id="copycode908776" class="copy-code" data-index="908776" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre908776" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-keyword">public</span> <span class="code-keyword">class</span> WFDefinitionStore
+{
+    <span class="code-keyword">private</span> <span class="code-keyword">static</span> <span class="code-keyword">readonly</span> Lazy&lt;WFDefinitionStore&gt; lazy = <span class="code-keyword">new</span> Lazy&lt;WFDefinitionStore&gt;(() =&gt; <span class="code-keyword">new</span> WFDefinitionStore());
+
+    <span class="code-keyword">public</span> <span class="code-keyword">static</span> WFDefinitionStore Instance { <span class="code-keyword">get</span> { <span class="code-keyword">return</span> lazy.Value; } }
+
+    <span class="code-keyword">public</span> WFDefinitionStore()
+    {
+        InstanceDefinitions = <span class="code-keyword">new</span> System.Collections.Concurrent.ConcurrentDictionary&lt;Guid, byte[]&gt;();
+
+        Store = <span class="code-keyword">new</span> SqlWorkflowInstanceStore(<span class="code-string">"</span><span class="code-string">Server =localhost; Initial Catalog = WF; Integrated Security = SSPI"</span>)
+        {
+            InstanceCompletionAction = InstanceCompletionAction.DeleteAll,
+            InstanceEncodingOption = InstanceEncodingOption.GZip,
+
+        };
+    }
+
+    <span class="code-keyword">public</span> System.Collections.Concurrent.ConcurrentDictionary&lt;Guid, byte[]&gt; InstanceDefinitions { <span class="code-keyword">get</span>; <span class="code-keyword">private</span> <span class="code-keyword">set</span>; }
+</pre>
+
+<p><strong>Hints:</strong></p>
+
+<p>In real world applications, you may have other structures to persist the workflow definitions according to your technical requirements. Also, in a service app, there might be multiple instances of the same workflow definition, thus it is inefficient to store multiple copies of the same definition, so you may be designing a storage either in program logic or persistence that will store a definition once and support versioning. This dictionary is good enough for demo and small applications.</p>
+
+<h3>Workflow with Delay</h3>
+
+<p>This test case demonstrates:</p>
+
+<ul>
+	<li>The basic behaviors of WorkflowApplication</li>	<li>The performance of persistence</li>	<li>Workflow definition persistence using the demo helper class above</li>	<li>How to obtain result / OutArgument from the workflow</li></ul>
+
+<p>&nbsp;</p>
+
+<div class="pre-lang" id="premain580644"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="580644" id="preShrink580644">Shrink ▲</span> &nbsp; <span id="copycode580644" class="copy-code" data-index="580644" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre580644" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestPersistenceWithDelayAndResult()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> Fonlow.Activities.Calculation();
+    a.XX = <span class="code-digit">3</span>;
+    a.YY = <span class="code-digit">7</span>;
+
+    <span class="code-keyword">bool</span> completed1 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded1 = <span class="code-keyword">false</span>;
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a);
+    app.InstanceStore = WFDefinitionStore.Instance.Store;
+    app.PersistableIdle = (eventArgs) =&gt;
+    {
+        <span class="code-keyword">return</span> PersistableIdleAction.Unload;<span class="code-comment">//</span><span class="code-comment">so persist and unload</span>
+    };
+
+    app.OnUnhandledException = (e) =&gt;
+    {
+        Assert.True(<span class="code-keyword">false</span>);
+        <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+    };
+
+    app.Completed = <span class="code-keyword">delegate</span> (WorkflowApplicationCompletedEventArgs e)
+    {
+        completed1 = <span class="code-keyword">true</span>;
+        Assert.True(<span class="code-keyword">false</span>);
+    };
+
+    app.Aborted = (eventArgs) =&gt;
+    {
+        Assert.True(<span class="code-keyword">false</span>);
+    };
+
+    app.Unloaded = (eventArgs) =&gt;
+    {
+        unloaded1 = <span class="code-keyword">true</span>;
+        syncEvent.Set();
+    };
+
+    <span class="code-keyword">var</span> id = app.Id;
+    stopwatch.Restart();
+    stopwatch2.Restart();
+    app.Run();
+    syncEvent.WaitOne();
+
+    stopwatch.Stop();
+    Assert.True(stopwatch.ElapsedMilliseconds &lt; <span class="code-digit">2500</span>, <span class="code-sdkkeyword">String</span>.Format(<span class="code-string">"</span><span class="code-string">The first one is executed for {0} milliseconds"</span>, stopwatch.ElapsedMilliseconds));
+    <span class="code-comment">//</span><span class="code-comment">the ellipsed time depends on the performance of the WF runtime when handling persistence. The first case of persistence is slow.</span>
+
+    Assert.False(completed1);
+    Assert.True(unloaded1);
+
+    stopwatch.Restart();
+    <span class="code-keyword">var</span> t = WFDefinitionStore.Instance.TryAdd(id, a);
+    stopwatch.Stop();
+    Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">It took {0} seconds to persist definition"</span>, stopwatch.Elapsed.TotalSeconds);
+
+    <span class="code-comment">//</span><span class="code-comment">Now to use a new WorkflowApplication to load the persisted instance.</span>
+    LoadAndCompleteLongRunning(id);
+}
+
+<span class="code-keyword">void</span> LoadAndCompleteLongRunning(Guid instanceId)
+{
+    <span class="code-keyword">bool</span> completed2 = <span class="code-keyword">false</span>;
+    <span class="code-keyword">bool</span> unloaded2 = <span class="code-keyword">false</span>;
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> app2 = <span class="code-keyword">new</span> WorkflowApplication(WFDefinitionStore.Instance[instanceId])
+    {
+        Completed = e =&gt;
+        {
+            completed2 = <span class="code-keyword">true</span>;
+            <span class="code-keyword">var</span> finalResult = (<span class="code-keyword">long</span>)e.Outputs[<span class="code-string">"</span><span class="code-string">Result"</span>];
+            Assert.Equal(<span class="code-digit">21</span>, finalResult);
+        },
+
+        Unloaded = e =&gt;
+        {
+            unloaded2 = <span class="code-keyword">true</span>;
+            syncEvent.Set();
+        },
+
+        InstanceStore = WFDefinitionStore.Instance.Store,
+    };
+
+    stopwatch.Restart();
+    app2.Load(instanceId);
+    Trace.TraceInformation(<span class="code-string">"</span><span class="code-string">It took {0} seconds to load workflow"</span>, stopwatch.Elapsed.TotalSeconds);
+
+    app2.Run();
+    syncEvent.WaitOne();
+    stopwatch2.Stop();
+    <span class="code-keyword">var</span> seconds = stopwatch2.Elapsed.TotalSeconds;
+    Assert.True(seconds &gt; <span class="code-digit">3</span>, <span class="code-sdkkeyword">String</span>.Format(<span class="code-string">"</span><span class="code-string">Activity execute for {0} seconds"</span>, seconds));<span class="code-comment">//</span><span class="code-comment">But if the long running process is fired and forgot, the late load and run may be completed immediately.</span>
+
+    Assert.True(completed2);
+    Assert.True(unloaded2);
+
+}
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>Remarks:</strong></p>
+
+<ul>
+	<li>The first instance of persistence is running slow, probably due to some warm-up in WF runtime or SQL connection. Please leave a comment if you know why.</li>	<li>After a long running workflow persistable is persisted and unloaded, a house keeper program is needed to wake it up through checking the persistence layer regularly. This will be another big subject to be discussed in next articles.</li></ul>
+
+<p>&nbsp;</p>
+
+<h3>Invalid Store Throws Exception</h3>
+
+<div>If the InstanceStore is having some problem during WorkflowApplication.Persist(), System.Runtime.DurableInstancing.InstancePersistenceCommandException will be thrown.</div>
+
+<div class="pre-lang" id="premain275168"><div>C#</div><div class="pre-action-link"><span class="code-collapse" data-index="275168" id="preShrink275168">Shrink ▲</span> &nbsp; <span id="copycode275168" class="copy-code" data-index="275168" style="visibility: visible;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 460 460" style="width: 16px;height:16px;" xml:space="preserve"><g><path d="M425.934,0H171.662c-18.122,0-32.864,14.743-32.864,32.864v77.134h30V32.864c0-1.579,1.285-2.864,2.864-2.864h254.272     c1.579,0,2.864,1.285,2.864,2.864v254.272c0,1.58-1.285,2.865-2.864,2.865h-74.729v30h74.729 c18.121,0,32.864-14.743,32.864-32.865V32.864C458.797,14.743,444.055,0,425.934,0z"></path><path d="M288.339,139.998H34.068c-18.122,0-32.865,14.743-32.865,32.865v254.272C1.204,445.257,15.946,460,34.068,460h254.272 c18.122,0,32.865-14.743,32.865-32.864V172.863C321.206,154.741,306.461,139.998,288.339,139.998z M288.341,430H34.068    c-1.58,0-2.865-1.285-2.865-2.864V172.863c0-1.58,1.285-2.865,2.865-2.865h254.272c1.58,0,2.865,1.285,2.865,2.865v254.273h0.001 C291.206,428.715,289.92,430,288.341,430z"></path></g></svg></span></div></div>
+<pre id="pre275168" style="margin-top:0;" class="lang-csharp notranslate" data-language="cs" data-allowshrink="True" data-collapse="False" data-codeblock-processed="true"><span class="code-bracket">[</span><span class="code-sdkkeyword">Fact</span>]
+<span class="code-keyword">public</span> <span class="code-keyword">void</span> TestPersistWithWrongStoreThrows()
+{
+    <span class="code-keyword">var</span> a = <span class="code-keyword">new</span> Multiply()
+    {
+        X = <span class="code-digit">3</span>,
+        Y = <span class="code-digit">7</span>,
+    };
+
+    AutoResetEvent syncEvent = <span class="code-keyword">new</span> AutoResetEvent(<span class="code-keyword">false</span>);
+
+    <span class="code-keyword">var</span> app = <span class="code-keyword">new</span> WorkflowApplication(a);
+    app.InstanceStore = <span class="code-keyword">new</span> SqlWorkflowInstanceStore(<span class="code-string">"</span><span class="code-string">Server =localhost; Initial Catalog = WFXXX; Integrated Security = SSPI"</span>);
+    app.PersistableIdle = (eventArgs) =&gt;
+    {
+        Assert.True(<span class="code-keyword">false</span>, <span class="code-string">"</span><span class="code-string">quick action no need to persist"</span>);<span class="code-comment">//</span><span class="code-comment">lazy</span>
+        <span class="code-keyword">return</span> PersistableIdleAction.Persist;
+    };
+
+    <span class="code-comment">//</span><span class="code-comment">None of the handlers should be running</span>
+    app.OnUnhandledException = (e) =&gt;
+    {
+        Assert.True(<span class="code-keyword">false</span>);
+        <span class="code-keyword">return</span> UnhandledExceptionAction.Abort;
+    };
+
+    <span class="code-keyword">var</span> ex = Assert.Throws&lt;System.Runtime.DurableInstancing.InstancePersistenceCommandException&gt;
+       (() =&gt; app.Persist(TimeSpan.FromSeconds(<span class="code-digit">2</span>)));
+
+    Assert.NotNull(ex.InnerException);
+    Assert.Equal(<span class="code-keyword">typeof</span>(TimeoutException), ex.InnerException.GetType());
+}
+</pre>
+
+<p>There could be many reasons why the instance store has problems, so your application needs to handle this exception nicely.</p>
+
+<p>&nbsp;</p>
+
+<!-- Article Ends -->
+
+
+						</div>
+						
+
+						
+						<h2>License</h2>
+						<div id="LicenseTerms"><p>This article, along with any associated source code and files, is licensed under <a href="http://www.codeproject.com/info/cpol10.aspx" rel="license">The Code Project Open License (CPOL)</a></p></div>
+						
+
+						
+						<br>
+						
+						    <br>
+						
+						
+
+						<div class="clearfix"></div>
+
+						<div style="padding-top:8px">
+							
+						</div>
+
+					
+
+				    
+					</form>
+
+				</div>
+
+				
+				<div class="bottom-promo"> 
+				    
+				</div>
+				
+                
+                
+
+				
+				
+				
+
+			</div>
+			
+
+            
+            
+            
+
+        </div>
+        
+
+		
+		<div class="site-footer">
+			<div class="align-left">
+				<a id="ctl00_PermaLink" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-4-5-through-Unit">Permalink</a><br>
+				<br>
+				<a id="ctl00_PrivacyLink" href="https://www.codeproject.com/info/privacy.aspx">Privacy</a><br>
+    			<a id="ctl00_CookiePolicyLink" href="https://www.codeproject.com/info/cookie.aspx">Cookies</a><br>
+                <a id="ctl00_TermsOfUseLink" href="https://www.codeproject.com/info/TermsOfUse.aspx">Terms of Use</a><br>
+			</div>
+
+            <div class="align-center">
+				
+
+
+<div class="page-width">
+    Layout: <a id="ctl00_PageWidth_FixedT" title="Fixed width layout" rel="nofollow" class=" active" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T-2?PageFlow=FixedWidth">fixed</a>
+    |
+    <a id="ctl00_PageWidth_FluidT" title="Fluid layout" rel="nofollow" href="https://www.codeproject.com/Articles/1087267/Learn-Windows-Workflow-Foundation-through-Unit-T-2?PageFlow=Fluid">fluid</a>
+</div>
+
+
+				
+
+				
+
+	            
+
+                <br>
+			</div>
+                
+			<div class="align-right">
+				Article Copyright 2016 by Zijian<br>Everything else
+				Copyright © <a href="mailto:webmaster@codeproject.com">CodeProject</a>, 1999-2024<br>
+                <br>
+				Web01 
+				2.8:2024-10-20:1<br>
+			</div>
+		</div>
+		
+
+		<br clear="all">
+		
+			
+
+	</div> 
+	</div> 
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript"> // DEFERRED script
+
+document.addEventListener('DOMContentLoaded', function() {
+
+	new CodeBlocks().initialise('#contentdiv');
+	
+	$('.author-wrapper .description').shorten({showChars: 400});
+	
+	anchorAnimate();
+	
+	$('#__EVENTVALIDATION').attr('autocomplete', 'off');
+
+})
+</script>
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">.copied::after {  position: absolute;  right: 0;  display: inline-block; white-space: nowrap; content: 'copied'; color: #fff; background-color: #f90;  border-radius: 3px; padding:1px 8px; opacity: 0;  will-change: opacity, transform; animation: showcopied 1.5s ease; } @keyframes showcopied { 0% { opacity: 0; } 70% { opacity: 1; } 100% { opacity: 0; } } </style><canvas id="cv1" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas><canvas id="cv2" width="1px" height="1px" style="position:absolute;left:0;top:0;pointer-events:none"></canvas></body></html>
